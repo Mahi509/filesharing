@@ -68,7 +68,7 @@
     <!-- Progress Bar -->
     <div id="progressbar"></div>
  
-    <!-- Close After Upload -->
+    <!-- Close After Upload -->asdfasfasfasdf
     <div id="closeAfter">
         <span class="checkbox">
             <input type="checkbox" name="checkbox" id="checkbox">
