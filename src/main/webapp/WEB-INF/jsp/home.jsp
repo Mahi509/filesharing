@@ -168,12 +168,12 @@ padding-left:10px;
     <span class="glyphicons glyphicons-film"></span>
      
 </form:form>
- <p id="list"> <span id="glymp" class="glyphicon glyphicon-headphones">Music</span>
- <span id="glymp" class="glyphicon glyphicon-file">Files</span>
-<span id="glymp" class="glyphicon glyphicon-film">Video</span>   
- <span id="glymp" class="glyphicon glyphicon-camera">Photo</span>  
-<span id="glymp" class="glyphicon glyphicon-facetime-video">Videos </span>
- <span id="glymp" class="glyphicon glyphicon-book">Books</span></p>  
+ <p id="list"> <span id="glymp" class="glyphicon glyphicon-headphones"> Music</span>
+ <span id="glymp" class="glyphicon glyphicon-file"> Files</span>
+<span id="glymp" class="glyphicon glyphicon-film"> Video</span>   
+ <span id="glymp" class="glyphicon glyphicon-camera"> Photo</span>  
+<span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span>
+ <span id="glymp" class="glyphicon glyphicon-book"> Books</span></p>  
 <input type="button" id="upload" value="UPLOAD YOUR DATA">
 	
 
