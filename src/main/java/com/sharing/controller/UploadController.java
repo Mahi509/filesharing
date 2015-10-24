@@ -23,17 +23,6 @@ public class UploadController {
 
 	@Autowired
 	FileValidator fileValidator;
-	
-/*	@Autowired
-	UploadedFile uploadedFile;*/
-	
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String getform() {
-
-		return "home";
-
-	}
 
 	@RequestMapping("/fileUploadForm")
 	public ModelAndView getUploadForm(
@@ -47,22 +36,21 @@ public class UploadController {
 	public ModelAndView fileUploaded(
 			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
 			BindingResult result) {
-		System.out.println("Entering file upload");
-		
+
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 
 		MultipartFile file = uploadedFile.getFile();
-		
-		fileValidator.validate(uploadedFile, result);
 
 		String fileName = file.getOriginalFilename();
+
+		fileValidator.validate(uploadedFile, result);
 
 		System.out.println(fileName);
 		if (result.hasErrors()) {
 			System.out.println("entering if block");
 			return new ModelAndView("uploadForm");
-			
+
 		}
 
 		try {
@@ -77,8 +65,6 @@ public class UploadController {
 			int read = 0;
 			byte[] bytes = new byte[1024];
 
-			
-			
 			while ((read = inputStream.read(bytes)) != -1) {
 				outputStream.write(bytes, 0, read);
 				System.out.println("123");

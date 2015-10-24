@@ -40,4 +40,8 @@
  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
   p:prefix="/WEB-INF/jsp/"
   p:suffix=".jsp"/>
+  
+  
+  <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 </beans>
