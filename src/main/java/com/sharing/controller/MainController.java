@@ -20,7 +20,7 @@ public class MainController {
 		return "home";
 	}
 	
-	@RequestMapping(value="/authenticate",method=RequestMethod.GET)
+	@RequestMapping(value="/authenticate",method=RequestMethod.POST)
 	public String authenticate(@RequestParam("username")String username,@RequestParam("password")String password)
 	{
 		boolean flag=mainService.authenticate(username, password);

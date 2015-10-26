@@ -57,7 +57,7 @@ public class UploadController {
 			inputStream = file.getInputStream();
 			System.out.println("entering try block");
 
-			File newFile = new File("/home/webwerks/savefile/" + fileName);
+			File newFile = new File("/home/webwerks/filesharing/" + fileName);
 			if (!newFile.exists()) {
 				newFile.createNewFile();
 			}
