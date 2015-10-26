@@ -1,7 +1,5 @@
 package com.sharing.controller;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sharing.service.MainService;
 
-@Controller
+@Controller("mainController")
 public class MainController {
 	
-	@Resource(name="mainService")
+	@Autowired
 	private MainService mainService;
 
 	@RequestMapping(value="/")
