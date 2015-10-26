@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sharing.service.MainService;
 
-@Controller
+@Controller("mainController")
 public class MainController {
 	
 	@Autowired
@@ -17,6 +17,7 @@ public class MainController {
 	@RequestMapping(value="/")
 	public String home()
 	{
+		System.out.println("in controller");
 		return "home";
 	}
 	
@@ -28,7 +29,7 @@ public class MainController {
 		if(flag)
 		{
 			System.out.println("TRUE");
-			return "home";
+			return "home2";
 			 
 		}else
 		{

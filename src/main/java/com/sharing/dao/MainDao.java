@@ -10,9 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sharing.model.User;
 
-
-
-@Repository
+@Repository("mainDao")
 @Transactional
 public class MainDao {
 

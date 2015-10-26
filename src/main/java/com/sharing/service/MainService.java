@@ -2,9 +2,10 @@ package com.sharing.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.sharing.dao.MainDao;
 
-@Service
+@Service("mainService")
 public class MainService {
 
 	@Autowired
