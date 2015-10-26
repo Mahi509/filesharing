@@ -80,7 +80,7 @@
 }
 
 #submit::-moz-focus-inner {
-       border: 0;  /* Small centering fix for Firefox */
+       border: 0;  
 }
 
 #list{

@@ -1,5 +1,7 @@
 package com.sharing.dao;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,13 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sharing.model.User;
 
-
-
 @Repository
 @Transactional
 public class MainDao {
 
-	@Autowired
+	@Resource(name="sessionFactory")
 	private SessionFactory sessionFactory;
 	
 	public boolean authenticate(String username,String password)
