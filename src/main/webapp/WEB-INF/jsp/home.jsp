@@ -56,12 +56,14 @@
     <input id="search" type="text" placeholder="Type here">
     <input id="submit" type="submit" value="Search">     
 </form:form>
- <p id="list"> <span id="glymp" class="glyphicon glyphicon-headphones"> Music</span>
- <span id="glymp" class="glyphicon glyphicon-file"> Files</span>
-<span id="glymp" class="glyphicon glyphicon-film"> Video</span>   
- <span id="glymp" class="glyphicon glyphicon-camera"> Photo</span>  
-<span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span>
- <span id="glymp" class="glyphicon glyphicon-book"> Books</span></p>  
+ <p id="list"> 
+ <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span id="glymp" class="glyphicon glyphicon-headphones"> Music</span></a>
+ <a href="#"><span id="glymp" class="glyphicon glyphicon-file"> Files</span></a>
+<a href="#"><span id="glymp" class="glyphicon glyphicon-film"> Video</span>   </a>
+ <a href="#"><span id="glymp" class="glyphicon glyphicon-camera"> Photo</span> </a> 
+<a href="#"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span></a>
+ <a href="#"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
+ </p>  
  
  
  <form:form method="post" enctype="multipart/form-data"  
