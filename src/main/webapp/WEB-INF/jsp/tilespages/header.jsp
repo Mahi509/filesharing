@@ -28,7 +28,55 @@
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 		
+	<style>
+	#searchbox
+{
+    background-color: rgba(0, 137, 255, 0.48);
+    background-image: linear-gradient(#fff, #d4e8ec);
+    border-radius: 35px;    
+    border-width: 1px;
+    border-style: solid;
+    border-color: #c4d9df #a4c3ca #83afb7;            
+    width: 1000px;
+    margin-left: 200px;
+    height: 35px;
+    padding: 10px;
+    margin-top: 20px;
+    padding-bottom: 50px;
+    overflow: hidden; /* Clear floats */
+}
 	
+	#submit
+{       
+    background-color: #6cbb6b;
+    background-image: linear-gradient(#95d788, #6cbb6b);
+    border-radius: 3px 50px 50px 3px;    
+    border-width: 1px;
+    border-style: solid;
+    border-color: #7eba7c #578e57 #447d43;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 
+                0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    height: 40px;
+    margin: 0 0 0 10px;
+    padding: 0;
+    width: 120px;
+    cursor: pointer;
+    font: bold 14px Arial, Helvetica;
+    color: #23441e;    
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+#search {
+    padding: 5px 9px;
+    height: 30px;
+    width: 800px;
+    border: 1px solid #a4c3ca;
+    font: normal 13px 'trebuchet MS', arial, helvetica;
+    background: #f1f1f1;
+    border-radius: 50px 3px 3px 50px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);            
+}
+	</style>
 	</head>
 	<body>
 	
@@ -49,64 +97,13 @@
 			</div>
 		</div>
 	</div>
-	
-	
- 
-  <form:form id="searchbox" action="">
+	  <form:form id="searchbox" action="">
     <input id="search" type="text" placeholder="Type here">
     <input id="submit" type="submit" value="Search">     
 </form:form>
- <p id="list"> 
- <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span id="glymp" class="glyphicon glyphicon-headphones"> Music</span></a>
- <a href="#"><span id="glymp" class="glyphicon glyphicon-file"> Files</span></a>
-<a href="#"><span id="glymp" class="glyphicon glyphicon-film"> Video</span>   </a>
- <a href="#"><span id="glymp" class="glyphicon glyphicon-camera"> Photo</span> </a> 
-<a href="#"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span></a>
- <a href="#"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
- </p>  
- 
- 
 
-    <!-- File List -->
-    <div id="filelist" class="cb"></div>
- 
-    <!-- Progress Bar -->
-    <div id="progressbar"></div>
- 
-    <!-- Close After Upload -->asdfasfasfasdf
-    <div id="closeAfter">
-        <span class="checkbox">
-            <input type="checkbox" name="checkbox" id="checkbox">
-            <label for="checkbox">Close window after upload</label>
-        </span>
-    </div>
- 
-</div>
-
- <form:form method="post" enctype="multipart/form-data"  
-   modelAttribute="uploadedFile" action="fileUpload.htm">  
-   <table>  
-    <tr>  
-     <!-- <td><input type="button"  value="UPLOAD YOUR DATA"> </td>  --> 
-     <td><input type="file" id="upload" name="file"  >  
-    
-     </td>  
-    </tr>  
-    <tr>  
-     <td> </td>  
-     <td><input type="submit" value="Upload" />  
-     </td>  
-     <td> </td>  
-    </tr>  
-   </table>  
-  </form:form>  
-
-
-
-	</body>
+</body>
 </html>
-
-
 
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -150,7 +147,7 @@
         		<div class="clearfix"></div>
         		
         		<div class="form-group modal-register-btn">
-        			<button class="btn btn-default"><a href="${pageContext.request.contextPath}/WEB-INF/jsp/signup.jsp">New User Please Register</a></button>
+        			<button class="btn btn-default"> New User Please Register</button>
         		</div>
       		</div>
       		<div class="clearfix"></div>

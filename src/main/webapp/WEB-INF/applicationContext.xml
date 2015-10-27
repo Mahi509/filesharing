@@ -13,7 +13,11 @@
  <mvc:annotation-driven/>
  <import resource="classpath:dataSource.xml"/>
 
-	<!-- <bean id="viewResolver"  
+ <context:component-scan base-package="com.sharing"/>
+ <mvc:resources mapping="/myshare/**" location="/home/webwerks/files/"/>
+  <mvc:resources mapping="/resources/**" location="/resources/"/> 
+ 
+ <bean id="viewResolver"  
         class="org.springframework.web.servlet.view.UrlBasedViewResolver">  
         <property name="viewClass">  
             <value>  
@@ -21,9 +25,9 @@
             </value>  
             
         </property> 
-        <property name="order">
+       <!--  <property name="order">
         <value>0</value>
-        </property>  
+        </property>   -->
     </bean>  
     <bean id="tilesConfigurer"  
         class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">  
@@ -33,11 +37,14 @@
             </list>  
         </property> 
         
-    </bean>   -->
- <context:component-scan base-package="com.sharing"/>
-  <mvc:resources mapping="/resources/**" location="/resources/"/> 
+    </bean>  
+ 
  
  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
   p:prefix="/WEB-INF/jsp/"
   p:suffix=".jsp"/>
+  
+  
+  <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 </beans>
