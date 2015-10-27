@@ -40,7 +40,9 @@
 		<%-- <div class="image">
 		<img src="${pageContext.request.contextPath}/resources/images/share.jpg" height="120px" width="80px"/> --%>
 		<div class="container-fluid">
+		
 			<div class="row">
+			<!-- <div>LOGO</div> -->
 				<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
 					<button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
 					  Sign In
