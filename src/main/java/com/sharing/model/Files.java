@@ -19,7 +19,7 @@ public class Files {
 	private String fileName;
 
 	@Column(name="fileby")
-	private String by;
+	private String fileby;
 
 	@Column(name="filedate")
 	private String date;
@@ -40,12 +40,13 @@ public class Files {
 		this.fileName = fileName;
 	}
 
-	public String getBy() {
-		return by;
+
+	public String getFileby() {
+		return fileby;
 	}
 
-	public void setBy(String by) {
-		this.by = by;
+	public void setFileby(String fileby) {
+		this.fileby = fileby;
 	}
 
 	public String getDate() {

@@ -13,12 +13,32 @@
  <mvc:annotation-driven/>
  <import resource="classpath:dataSource.xml"/>
 
-
-
-
-
  <context:component-scan base-package="com.sharing"/>
+ <mvc:resources mapping="/myshare/**" location="/home/webwerks/files/"/>
   <mvc:resources mapping="/resources/**" location="/resources/"/> 
+ 
+ <bean id="viewResolver"  
+        class="org.springframework.web.servlet.view.UrlBasedViewResolver">  
+        <property name="viewClass">  
+            <value>  
+                org.springframework.web.servlet.view.tiles2.TilesView  
+            </value>  
+            
+        </property> 
+       <!--  <property name="order">
+        <value>0</value>
+        </property>   -->
+    </bean>  
+    <bean id="tilesConfigurer"  
+        class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">  
+        <property name="definitions">  
+            <list>  
+                <value>/WEB-INF/tiles.xml</value>  
+            </list>  
+        </property> 
+        
+    </bean>  
+ 
  
  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
   p:prefix="/WEB-INF/jsp/"

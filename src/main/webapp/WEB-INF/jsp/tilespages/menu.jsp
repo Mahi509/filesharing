@@ -29,12 +29,14 @@
 <body>
 
 <div id="menu">
-<p id="list"> <span id="glymp" class="glyphicon glyphicon-headphones"> Music</span>
- <span id="glymp" class="glyphicon glyphicon-file"> Files</span><br/>
-<span id="glymp" class="glyphicon glyphicon-film"> Video</span>   
- <span id="glymp" class="glyphicon glyphicon-camera"> Photo</span><br/>  
-<span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span>
- <span id="glymp" class="glyphicon glyphicon-book"> Books</span></p>
+<p id="list"> 
+<a href="#"><span id="glymp" class="glyphicon glyphicon-headphones"> Music</span></a>
+ <a href="#"><span id="glymp" class="glyphicon glyphicon-file"> Files</span></a><br/>
+<a href="#"><span id="glymp" class="glyphicon glyphicon-film"> Video</span></a>   
+ <a href="#"><span id="glymp" class="glyphicon glyphicon-camera"> Photo</span></a><br/>  
+<a href="#"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos</span></a>
+ <a href="#"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
+ </p>
 </div>
 </body>
 </html>

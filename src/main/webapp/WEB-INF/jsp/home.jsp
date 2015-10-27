@@ -58,14 +58,33 @@
     <input id="search" type="text" placeholder="Type here">
     <input id="submit" type="submit" value="Search">     
 </form:form>
- <p id="list"> <span id="glymp" class="glyphicon glyphicon-headphones"> Music</span>
- <span id="glymp" class="glyphicon glyphicon-file"> Files</span>
-<span id="glymp" class="glyphicon glyphicon-film"> Video</span>   
- <span id="glymp" class="glyphicon glyphicon-camera"> Photo</span>  
-<span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span>
- <span id="glymp" class="glyphicon glyphicon-book"> Books</span></p>  
+ <p id="list"> 
+ <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span id="glymp" class="glyphicon glyphicon-headphones"> Music</span></a>
+ <a href="#"><span id="glymp" class="glyphicon glyphicon-file"> Files</span></a>
+<a href="#"><span id="glymp" class="glyphicon glyphicon-film"> Video</span>   </a>
+ <a href="#"><span id="glymp" class="glyphicon glyphicon-camera"> Photo</span> </a> 
+<a href="#"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span></a>
+ <a href="#"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
+ </p>  
  
  
+
+    <!-- File List -->
+    <div id="filelist" class="cb"></div>
+ 
+    <!-- Progress Bar -->
+    <div id="progressbar"></div>
+ 
+    <!-- Close After Upload -->asdfasfasfasdf
+    <div id="closeAfter">
+        <span class="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox">
+            <label for="checkbox">Close window after upload</label>
+        </span>
+    </div>
+ 
+</div>
+
  <form:form method="post" enctype="multipart/form-data"  
    modelAttribute="uploadedFile" action="fileUpload.htm">  
    <table>  
@@ -83,6 +102,7 @@
     </tr>  
    </table>  
   </form:form>  
+
 
 
 	</body>
@@ -132,7 +152,7 @@
         		<div class="clearfix"></div>
         		
         		<div class="form-group modal-register-btn">
-        			<button class="btn btn-default"> New User Please Register</button>
+        			<button class="btn btn-default"><a href="${pageContext.request.contextPath}/WEB-INF/jsp/signup.jsp">New User Please Register</a></button>
         		</div>
       		</div>
       		<div class="clearfix"></div>
