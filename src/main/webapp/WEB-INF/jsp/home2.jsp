@@ -9,23 +9,23 @@
 	</head>
 	
 <body>
-
-<c:forEach items="${allFiles}" var="file">
-<c:url var="imgUrl" value="/resources/images/${items.itemId}.jpg"/>
-<div id ="a">
-	<form method="get" action="${pageContext.request.contextPath}/main/Login" class="submit">
-	<table>
+<img src="img/savefile16.jpg" height="200px" width="200px"/>
+<%-- <c:forEach items="${allFiles}" var="file"> --%>
+<%-- <c:url var="imgUrl" value="/resources/images/${items.itemId}.jpg"/> --%>
+<!-- <div id ="a"> -->
+<%-- 	<form method="get" action="${pageContext.request.contextPath}/main/Login" class="submit"> --%>
+<!-- 	<table> -->
 			
-			<tr><td><img src="/home/webwerks/files/${file.fileName}" height="200px" width="200px"></td></tr>	
-			<tr><td><c:out value="${file.fileName}"/></td></tr>
-			<tr><td><c:out value="${file.fileby}"/></td></tr>
-			<tr><td><input type="submit" value="Add to my account"></td></tr>
+<!-- 			<tr><td><img src="img/Puma.jpg" height="200px" width="200px"></td></tr>	 -->
+<%-- 			<tr><td><b><c:out value="${file.fileName}"/></b></td></tr> --%>
+<%-- 			<tr><td><c:out value="${file.fileby}"/></td></tr> --%>
+<!-- 			<tr><td><input type="submit" value="Add to my account"></td></tr> -->
 			
-	</table>
-	</form>
+<!-- 	</table> -->
+<%-- 	</form> --%>
 
-</div>
-</c:forEach>
+<!-- </div> -->
+<%-- </c:forEach> --%>
 </body>
 </body>
 
