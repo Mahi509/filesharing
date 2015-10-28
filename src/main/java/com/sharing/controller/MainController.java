@@ -54,4 +54,9 @@ public class MainController {
 		
 	}
 	
+	@RequestMapping(value="/main/signup",method=RequestMethod.GET)
+	public String signup()
+	{
+		return "signup";
+	}
 }

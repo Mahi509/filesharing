@@ -9,7 +9,7 @@
 	</head>
 	
 <body>
-<img src="img/savefile16.jpg" height="200px" width="200px"/>
+<img src="/home/webwerks/Pictures/Puma.jpg"  height="200px" width="200px"/>
 <%-- <c:forEach items="${allFiles}" var="file"> --%>
 <%-- <c:url var="imgUrl" value="/resources/images/${items.itemId}.jpg"/> --%>
 <!-- <div id ="a"> -->

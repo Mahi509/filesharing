@@ -108,7 +108,7 @@
 	</body>
 </html>
 
-<img src="img/Saree Ke Fall Sa.mp3" height="200px" width="200px"/>
+<!-- <img src="img/Saree Ke Fall Sa.mp3" height="200px" width="200px"/> -->
 
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -152,7 +152,7 @@
         		<div class="clearfix"></div>
         		
         		<div class="form-group modal-register-btn">
-        			<button class="btn btn-default"><a href="${pageContext.request.contextPath}/WEB-INF/jsp/signup.jsp">New User Please Register</a></button>
+        			<a class="btn btn-default" href="${pageContext.request.contextPath}/main/signup">New User Please Register</a>
         		</div>
       		</div>
       		<div class="clearfix"></div>

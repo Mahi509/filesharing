@@ -13,8 +13,10 @@
  <mvc:annotation-driven/>
  <import resource="classpath:dataSource.xml"/>
 
- <context:component-scan base-package="com.sharing"/>
  <mvc:resources mapping="/img/**" location="file:/home/webwerks/files/"/>
+
+ <context:component-scan base-package="com.sharing"/>
+
   <mvc:resources mapping="/resources/**" location="/resources/"/> 
  
  <bean id="viewResolver"  
@@ -40,11 +42,11 @@
     </bean>  
  
 
- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
   p:prefix="/WEB-INF/jsp/"
-  p:suffix=".jsp"/>
+  p:suffix=".jsp"/>  
   
   
-  <bean id="multipartResolver"
-        class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-</beans>
+  <!-- <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />-->
+</beans> 
