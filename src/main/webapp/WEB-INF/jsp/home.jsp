@@ -40,7 +40,9 @@
 		<%-- <div class="image">
 		<img src="${pageContext.request.contextPath}/resources/images/share.jpg" height="120px" width="80px"/> --%>
 		<div class="container-fluid">
+		
 			<div class="row">
+			<!-- <div>LOGO</div> -->
 				<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
 					<button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
 					  Sign In
@@ -66,6 +68,23 @@
  </p>  
  
  
+
+    <!-- File List -->
+    <div id="filelist" class="cb"></div>
+ 
+    <!-- Progress Bar -->
+    <div id="progressbar"></div>
+ 
+    <!-- Close After Upload -->asdfasfasfasdf
+    <div id="closeAfter">
+        <span class="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox">
+            <label for="checkbox">Close window after upload</label>
+        </span>
+    </div>
+ 
+</div>
+
  <form:form method="post" enctype="multipart/form-data"  
    modelAttribute="uploadedFile" action="fileUpload.htm">  
    <table>  
@@ -83,6 +102,7 @@
     </tr>  
    </table>  
   </form:form>  
+
 
 
 	</body>
@@ -132,7 +152,7 @@
         		<div class="clearfix"></div>
         		
         		<div class="form-group modal-register-btn">
-        			<button class="btn btn-default"> New User Please Register</button>
+        			<button class="btn btn-default"><a href="${pageContext.request.contextPath}/WEB-INF/jsp/signup.jsp">New User Please Register</a></button>
         		</div>
       		</div>
       		<div class="clearfix"></div>
