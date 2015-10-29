@@ -22,7 +22,18 @@ public class Files {
 	private String fileby;
 
 	@Column(name="filedate")
-	private String date;
+	private String filedate;
+
+	@Column(name="filesize")
+	private String filesize;
+	
+	public String getFilesize() {
+		return filesize;
+	}
+
+	public void setFilesize(String filesize) {
+		this.filesize = filesize;
+	}
 
 	public Integer getFileId() {
 		return fileId;
@@ -49,12 +60,14 @@ public class Files {
 		this.fileby = fileby;
 	}
 
-	public String getDate() {
-		return date;
+	public String getFiledate() {
+		return filedate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setFiledate(String filedate) {
+		this.filedate = filedate;
 	}
+
+	
 
 }

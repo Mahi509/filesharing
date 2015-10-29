@@ -107,7 +107,7 @@
 
 	</body>
 </html>
-
+<img src="img/Puma.jpg"  height="200px" width="200px"/>
 <!-- <img src="img/Saree Ke Fall Sa.mp3" height="200px" width="200px"/> -->
 
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

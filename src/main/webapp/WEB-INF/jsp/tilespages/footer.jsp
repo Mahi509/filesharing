@@ -8,9 +8,9 @@
 <style type="text/css">
 
 
-  a , b { text-decoration:none; 
-	color:white;
-	
+  a , b {
+   text-decoration:none; 
+		
 }
 b{
 	padding-bottom:10px;
@@ -112,7 +112,7 @@ b{
       <div class="footer">
   <div class="centered">
     <div class="fcol first">
-      <div><b>Site Links</b></div>
+      <div><b >Site Links</b></div>
       <a href="http://www.4shared.com/">Home</a><br>
       <a href="http://www.4shared.com/premium.jsp?ref=footer">Premium</a><br>
       <a href="http://www.4shared.com/links.jsp">Link to Us</a><br>
