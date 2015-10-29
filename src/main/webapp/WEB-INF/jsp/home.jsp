@@ -73,7 +73,7 @@
     <!-- Progress Bar -->
     <div id="progressbar"></div>
  
-    <!-- Close After Upload -->asdfasfasfasdf
+    <!-- Close After Upload -->a
     <div id="closeAfter">
         <span class="checkbox">
             <input type="checkbox" name="checkbox" id="checkbox">
@@ -150,7 +150,7 @@
         		<div class="clearfix"></div>
         		
         		<div class="form-group modal-register-btn">
-        			<button class="btn btn-default"><a href="${pageContext.request.contextPath}/WEB-INF/jsp/signup.jsp">New User Please Register</a></button>
+        			<button class="btn btn-default" onclick="document.forms[0].action = '${pageContext.request.contextPath}/WEB-INF/jsp/signup.jsp'; return true;">New User Please Register</button>
         		</div>
       		</div>
       		<div class="clearfix"></div>
