@@ -19,7 +19,7 @@
 <c:out value="${file.filedate}"></c:out>
 <c:choose>
 <c:when test="${ext=='mp3'}">
-<a  class="btn btn-default" href="${pageContext.request.contextPath}/img/Aaj-phir.mp3">Play here</a>
+<a  class="btn btn-default" href="${pageContext.request.contextPath}/img/${file.fileName}">Play here</a>
 </c:when>
 <c:otherwise>
 
