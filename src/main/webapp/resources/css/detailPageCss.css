@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+.mainclass {
+	background-color:#f2f2f2;
+    margin: auto;
+    width: 40%;
+    border:3px solid #d3d3d3;
+    padding: 10px;
+	
+	
+}

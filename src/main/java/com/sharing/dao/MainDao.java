@@ -49,4 +49,15 @@ public class MainDao {
 		System.out.println(" File Size "+files.size());
 		return files;
 	}
+
+	public Files getFileName(Integer fileId) {
+		Session session=sessionFactory.getCurrentSession();
+		Files file=(Files) session.get(Files.class,fileId);
+		
+		return file;
+	}
+	
+	
+	
+	
 }

@@ -23,4 +23,9 @@ public class MainService {
 	{
 		return mainDao.getAllFiles();
 	}
+
+	public Files getFileName(Integer name) {
+		Files fileObject=mainDao.getFileName(name);
+		return fileObject;
+	}
 }

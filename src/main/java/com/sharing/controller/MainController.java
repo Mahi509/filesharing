@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.sharing.*;
 
 import com.sharing.model.Files;
 import com.sharing.service.MainService;
@@ -59,4 +60,31 @@ public class MainController {
 	{
 		return "signup";
 	}
+	
+	@RequestMapping(value="/detailsPage",method=RequestMethod.GET)
+	public String detailsPage(@RequestParam("name")Integer name,Model model){
+		
+		Files fileObject=mainService.getFileName(name);
+		model.addAttribute("file", new Files());
+		model.addAttribute("filename", fileObject);
+        
+		String[] test=(fileObject.getFileName()).split("\\.");
+		System.out.println(fileObject.getFileName()+"--");
+		System.out.println(test[0]+"--"+test[1]);
+		model.addAttribute("ext", test[1]);
+        
+		return "detailsPage";
+	}
+/*@RequestMapping(value="/songs",method=RequestMethod.GET)
+public String displaySongsPage(@RequestParam("filename")String file){
+	
+	
+	
+	
+	return "";
+}*/
+	
+	
+	
+	
 }
