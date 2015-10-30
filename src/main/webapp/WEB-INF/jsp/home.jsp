@@ -40,7 +40,9 @@
 		<%-- <div class="image">
 		<img src="${pageContext.request.contextPath}/resources/images/share.jpg" height="120px" width="80px"/> --%>
 		<div class="container-fluid">
+		
 			<div class="row">
+			<!-- <div>LOGO</div> -->
 				<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
 					<button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
 					  Sign In
@@ -105,8 +107,8 @@
 
 	</body>
 </html>
-
-
+<img src="img/Puma.jpg"  height="200px" width="200px"/>
+<!-- <img src="img/Saree Ke Fall Sa.mp3" height="200px" width="200px"/> -->
 
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -150,7 +152,11 @@
         		<div class="clearfix"></div>
         		
         		<div class="form-group modal-register-btn">
-        			<button class="btn btn-default" onclick="document.forms[0].action = '${pageContext.request.contextPath}/WEB-INF/jsp/signup.jsp'; return true;">New User Please Register</button>
+
+        			<%-- <button class="btn btn-default" onclick="document.forms[0].action = '${pageContext.request.contextPath}/WEB-INF/jsp/signup.jsp'; return true;">New User Please Register</button> --%>
+
+        			<a class="btn btn-default" href="${pageContext.request.contextPath}/main/signup">New User Please Register</a>
+
         		</div>
       		</div>
       		<div class="clearfix"></div>

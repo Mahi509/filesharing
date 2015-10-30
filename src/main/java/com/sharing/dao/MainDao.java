@@ -45,6 +45,19 @@ public class MainDao {
 	{
 		Session session=sessionFactory.getCurrentSession();
 		Criteria criteria=session.createCriteria(Files.class);
-		return criteria.list();
+		List<Files> files=criteria.list();
+		System.out.println(" File Size "+files.size());
+		return files;
 	}
+
+	public Files getFileName(Integer fileId) {
+		Session session=sessionFactory.getCurrentSession();
+		Files file=(Files) session.get(Files.class,fileId);
+		
+		return file;
+	}
+	
+	
+	
+	
 }

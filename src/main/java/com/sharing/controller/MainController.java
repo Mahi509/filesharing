@@ -55,4 +55,36 @@ public class MainController {
 		
 	}
 	
+	@RequestMapping(value="/main/signup",method=RequestMethod.GET)
+	public String signup()
+	{
+		return "signup";
+	}
+	
+	@RequestMapping(value="/detailsPage",method=RequestMethod.GET)
+	public String detailsPage(@RequestParam("name")Integer name,Model model){
+		
+		Files fileObject=mainService.getFileName(name);
+		model.addAttribute("file", new Files());
+		model.addAttribute("filename", fileObject);
+        
+		String[] test=(fileObject.getFileName()).split("\\.");
+		System.out.println(fileObject.getFileName()+"--");
+		System.out.println(test[0]+"--"+test[1]);
+		model.addAttribute("ext", test[1]);
+        
+		return "detailsPage";
+	}
+/*@RequestMapping(value="/songs",method=RequestMethod.GET)
+public String displaySongsPage(@RequestParam("filename")String file){
+	
+	
+	
+	
+	return "";
+}*/
+	
+	
+	
+	
 }
