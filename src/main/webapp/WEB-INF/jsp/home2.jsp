@@ -6,6 +6,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/pagination.css" type="text/css" />
+
+<script src="js/jquery.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/js/pagination.js"></script>
+
+
+
+<script type="text/javascript">
+
+var pager = new Imtech.Pager();
+
+$(document).ready(function() {
+
+    pager.paragraphsPerPage = 5; // set amount elements per page
+
+    pager.pagingContainer = $('#content'); // set of main container
+
+    pager.paragraphs = $('div.z', pager.pagingContainer); // set of required containers
+
+    pager.showPage(1);
+
+});
+
+</script>
+
+
 <style type="text/css">
 
 .main{
@@ -24,30 +52,37 @@ float: left;
 	#c{
 	padding-left: 500px;
 	}
+	
+	
 </style>
 	</head>
 	
 <body>
+ 
 
-<c:forEach items="${allFiles}" var="file">
-<c:url var="imgUrl" value="/resources/images/${items.itemId}.jpg"/>
 <div class="main">
-	<form method="get" action="#" class="submit">
-	
-			 
- 			 <span id="a" ><img src="img/${file.fileName}" height="200px" width="200px"></span>
- 			 <b style="color:blue;">${file.fileName}</b><br>	 
-			<b><span >File :<c:out value="${file.fileName}"/></span></b><br>
-			<span> By :<c:out value="${file.fileby}"/></span><br>
-			<span>Last Modified :<c:out value="${file.filedate}"/></span><br>
-			<span>Size :<c:out value="${file.filesize} MB"/></span><br>
- 			<a href="#"><span id="c">Add to my account</span></a><br>
- 			<div id="d"><span>...................................................................................................................................................................</span></div>
-			
-	</form>
+
+ <div id="content">
+ <c:forEach items="${allFiles}" var="file">
+ <div class=z>
+		
+			 <span id="a" ><img src="img/${file.fileName}" height="200px" width="200px"></span>
+ 			 	<b style="color:blue;">${file.fileName}</b><br>	 
+				<b><span >File :<c:out value="${file.fileName}"/></span></b><br>
+				<span> By :<c:out value="${file.fileby}"/></span><br>
+				<span>Last Modified :<c:out value="${file.filedate}"/></span><br>
+				<span>Size :<c:out value="${file.filesize} MB"/></span><br>
+ 				<a href="#"><span id="c">Add to my account</span></a><br>
+ 				<div id="d"><span>...................................................................................................................................................................</span></div>
+	</div>
+	</c:forEach>
+
 </div>
-</c:forEach>
-</body>
+</div>		
+<div id="pagingControls"></div>
+
+
+
 </body>
 
 </html>
