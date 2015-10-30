@@ -97,7 +97,6 @@ $(document).ready(function() {
 				</span></b><br> <span> By :<c:out value="${file.fileby}" /></span><br>
 				<span>Last Modified :<c:out value="${file.filedate}" /></span><br>
 				<span>Size :<c:out value="${file.filesize} MB" /></span><br>
-				<%-- <span>Size :<c:out value="${file.fileId} ID" /></span> --%> 
 					<a href="#"><span id="c">Add to my account</span></a><br>
 				<div id="d">
 					<span>...................................................................................................................................................................</span>
