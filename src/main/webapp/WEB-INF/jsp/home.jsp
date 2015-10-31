@@ -32,17 +32,13 @@
 	</head>
 	<body>
 	
-	
-	<%-- 	${pageContext.request.contextPath}/resources/images/share.jpg --%>
 
-		<!-- Add your site or application content here -->
 		<div class="my">
-		<%-- <div class="image">
-		<img src="${pageContext.request.contextPath}/resources/images/share.jpg" height="120px" width="80px"/> --%>
+		
 		<div class="container-fluid">
 		
 			<div class="row">
-			<!-- <div>LOGO</div> -->
+			
 				<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
 					<button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
 					  Sign In
@@ -83,12 +79,12 @@
         </span>
     </div>
  
-</div>
+
 
  <form:form method="post" enctype="multipart/form-data"  
    modelAttribute="uploadedFile" action="fileUpload.htm">  
    <table>  
-    <tr>  
+	<tr>  
      <!-- <td><input type="button"  value="UPLOAD YOUR DATA"> </td>  --> 
      <td><input type="file" id="upload" name="file"  >  
     
@@ -133,7 +129,7 @@
 		
 		            	<%-- <a href="${pageContext.request.contextPath}/authenticate?username=password=" class="btn btn-success modal-login-btn">Login</a> --%>
 		            	<input type="submit" class="btn btn-success modal-login-btn" value="Login">
-		            	<a href="#" class="login-link text-center">Lost your password?</a>
+		            	<a href="${pageContext.request.contextPath}/forgotpassword" class="login-link text-center">Lost your password?</a>
 		            	</form:form>
 	        		</div>
 	        	

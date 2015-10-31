@@ -37,6 +37,7 @@ $(document).ready(function() {
 <style type="text/css">
 .main {
 	float: left;
+	width: 100%;
 }
 
 #a {
@@ -67,8 +68,9 @@ $(document).ready(function() {
  <c:forEach items="${allFiles}" var="file">
  <div class=z>
 		
-			 <span id="a" ><img src="img/${file.fileName}" height="200px" width="200px"></span>
- 			 	<b style="color:blue;">${file.fileName}</b><br>	 
+			 <span id="a"><img src="${pageContext.request.contextPath}/resources/images/mp3image.jpg" height="200px" width="200px"></span> 
+ 			 	<a href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
+					<b style="color: blue;">${file.fileName}</b></a><br>  
 				<b><span >File :<c:out value="${file.fileName}"/></span></b><br>
 				<span> By :<c:out value="${file.fileby}"/></span><br>
 				<span>Last Modified :<c:out value="${file.filedate}"/></span><br>
@@ -81,32 +83,6 @@ $(document).ready(function() {
 </div>
 </div>		
 <div id="pagingControls"></div>
-
-
-	<c:forEach items="${allFiles}" var="file">
-		<c:url var="imgUrl" value="/resources/images/${items.itemId}.jpg" />
-		<div class="main">
-			<form method="get" action="#" class="submit">
-
-
-				<span id="a"><img
-					src="${pageContext.request.contextPath}/resources/images/mp3image.jpg"
-					height="200px" width="200px"></span> <a href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}"><b
-					style="color: blue;">${file.fileName}</b></a><br> <b><span>File
-						:<c:out value="${file.fileName}" />
-				</span></b><br> <span> By :<c:out value="${file.fileby}" /></span><br>
-				<span>Last Modified :<c:out value="${file.filedate}" /></span><br>
-				<span>Size :<c:out value="${file.filesize} MB" /></span><br>
-				<%-- <span>Size :<c:out value="${file.fileId} ID" /></span> --%> 
-					<a href="#"><span id="c">Add to my account</span></a><br>
-				<div id="d">
-					<span>...................................................................................................................................................................</span>
-				</div>
-
-			</form>
-		</div>
-	</c:forEach>
-</body>
 
 </body>
 

@@ -75,14 +75,11 @@ public class MainController {
         
 		return "detailsPage";
 	}
-/*@RequestMapping(value="/songs",method=RequestMethod.GET)
-public String displaySongsPage(@RequestParam("filename")String file){
-	
-	
-	
-	
-	return "";
-}*/
+@RequestMapping(value="/forgotpassword",method=RequestMethod.GET)
+public String forgotpassword(){
+		
+	return "forgotPassword";
+}
 	
 	
 	
