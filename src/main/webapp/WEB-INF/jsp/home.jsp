@@ -62,23 +62,6 @@
 <a href="#"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span></a>
  <a href="#"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
  </p>  
- 
- 
-
-    <!-- File List -->
-    <div id="filelist" class="cb"></div>
- 
-    <!-- Progress Bar -->
-    <div id="progressbar"></div>
- 
-    <!-- Close After Upload -->a
-    <div id="closeAfter">
-        <span class="checkbox">
-            <input type="checkbox" name="checkbox" id="checkbox">
-            <label for="checkbox">Close window after upload</label>
-        </span>
-    </div>
- 
 
 
  <form:form method="post" enctype="multipart/form-data"  

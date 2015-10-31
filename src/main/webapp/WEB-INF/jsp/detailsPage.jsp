@@ -23,7 +23,6 @@
 </c:when>
 <c:otherwise>
 
-gfhfhg
 </c:otherwise>
 </c:choose>
 </div>
