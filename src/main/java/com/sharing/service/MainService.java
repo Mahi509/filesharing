@@ -24,6 +24,7 @@ public class MainService {
 	{
 		return mainDao.getAllFiles();
 	}
+
 	
 	/*public void setFilesName(String fileName,Integer fileSize,Date CurrentDate, String fileby){
 		
@@ -32,4 +33,10 @@ public class MainService {
 	}*/
 	
 	
+
+	public Files getFileName(Integer name) {
+		Files fileObject=mainDao.getFileName(name);
+		return fileObject;
+	}
+
 }

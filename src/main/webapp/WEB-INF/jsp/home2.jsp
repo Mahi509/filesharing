@@ -7,6 +7,7 @@
 <html>
 <head>
 
+
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script
@@ -23,6 +24,44 @@
 	float: left;
 }
 
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/pagination.css" type="text/css" />
+
+<script src="js/jquery.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/js/pagination.js"></script>
+
+
+
+<script type="text/javascript">
+
+var pager = new Imtech.Pager();
+
+$(document).ready(function() {
+
+    pager.paragraphsPerPage = 5; // set amount elements per page
+
+    pager.pagingContainer = $('#content'); // set of main container
+
+    pager.paragraphs = $('div.z', pager.pagingContainer); // set of required containers
+
+    pager.showPage(1);
+
+});
+
+</script>
+
+
+<style type="text/css">
+.main {
+	float: left;
+}
+
+#a {
+	float: left;
+}
+
+
 #b {
 	float: left;
 	margin-right: 550px;
@@ -30,6 +69,7 @@
 
 #c {
 	padding-left: 500px;
+
 }
 </style>
 
@@ -82,6 +122,57 @@ $(document).ready(function(){
 					Modified :<c:out value="${file.filedate}" />
 				</span><br> <span>Size :<c:out value="${file.filesize} MB" /></span><br>
 				<a href="#"><span id="c">Add to my account</span></a><br>
+
+	</form>
+	</c:forEach>
+	
+
+
+</style>
+</head>
+
+<body>
+ 
+
+
+<div class="main">
+
+ <div id="content">
+ <c:forEach items="${allFiles}" var="file">
+ <div class=z>
+		
+			 <span id="a" ><img src="img/${file.fileName}" height="200px" width="200px"></span>
+ 			 	<b style="color:blue;">${file.fileName}</b><br>	 
+				<b><span >File :<c:out value="${file.fileName}"/></span></b><br>
+				<span> By :<c:out value="${file.fileby}"/></span><br>
+				<span>Last Modified :<c:out value="${file.filedate}"/></span><br>
+				<span>Size :<c:out value="${file.filesize} MB"/></span><br>
+ 				<a href="#"><span id="c">Add to my account</span></a><br>
+ 				<div id="d"><span>...................................................................................................................................................................</span></div>
+	</div>
+	</c:forEach>
+
+</div>
+</div>		
+<div id="pagingControls"></div>
+
+
+	<c:forEach items="${allFiles}" var="file">
+		<c:url var="imgUrl" value="/resources/images/${items.itemId}.jpg" />
+		<div class="main">
+			<form method="get" action="#" class="submit">
+
+
+				<span id="a"><img
+					src="${pageContext.request.contextPath}/resources/images/mp3image.jpg"
+					height="200px" width="200px"></span> <a href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}"><b
+					style="color: blue;">${file.fileName}</b></a><br> <b><span>File
+						:<c:out value="${file.fileName}" />
+				</span></b><br> <span> By :<c:out value="${file.fileby}" /></span><br>
+				<span>Last Modified :<c:out value="${file.filedate}" /></span><br>
+				<span>Size :<c:out value="${file.filesize} MB" /></span><br>
+					<a href="#"><span id="c">Add to my account</span></a><br>
+
 				<div id="d">
 					<span>...................................................................................................................................................................</span>
 				</div>
@@ -90,6 +181,7 @@ $(document).ready(function(){
 		</div>
 	</c:forEach>
 </body>
+
 </body>
 
 </html>

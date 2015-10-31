@@ -9,7 +9,7 @@
 <body>  
         <div><tiles:insertAttribute name="header" /></div>  
         <div style="float:left;padding:0px;width:20%;"><tiles:insertAttribute name="menu" /></div>  
-        <div style="float:left;padding:10px 10px 900px 10px;width:70%;border-left:1px solid pink;">  
+        <div style="float:left;padding:10px 10px 400px 10px;width:70%;border-left:1px solid pink;">  
         <tiles:insertAttribute name="body" /></div>  
         <div style="clear:both"><tiles:insertAttribute name="footer" /></div>  
   

@@ -130,7 +130,7 @@
 		
 		            	<%-- <a href="${pageContext.request.contextPath}/authenticate?username=password=" class="btn btn-success modal-login-btn">Login</a> --%>
 		            	<input type="submit" class="btn btn-success modal-login-btn" value="Login">
-		            	<a href="#" class="login-link text-center">Lost your password?</a>
+		            	<a href="${pageContext.request.contextPath}/forgotpassword" class="login-link text-center">Lost your password?</a>
 		            	</form:form>
 	        		</div>
 	        	
@@ -147,7 +147,7 @@
         		<div class="clearfix"></div>
         		
         		<div class="form-group modal-register-btn">
-        			<button class="btn btn-default"> New User Please Register</button>
+        			<a class="btn btn-default" href="${pageContext.request.contextPath}/main/signup">New User Please Register</a>
         		</div>
       		</div>
       		<div class="clearfix"></div>

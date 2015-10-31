@@ -49,6 +49,7 @@ public class MainDao {
 		System.out.println(" File Size "+files.size());
 		return files;
 	}
+
 	
 	
 	/*public void setFilesName(String fileName,Integer fileSize,Date CurrentDate, String fileby){
@@ -57,6 +58,16 @@ public class MainDao {
 		
 	}
 	*/
+
+
+	public Files getFileName(Integer fileId) {
+		Session session=sessionFactory.getCurrentSession();
+		Files file=(Files) session.get(Files.class,fileId);
+		
+		return file;
+	}
+	
+
 	
 	
 	

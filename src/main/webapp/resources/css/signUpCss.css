@@ -16,25 +16,16 @@ $green-border: #72B372;
 	
   display: inline-block;
   width: 49%;
-  margin-top: 10px;
+  margin-top: 100px;
+  margin-left: 300px;
+
 }
 
-/* .two{
-    .register {
-       border: none; 
-        
-        h3 {
-          border-bottom-color: #909090;
-        }
-    
-        .sep{
-          border-color: #909090;
-        }
-    }
-} */
+
 .register {
 	background-color:#B2BEB5;
   	width: 500px;
+    height: 400px;
   	margin: 10px auto;
   	padding: 10px;
   	border: 7px solid $green-border;
