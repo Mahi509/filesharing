@@ -37,6 +37,7 @@ $(document).ready(function() {
 <style type="text/css">
 .main {
 	float: left;
+	width: 70%;
 }
 
 #a {
@@ -58,17 +59,20 @@ $(document).ready(function() {
 </head>
 
 <body>
- 
+<h5> view: 
+ <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span id="glymp" class="glyphicon glyphicon-th-list"></span></a>
+ <a href="${pageContext.request.contextPath}/main/homeGrid?id=1"><span id="Grid" class="glyphicon glyphicon-th"></span></a>
+</h5> 
 
 
 <div class="main">
-
- <div id="content">
+<div id="content">
  <c:forEach items="${allFiles}" var="file">
- <div class=z>
+		 <div class=z>
 		
-			 <span id="a" ><img src="img/${file.fileName}" height="200px" width="200px"></span>
- 			 	<b style="color:blue;">${file.fileName}</b><br>	 
+			 <span id="a"><img src="${pageContext.request.contextPath}/img/${file.fileName}" height="200px" width="200px"></span> 
+ 			 	<a href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
+					<b style="color: blue;">${file.fileName}</b></a><br>  
 				<b><span >File :<c:out value="${file.fileName}"/></span></b><br>
 				<span> By :<c:out value="${file.fileby}"/></span><br>
 				<span>Last Modified :<c:out value="${file.filedate}"/></span><br>

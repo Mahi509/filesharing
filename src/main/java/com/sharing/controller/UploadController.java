@@ -17,12 +17,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sharing.model.UploadedFile;
 import com.sharing.validator.FileValidator;
+import com.sharing.service.MainService;
+
 
 @Controller
 public class UploadController {
 
 	@Autowired
 	FileValidator fileValidator;
+	
+	@Autowired
+	MainService mainService;
+	
 
 	@RequestMapping("/fileUploadForm")
 	public ModelAndView getUploadForm(
@@ -41,21 +47,25 @@ public class UploadController {
 		OutputStream outputStream = null;
 
 		MultipartFile file = uploadedFile.getFile();
-
+		
+	//	System.out.println("Entering upload controller");
+		
+		fileValidator.validate(uploadedFile, result);
+		
 		String fileName = file.getOriginalFilename();
 
-		fileValidator.validate(uploadedFile, result);
+		
 
 		System.out.println(fileName);
 		if (result.hasErrors()) {
-			System.out.println("entering if block");
+			//System.out.println("entering if block");
 			return new ModelAndView("uploadForm");
 
-		}
+			}
 
 		try {
 			inputStream = file.getInputStream();
-			System.out.println("entering try block");
+		//	System.out.println("entering try block");
 
 			File newFile = new File("/home/webwerks/files/" + fileName);
 			if (!newFile.exists()) {
@@ -67,7 +77,7 @@ public class UploadController {
 
 			while ((read = inputStream.read(bytes)) != -1) {
 				outputStream.write(bytes, 0, read);
-				System.out.println("123");
+				/*System.out.println("123");*/
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -1,5 +1,6 @@
 package com.sharing.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -26,7 +27,6 @@ public class MainDao {
 		Criteria criteria=session.createCriteria(User.class).
 				add(Restrictions.like("userName",username)).add(Restrictions.like("password",password));
 			
-
 		Object userValue=criteria.uniqueResult();
 		
 		boolean flag=false;
@@ -50,6 +50,16 @@ public class MainDao {
 		return files;
 	}
 
+	
+	
+	/*public void setFilesName(String fileName,Integer fileSize,Date CurrentDate, String fileby){
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+	}
+	*/
+
+
 	public Files getFileName(Integer fileId) {
 		Session session=sessionFactory.getCurrentSession();
 		Files file=(Files) session.get(Files.class,fileId);
@@ -57,7 +67,6 @@ public class MainDao {
 		return file;
 	}
 	
-	
-	
+
 	
 }
