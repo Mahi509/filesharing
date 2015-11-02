@@ -63,6 +63,20 @@ public class MainController {
 		return "signup";
 	}
 	
+
+
+	
+	@RequestMapping(value="/main/homeGrid",method=RequestMethod.GET)
+	public String getAllFilesGrid(@RequestParam("id")Integer id,Model model)
+	{
+		List<Files> files=mainService.getAllFiles();
+		
+		model.addAttribute("allFiles",files);
+		
+		return "homeGrid2";
+		
+	}
+
 	@RequestMapping(value="/detailsPage",method=RequestMethod.GET)
 	public String detailsPage(@RequestParam("name")Integer name,Model model){
 		
@@ -84,6 +98,7 @@ public String forgotpassword(){
 }
 	
 	
+
 	
 	
 }
