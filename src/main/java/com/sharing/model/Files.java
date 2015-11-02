@@ -1,5 +1,7 @@
 package com.sharing.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,13 +27,16 @@ public class Files {
 	private String filedate;
 
 	@Column(name="filesize")
-	private String filesize;
+	private double filesize;
 	
-	public String getFilesize() {
+	
+	
+
+	public double getFilesize() {
 		return filesize;
 	}
 
-	public void setFilesize(String filesize) {
+	public void setFilesize(double filesize) {
 		this.filesize = filesize;
 	}
 
