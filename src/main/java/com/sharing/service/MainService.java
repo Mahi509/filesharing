@@ -26,9 +26,9 @@ public class MainService {
 	}
 
 	
-	public void setFilesUpload(String fileName,double fileSize,String currentDate){
+	public void setFilesUpload(String fileName,double fileSize,String currentDate, String username){
 		
-		mainDao.setFilesUpload(fileName, fileSize, currentDate);
+		mainDao.setFilesUpload(fileName, fileSize, currentDate,username);
 		
 	}
 	
@@ -39,4 +39,20 @@ public class MainService {
 		return fileObject;
 	}
 
+	
+	public String checkSession(String username){
+		
+		if(username == null){
+		
+			System.out.println("user name is null");
+			
+			return "/detailsPage";
+		
+		}else
+		
+		return username;
+		
+		
+	}
+	
 }

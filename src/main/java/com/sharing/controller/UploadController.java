@@ -9,8 +9,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,11 +46,21 @@ public class UploadController {
 
 	@SuppressWarnings("resource")
 	@RequestMapping("/fileUpload")
-	public ModelAndView fileUploaded(
+	public String fileUploaded(
 			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
-			BindingResult result) {
+			BindingResult result,HttpSession session, HttpServletRequest request, Model model) {
+		
+		
+			session = request.getSession();
+		String user = (String) session.getAttribute("user");
+		
+		System.out.println(user);
+			
+		if(user!=null){
+		
+		//String username = mainService.checkSession(user);
 
-		 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
 		
 		String currentDate = dateFormat.format(date);
@@ -64,13 +78,13 @@ public class UploadController {
 		
 		String fileName = file.getOriginalFilename();
 		
-		mainService.setFilesUpload(fileName, fileSize, currentDate);
+		mainService.setFilesUpload(fileName, fileSize, currentDate, user);
 		
 
 		System.out.println(fileName);
 		if (result.hasErrors()) {
 			//System.out.println("entering if block");
-			return new ModelAndView("uploadForm");
+			return ("uploadForm");
 
 			}
 
@@ -95,7 +109,13 @@ public class UploadController {
 			e.printStackTrace();
 		}
 
-		return new ModelAndView("showFile", "message", fileName);
+		return ("showFile");
+	}
+	else{
+		
+		return "home";
+	}
+		
 	}
 
 }

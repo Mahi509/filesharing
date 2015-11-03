@@ -52,13 +52,14 @@ public class MainDao {
 
 	
 	
-	public void setFilesUpload(String fileName,double size,String currentDate){
+	public void setFilesUpload(String fileName,double size,String currentDate,String username){
 		
 		Session session = sessionFactory.getCurrentSession();
 		Files file = new Files();
 		file.setFileName(fileName);
 		file.setFilesize(size);
 		file.setFiledate(currentDate);
+		file.setFileby(username);
 		
 		session.save(file);
 		

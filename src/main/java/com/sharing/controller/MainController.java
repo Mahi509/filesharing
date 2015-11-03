@@ -3,6 +3,9 @@ package com.sharing.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,13 +30,16 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/authenticate",method=RequestMethod.POST)
-	public String authenticate(@RequestParam("username")String username,@RequestParam("password")String password)
+	public String authenticate(@RequestParam("username")String username,@RequestParam("password")String password,
+			HttpSession session, HttpServletRequest request, Model model)
 	{
 		boolean flag=mainService.authenticate(username, password);
 		
 		if(flag)
 		{
 			System.out.println("TRUE");
+			session.setAttribute("user", username);
+		//	session.removeAttribute("user");
 			return "home2";
 			 
 		}else
@@ -51,7 +57,6 @@ public class MainController {
 		List<Files> files=mainService.getAllFiles();
 		
 		model.addAttribute("allFiles",files);
-		
 		
 		
 		return "home2";
