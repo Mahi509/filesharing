@@ -30,12 +30,12 @@
 
 <div id="menu">
 <p id="list"> 
-<a href="#"><span id="glymp" class="glyphicon glyphicon-headphones"> Music</span></a>
- <a href="#"><span id="glymp" class="glyphicon glyphicon-file"> Files</span></a><br/>
-<a href="#"><span id="glymp" class="glyphicon glyphicon-film"> Video</span></a>   
- <a href="#"><span id="glymp" class="glyphicon glyphicon-camera"> Photo</span></a><br/>  
-<a href="#"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos</span></a>
- <a href="#"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
+<a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp3"><span id="glymp" class="glyphicon glyphicon-headphones"> Music</span></a>
+ <a href="${pageContext.request.contextPath}/main/glymph?id=all"><span id="glymp" class="glyphicon glyphicon-file"> Files</span></a><br/>
+<a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp4"><span id="glymp" class="glyphicon glyphicon-film"> Video</span></a>   
+ <a href="${pageContext.request.contextPath}/main/getByExtn?id=.jpeg"><span id="glymp" class="glyphicon glyphicon-camera"> Photo</span></a><br/>  
+<a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp4"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos</span></a>
+ <a href="${pageContext.request.contextPath}/main/getByExtn?id=.pdf"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
  </p>
 </div>
 </body>

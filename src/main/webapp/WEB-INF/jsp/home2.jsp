@@ -40,7 +40,6 @@
 .main {
 	float: left;
 	width: 70%;
-	width: 100%;
 }
 
 #a {

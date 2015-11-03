@@ -28,6 +28,21 @@
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 		
+		<!-- <script type="text/javascript">
+		
+		$(document).ready(function(){
+		      
+       	 $("#upl").click(function(){
+       		 
+       	 	 alert('Please login to upload');
+       	 	window.location.href='http://localhost:8080/Sharing/main/login';
+     
+		})
+		});
+       	  -->
+		
+		
+		
 	
 	</head>
 	<body>
@@ -59,7 +74,7 @@
  <a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp3"><span id="glymp" class="glyphicon glyphicon-headphones"> Music</span></a>
 <a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp4"><span id="glymp" class="glyphicon glyphicon-film"> Video</span>   </a>
  <a href="${pageContext.request.contextPath}/main/getByExtn?id=.jpeg"><span id="glymp" class="glyphicon glyphicon-camera"> Photo</span> </a> 
-<a href="${pageContext.request.contextPath}/main/getByExtn=.mp4"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span></a>
+<a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp4"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span></a>
  <a href="${pageContext.request.contextPath}/main/getByExtn?id=.pdf"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
  </p>  
 
@@ -75,7 +90,7 @@
     </tr>  
     <tr>  
      <td> </td>  
-     <td><input type="submit" value="Upload" />  
+     <td><input id="upl" type="submit" value="Upload" />  
      </td>  
      <td> </td>  
     </tr>  

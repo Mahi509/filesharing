@@ -29,7 +29,7 @@
 				<h3>Create your account</h3>
 
 
-				<form id="reg-form">
+				<form id="reg-form" >
 
 					<div id="left">
 

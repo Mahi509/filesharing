@@ -59,7 +59,7 @@
 					href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
 					<b style="color: blue;">${file.fileName}</b>
 				</a><br> <span id="a"><img
-					src="${pageContext.request.contextPath}/resources/images/mp3image.jpg"
+					src="${pageContext.request.contextPath}/img/${file.fileName}"
 					height="100px" width="100px"></span> <br>
 				<br>
 				<br>

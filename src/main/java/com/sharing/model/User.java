@@ -1,8 +1,13 @@
 package com.sharing.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +26,23 @@ private String emailId;
 private String firstName;
 
 private String lastName;
+
+@OneToMany
+@JoinTable
+		(
+		name="UserFiles",
+		joinColumns=@JoinColumn(name="userId"),
+		inverseJoinColumns=@JoinColumn(name="fileId")
+		)
+private List<Files> files;
+
+public List<Files> getFiles() {
+	return files;
+}
+
+public void setFiles(List<Files> files) {
+	this.files = files;
+}
 
 public Integer getUserId() {
 	return userId;

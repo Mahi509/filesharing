@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,18 +18,33 @@ public class Files {
 	@GeneratedValue
 	private Integer fileId;
 
-	@Column(name="fileName")
 	private String fileName;
 
-	@Column(name="fileby")
 	private String fileby;
 
-	@Column(name="filedate")
 	private String filedate;
 
-	@Column(name="filesize")
 	private String filesize;
 	
+	
+	@ManyToOne
+	@JoinTable
+			(
+			name="UserFiles",
+			joinColumns=@JoinColumn(name="fileId"),
+			inverseJoinColumns=@JoinColumn(name="userId")
+			)
+	private User user;
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public String getFilesize() {
 		return filesize;
 	}
