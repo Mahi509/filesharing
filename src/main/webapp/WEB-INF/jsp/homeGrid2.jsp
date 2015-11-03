@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,7 +51,6 @@
 
 
 
-
 	<c:forEach items="${allFiles}" var="file">
 
 		<div class="main">
@@ -58,15 +58,31 @@
 				<a
 					href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
 					<b style="color: blue;">${file.fileName}</b>
-				</a><br> <span id="a"><img
-					src="${pageContext.request.contextPath}/img/${file.fileName}"
-					height="100px" width="100px"></span> <br>
+				</a>
+				
+				<span id="a"> <c:set var="filename" value="${file.fileName}"></c:set>
+						<c:if test="${fn:contains(filename, '.mp3')}">
+							<img src="${pageContext.request.contextPath}/img/mp3image.jpeg"
+								height="100px" width="100px">
+						</c:if> <c:if test="${fn:contains(filename, '.jpeg')}">
+							<img
+								src="${pageContext.request.contextPath}/img/${file.fileName}"
+								height="100px" width="100px">
+						</c:if> <c:if test="${fn:contains(filename, '.pdf')}">
+							<img src="${pageContext.request.contextPath}/img/images.jpeg"
+								height="100px" width="100px">
+						</c:if> <c:if test="${fn:contains(filename, '.mp4')}">
+							<img src="${pageContext.request.contextPath}/img/imagesmp4.png"
+								height="100px" width="100px">
+						</c:if>
+
+					</span><br>
+				
 				<br>
 				<br>
 				<br>
 				<br> <a href="#">Add to account</a><br>
-				<!-- <div id="d"><span>...................................................................................................................................................................</span></div>
-			 -->
+				
 			</form>
 		</div>
 

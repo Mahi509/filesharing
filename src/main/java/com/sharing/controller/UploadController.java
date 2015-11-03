@@ -5,6 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
@@ -49,16 +52,25 @@ public class UploadController {
 			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
 			BindingResult result,HttpSession session) {
 
+		 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date = new Date();
+		
+		String currentDate = dateFormat.format(date);
+		
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 
 		MultipartFile file = uploadedFile.getFile();
 		
+
+		double fileSize = ((file.getSize())/1048576);
+		
 		
 		fileValidator.validate(uploadedFile, result);
 		
 		String fileName = file.getOriginalFilename();
-
+		
+		mainService.setFilesUpload(fileName, fileSize, currentDate);
 		
 			if(session.getAttribute("user")!=null)
 			{
