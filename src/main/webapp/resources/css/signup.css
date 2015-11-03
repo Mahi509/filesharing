@@ -199,9 +199,11 @@ tranform: rotate(45deg);
 .arrow.top:after {
 bottom: -20px;
 top: auto;
+
 }
 
 	
+
 
 
 

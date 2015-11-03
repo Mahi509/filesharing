@@ -28,6 +28,21 @@
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 		
+		<!-- <script type="text/javascript">
+		
+		$(document).ready(function(){
+		      
+       	 $("#upl").click(function(){
+       		 
+       	 	 alert('Please login to upload');
+       	 	window.location.href='http://localhost:8080/Sharing/main/login';
+     
+		})
+		});
+       	  -->
+		
+		
+		
 	
 	</head>
 	<body>
@@ -55,30 +70,13 @@
     <input id="submit" type="submit" value="Search">     
 </form:form>
  <p id="list"> 
- <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span id="glymp" class="glyphicon glyphicon-headphones"> Music</span></a>
- <a href="#"><span id="glymp" class="glyphicon glyphicon-file"> Files</span></a>
-<a href="#"><span id="glymp" class="glyphicon glyphicon-film"> Video</span>   </a>
- <a href="#"><span id="glymp" class="glyphicon glyphicon-camera"> Photo</span> </a> 
-<a href="#"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span></a>
- <a href="#"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
+ <a href="${pageContext.request.contextPath}/main/glymph?id=all"><span id="glymp" class="glyphicon glyphicon-file">All Files</span></a>
+ <a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp3"><span id="glymp" class="glyphicon glyphicon-headphones"> Music</span></a>
+<a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp4"><span id="glymp" class="glyphicon glyphicon-film"> Video</span>   </a>
+ <a href="${pageContext.request.contextPath}/main/getByExtn?id=.jpeg"><span id="glymp" class="glyphicon glyphicon-camera"> Photo</span> </a> 
+<a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp4"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos </span></a>
+ <a href="${pageContext.request.contextPath}/main/getByExtn?id=.pdf"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
  </p>  
- 
- 
-
-    <!-- File List -->
-    <div id="filelist" class="cb"></div>
- 
-    <!-- Progress Bar -->
-    <div id="progressbar"></div>
- 
-    <!-- Close After Upload -->a
-    <div id="closeAfter">
-        <span class="checkbox">
-            <input type="checkbox" name="checkbox" id="checkbox">
-            <label for="checkbox">Close window after upload</label>
-        </span>
-    </div>
- 
 
 
  <form:form method="post" enctype="multipart/form-data"  
@@ -92,7 +90,7 @@
     </tr>  
     <tr>  
      <td> </td>  
-     <td><input type="submit" value="Upload" />  
+     <td><input id="upl" type="submit" value="Upload" />  
      </td>  
      <td> </td>  
     </tr>  

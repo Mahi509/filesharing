@@ -8,14 +8,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/signUpCss.css" />
+
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/signup.css" />
+
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery.validate.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/signup.min.js"></script>
+
 
 <style type="text/css">
 #left {
@@ -33,6 +39,7 @@
 }
 </style>
 
+
 </head>
 <body>
 
@@ -43,9 +50,9 @@
 
 				<h3>Create your account</h3>
 
-
-				<form:form id="reg-form" action="${pageContext.request.contextPath}/usermain/register" method="Post"
-					modelAttribute="userData">
+				<form:form id="reg-form"
+					action="${pageContext.request.contextPath}/usermain/register"
+					method="Post" modelAttribute="userData">
 
 					<div id="left">
 

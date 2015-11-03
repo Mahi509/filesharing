@@ -1,91 +1,93 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-
-.main{
-float: left;
-
+.main {
+	float: left;
 }
-	#a{
-	float:left;
-	}
 
-	#b{
-	float:left;
+#a {
+	float: left;
+}
+
+#b {
+	float: left;
 	margin-right: 550px;
-	}
-	
-	#c{
+}
+
+#c {
 	padding-left: 500px;
-	}
-	
-	#grid{
-	width:180px;
-	height:150px;
-	margin:10px;
-	}
-	
+}
+
+#grid {
+	width: 200px;
+	height: 150px;
+	margin: 10px;
+}
 </style>
-	</head>
-	
+</head>
+
 <body>
-<h5> view: 
- <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span id="glymp" class="glyphicon glyphicon-th-list"></span></a>
- <span class="glyphicon glyphicon-th"></span>
-</h5>
-<!-- <img src="img/Cisco.jpg"  height="200px" width="200px"/> -->
-<%-- <c:forEach items="${allFiles}" var="file"> --%>
-<%-- <c:url var="imgUrl" value="/resources/images/${items.itemId}.jpg"/> --%>
-<!-- <div id ="a"> -->
-<%-- 	<form method="get" action="${pageContext.request.contextPath}/main/Login" class="submit"> --%>
-<!-- 	<table> -->
-			
-<!-- 			<tr><td><img src="img/Puma.jpg" height="200px" width="200px"></td></tr>	 -->
-<%-- 			<tr><td><b><c:out val ue="${file.fileName}"/></b></td></tr> --%>
-<%-- 			<tr><td><c:out value="${file.fileby}"/></td></tr> --%>
-<!-- 			<tr><td><input type="submit" value="Add to my account"></td></tr> -->
-			
-<!-- 	</table> -->
-<%-- 	</form> --%>
+<h5>
+		view: <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span
+			id="glymp" class="glyphicon glyphicon-th-list"></span></a> <a
+			href="${pageContext.request.contextPath}/main/homeGrid?id=1"><span
+			id="Grid" class="glyphicon glyphicon-th"></span></a>
+	</h5>
 
 
 
-<c:forEach items="${allFiles}" var="file">
+	<c:forEach items="${allFiles}" var="file">
+
+		<div class="main">
+			<form method="get" action="#" id="grid">
+				<a
+					href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
+					<b style="color: blue;">${file.fileName}</b>
+				</a>
+				
+				<span id="a"> <c:set var="filename" value="${file.fileName}"></c:set>
+						<c:if test="${fn:contains(filename, '.mp3')}">
+							<img src="${pageContext.request.contextPath}/img/mp3image.jpeg"
+								height="100px" width="100px">
+						</c:if> <c:if test="${fn:contains(filename, '.jpeg')}">
+							<img
+								src="${pageContext.request.contextPath}/img/${file.fileName}"
+								height="100px" width="100px">
+						</c:if> <c:if test="${fn:contains(filename, '.pdf')}">
+							<img src="${pageContext.request.contextPath}/img/images.jpeg"
+								height="100px" width="100px">
+						</c:if> <c:if test="${fn:contains(filename, '.mp4')}">
+							<img src="${pageContext.request.contextPath}/img/imagesmp4.png"
+								height="100px" width="100px">
+						</c:if>
+
+					</span><br>
+				
+				<br>
+				<br>
+				<br>
+				<br> <a href="#">Add to account</a><br>
+				
+			</form>
+		</div>
 
 
-
-
-<c:url var="imgUrl" value="/resources/images/${items.itemId}.jpg"/>
-
-<div class="main">
-	<form method="get" action="#" id="grid">	
-			<b style="color:blue;">${file.fileName}</b><br>		 
- 			 <span id="a" ><img src="img/${file.fileName}" height="100px" width="100px"></span>
- 			 <br><br><br><br><br>	 
-			<%-- <b><span >File :<c:out value="${file.fileName}"/></span></b><br>
-			<span> By :<c:out value="${file.fileby}"/></span><br>
-			<span>Last Modified :<c:out value="${file.filedate}"/></span><br>
-			<span>Size :<c:out value="${file.filesize} MB"/></span><br> --%>
- 			<a href="#">Add to account</a><br>
- 			<!-- <div id="d"><span>...................................................................................................................................................................</span></div>
-			 -->
-	</form>
-</div>
-
-
-</c:forEach>
-
+	</c:forEach>
 
 </body>
 </body>

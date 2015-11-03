@@ -1,20 +1,29 @@
 package com.sharing.model;
 
+
 import javax.persistence.Column;
+
+import java.util.List;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "User")
 public class User {
+
 	@Id
 	@GeneratedValue
 	@Column(name="userId")
 	private Integer userId;
 @Column(name="firstName")
-	private String firstName;
+	private String firstName1;
 @Column(name="lastName")
 	private String lastName;
 @Column(name="userName")
@@ -25,6 +34,22 @@ public class User {
 	private String confirmPassword;
 @Column(name="emailId")
 	private String emailId;
+
+@OneToMany
+@JoinTable
+		(
+		name="UserFiles",
+		joinColumns=@JoinColumn(name="userId"),
+		inverseJoinColumns=@JoinColumn(name="fileId")
+		)
+private List<Files> files;
+
+public List<Files> getFiles() {
+	return files;
+}
+
+public void setFiles(List<Files> files) {
+	this.files = files;}
 
 	public String getConfirmPassword() {
 		return confirmPassword;
@@ -67,11 +92,11 @@ public class User {
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return firstName1;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstName1 = firstName;
 	}
 
 	public String getLastName() {
@@ -81,5 +106,4 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 }

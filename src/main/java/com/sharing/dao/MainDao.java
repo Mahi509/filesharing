@@ -52,12 +52,18 @@ public class MainDao {
 
 	
 	
-	/*public void setFilesName(String fileName,Integer fileSize,Date CurrentDate, String fileby){
+	public void setFilesUpload(String fileName,double size,String currentDate){
 		
 		Session session = sessionFactory.getCurrentSession();
+		Files file = new Files();
+		file.setFileName(fileName);
+		file.setFilesize(size);
+		file.setFiledate(currentDate);
+		
+		session.save(file);
 		
 	}
-	*/
+	
 
 
 	public Files getFileName(Integer fileId) {
@@ -68,7 +74,5 @@ public class MainDao {
 	}
 	
 
-	
-	
-	
+
 }

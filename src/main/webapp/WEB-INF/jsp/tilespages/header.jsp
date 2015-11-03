@@ -11,9 +11,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="jquery-1.2.6.min.js"></script>  	
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="jquery-1.2.6.min.js"></script>  	
+		
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 		<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
@@ -22,14 +23,15 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"/>
 	
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css" />
 		<script src="${pageContext.request.contextPath}/resources/js/modernizr-2.6.2.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 		
-	<style>
-	#searchbox
+		<style type="text/css">
+		#searchbox
 {
     background-color: rgba(0, 137, 255, 0.48);
     background-image: linear-gradient(#fff, #d4e8ec);
@@ -76,17 +78,11 @@
     border-radius: 50px 3px 3px 50px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);            
 }
-	</style>
+		</style>
 	</head>
 	<body>
 	
-	
-	<%-- 	${pageContext.request.contextPath}/resources/images/share.jpg --%>
-
-		<!-- Add your site or application content here -->
 		<div class="my">
-		<%-- <div class="image">
-		<img src="${pageContext.request.contextPath}/resources/images/share.jpg" height="120px" width="80px"/> --%>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
@@ -128,7 +124,7 @@
 		              		<i class="fa fa-lock login-field-icon"></i>
 		            	</div>
 		
-		            	<%-- <a href="${pageContext.request.contextPath}/authenticate?username=password=" class="btn btn-success modal-login-btn">Login</a> --%>
+		       
 		            	<input type="submit" class="btn btn-success modal-login-btn" value="Login">
 		            	<a href="${pageContext.request.contextPath}/forgotpassword" class="login-link text-center">Lost your password?</a>
 		            	</form:form>

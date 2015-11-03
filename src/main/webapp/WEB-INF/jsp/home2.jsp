@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -39,7 +39,11 @@
 <style type="text/css">
 .main {
 	float: left;
+
 	width: 80%;
+
+	width: 70%;
+
 }
 
 #a {
@@ -62,6 +66,12 @@
 
 
 	<div class="main">
+	
+	<h5>view: <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span
+				id="glymp" class="glyphicon glyphicon-th-list"></span></a> <a
+				href="${pageContext.request.contextPath}/main/homeGrid?id=1"><span
+				id="Grid" class="glyphicon glyphicon-th"></span></a>
+		</h5>
 
 		<div id="content">
 			<c:forEach items="${allFiles}" var="file">

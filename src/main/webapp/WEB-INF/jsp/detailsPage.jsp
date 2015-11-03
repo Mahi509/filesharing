@@ -15,6 +15,7 @@
 	src="${pageContext.request.contextPath}/resources/js/signup.min.js"></script> --%>
 </head>
 <body>
+
 	<div class="mainclass">
 		<c:set value="${filename}" var="file" />
 		<h1>
@@ -37,14 +38,14 @@
 
 		</c:if>
 
-<c:if test="${ext=='mp4'}">
-<!-- <embed id="vlcp" type="application/x-vlc-plugin" name="VLC"  autoplay="no" loop="no" volume="100" width="640" height="480" target="test.flv">
-   </embed> -->
-<a  id="playbutton"  class="btn btn-default"
-				href="${pageContext.request.contextPath}/img/${file.fileName}">Play
-				video </a> 
 
-</c:if>
+		<c:if test="${ext=='mp4'}">
+
+			<a class="btn btn-default"
+				href="${pageContext.request.contextPath}/img/${file.fileName}">Play
+				video </a>
+
+		</c:if>
 
 	</div>
 </body>

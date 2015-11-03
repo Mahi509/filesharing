@@ -25,11 +25,11 @@ public class MainService {
 	}
 
 	
-	/*public void setFilesName(String fileName,Integer fileSize,Date CurrentDate, String fileby){
+	public void setFilesUpload(String fileName,double fileSize,String currentDate){
 		
-		mainDao.setFilesName(fileName, fileSize, CurrentDate, fileby);
+		mainDao.setFilesUpload(fileName, fileSize, currentDate);
 		
-	}*/
+	}
 	
 	
 

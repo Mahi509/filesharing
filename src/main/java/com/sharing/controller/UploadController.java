@@ -5,7 +5,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -31,43 +37,54 @@ public class UploadController {
 	
 
 	@RequestMapping("/fileUploadForm")
-	public ModelAndView getUploadForm(
+	public String getUploadForm(
 			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
 			BindingResult result) {
-		return new ModelAndView("uploadForm");
+		
+		
+		
+		return "uploadForm";
 	}
 
 	@SuppressWarnings("resource")
 	@RequestMapping("/fileUpload")
-	public ModelAndView fileUploaded(
+	public String fileUploaded(
 			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
-			BindingResult result) {
+			BindingResult result,HttpSession session) {
 
+		 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date = new Date();
+		
+		String currentDate = dateFormat.format(date);
+		
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 
 		MultipartFile file = uploadedFile.getFile();
 		
-	//	System.out.println("Entering upload controller");
+
+		double fileSize = ((file.getSize())/1048576);
+		
 		
 		fileValidator.validate(uploadedFile, result);
 		
 		String fileName = file.getOriginalFilename();
-
 		
-
-		System.out.println(fileName);
+		mainService.setFilesUpload(fileName, fileSize, currentDate);
+		
+			if(session.getAttribute("user")!=null)
+			{
 		if (result.hasErrors()) {
-			//System.out.println("entering if block");
-			return new ModelAndView("uploadForm");
+			
+			return "uploadForm";
 
 			}
 
 		try {
 			inputStream = file.getInputStream();
-		//	System.out.println("entering try block");
-
-			File newFile = new File("/home/webwerks/files/" + fileName);
+		
+			File newFile = new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/" + fileName);
+			
 			if (!newFile.exists()) {
 				newFile.createNewFile();
 			}
@@ -77,14 +94,20 @@ public class UploadController {
 
 			while ((read = inputStream.read(bytes)) != -1) {
 				outputStream.write(bytes, 0, read);
-				/*System.out.println("123");*/
+	
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		return new ModelAndView("showFile", "message", fileName);
+		
+		
+		return "showFile";
+	}else
+	{
+		return "home";
 	}
-
+	
+		
+	}
 }
