@@ -52,7 +52,7 @@ float: left;
 <!-- 	<table> -->
 			
 <!-- 			<tr><td><img src="img/Puma.jpg" height="200px" width="200px"></td></tr>	 -->
-<%-- 			<tr><td><b><c:out value="${file.fileName}"/></b></td></tr> --%>
+<%-- 			<tr><td><b><c:out val ue="${file.fileName}"/></b></td></tr> --%>
 <%-- 			<tr><td><c:out value="${file.fileby}"/></td></tr> --%>
 <!-- 			<tr><td><input type="submit" value="Add to my account"></td></tr> -->
 			

@@ -8,9 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.sharing.*;
 
+import com.sharing.*;
 import com.sharing.model.Files;
+import com.sharing.model.User;
 import com.sharing.service.MainService;
 
 @Controller("mainController")
@@ -58,8 +59,8 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/main/signup",method=RequestMethod.GET)
-	public String signup()
-	{
+	public String signup(Model model)
+	{ model.addAttribute("userData", new User());
 		return "signup";
 	}
 	

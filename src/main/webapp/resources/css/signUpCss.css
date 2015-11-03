@@ -24,7 +24,7 @@ $green-border: #72B372;
 
 .register {
 	background-color:#B2BEB5;
-  	width: 500px;
+  	width: 800px;
     height: 400px;
   	margin: 10px auto;
   	padding: 10px;
@@ -200,3 +200,8 @@ tranform: rotate(45deg);
 bottom: -20px;
 top: auto;
 }
+
+	
+
+
+

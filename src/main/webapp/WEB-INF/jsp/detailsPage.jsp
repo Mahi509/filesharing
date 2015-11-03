@@ -9,7 +9,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/detailPageCss.css" />
-
+<%-- <script
+	src="${pageContext.request.contextPath}/resources/js/vlc.js"></script>
+	<script
+	src="${pageContext.request.contextPath}/resources/js/signup.min.js"></script> --%>
 </head>
 <body>
 	<div class="mainclass">
@@ -35,9 +38,11 @@
 		</c:if>
 
 <c:if test="${ext=='mp4'}">
-<a class="btn btn-default"
+<!-- <embed id="vlcp" type="application/x-vlc-plugin" name="VLC"  autoplay="no" loop="no" volume="100" width="640" height="480" target="test.flv">
+   </embed> -->
+<a  id="playbutton"  class="btn btn-default"
 				href="${pageContext.request.contextPath}/img/${file.fileName}">Play
-				video </a>
+				video </a> 
 
 </c:if>
 
