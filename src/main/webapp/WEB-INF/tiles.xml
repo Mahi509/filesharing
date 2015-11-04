@@ -13,13 +13,23 @@
     </definition>  
   
     <definition name="home2" extends="base.definition">  
-        <put-attribute name="title" value="Contact Manager" />  
+        <put-attribute name="title" value="Files Page" />  
         <put-attribute name="body" value="/WEB-INF/jsp/home2.jsp" /> 
     </definition>  
   
     <definition name="homeGrid2" extends="base.definition">  
-        <put-attribute name="title" value="Hello Spring MVC" />  
+        <put-attribute name="title" value="Grid View" />  
         <put-attribute name="body" value="/WEB-INF/jsp/homeGrid2.jsp" />  
+    </definition>  
+    
+     <definition name="homeList" extends="base.definition">  
+        <put-attribute name="title" value="List View" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/homeList.jsp" />  
+    </definition>  
+    
+    <definition name="homeGrid" extends="base.definition">  
+        <put-attribute name="title" value="Grid View" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/homeGrid.jsp" />  
     </definition>  
   
 </tiles-definitions>  

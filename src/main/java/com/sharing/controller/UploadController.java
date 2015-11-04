@@ -12,7 +12,9 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,73 +28,64 @@ import com.sharing.model.UploadedFile;
 import com.sharing.validator.FileValidator;
 import com.sharing.service.MainService;
 
-
 @Controller
 public class UploadController {
 
 	@Autowired
 	FileValidator fileValidator;
-	
+
 	@Autowired
 	MainService mainService;
-	
 
 	@RequestMapping("/fileUploadForm")
-	public ModelAndView getUploadForm(
+	public String getUploadForm(
 			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
 			BindingResult result) {
-		return new ModelAndView("uploadForm");
+
+		return "uploadForm";
 	}
 
 	@SuppressWarnings("resource")
 	@RequestMapping("/fileUpload")
 	public String fileUploaded(
 			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
-			BindingResult result,HttpSession session, HttpServletRequest request, Model model) {
-		
-		
-			session = request.getSession();
+			BindingResult result, HttpSession session,
+			HttpServletRequest request, Model model) {
+
+		session = request.getSession();
 		String user = (String) session.getAttribute("user");
-		
-		System.out.println(user);
-			
-		if(user!=null){
-		
-		//String username = mainService.checkSession(user);
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
-		
+
 		String currentDate = dateFormat.format(date);
-		
+
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 
 		MultipartFile file = uploadedFile.getFile();
-		
-		double fileSize = ((file.getSize())/1048576);
-		
-	
-		
+
+		double fileSize = ((file.getSize()) / 1048576);
+
 		fileValidator.validate(uploadedFile, result);
-		
+
 		String fileName = file.getOriginalFilename();
-		
+
 		mainService.setFilesUpload(fileName, fileSize, currentDate, user);
-		
 
-		System.out.println(fileName);
 		if (result.hasErrors()) {
-			//System.out.println("entering if block");
-			return ("uploadForm");
 
-			}
+			return "uploadForm";
+
+		}
 
 		try {
 			inputStream = file.getInputStream();
-		//	System.out.println("entering try block");
 
-			File newFile = new File("/home/webwerks/files/" + fileName);
+			File newFile = new File(
+					"/home/webwerks/apache-tomcat-7.0.39/webapps/files/"
+							+ fileName);
+
 			if (!newFile.exists()) {
 				newFile.createNewFile();
 			}
@@ -102,20 +95,14 @@ public class UploadController {
 
 			while ((read = inputStream.read(bytes)) != -1) {
 				outputStream.write(bytes, 0, read);
-				/*System.out.println("123");*/
+
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return ("showFile");
-	}
-	else{
-		
-		return "home";
-	}
-		
-	}
+		return "showFile";
 
+	}
 }

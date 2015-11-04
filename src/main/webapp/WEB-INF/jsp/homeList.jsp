@@ -65,9 +65,9 @@
 	<div class="main">
 
 		<h5>
-			view: <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span
+			view: <a href="${pageContext.request.contextPath}/main/homeList?id=1"><span
 				id="glymp" class="glyphicon glyphicon-th-list"></span></a> <a
-				href="${pageContext.request.contextPath}/main/homeGridOne?id=${allFiles}"><span
+				href="${pageContext.request.contextPath}/main/homeGrid?id=${allFiles}"><span
 				id="Grid" class="glyphicon glyphicon-th"></span></a>
 		</h5>
 

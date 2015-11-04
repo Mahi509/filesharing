@@ -12,18 +12,7 @@
 
 </head>
 <body>
-<%-- <div class="mainclass">
-<c:set value="${filename}" var="file"/>
-<h1><c:out value="${file.fileName}"></c:out></h1>
-<c:out value="${file.fileId}"></c:out>
-<c:out value="${file.fileby}"></c:out>
-<c:out value="${file.filedate}"></c:out>
-<c:choose>
-<c:when test="${ext=='mp3'}">
-<a class="btn btn-default" href="${pageContext.request.contextPath}/img/${file.fileName}">Play music </a>
-</c:when>
-</c:choose>
-</div> --%>
+
 	<div class="mainclass">
 		<c:set value="${filename}" var="file" />
 		<h1>
@@ -46,12 +35,12 @@
 
 		</c:if>
 
-<c:if test="${ext=='mp4'}">
-<a class="btn btn-default"
+		<c:if test="${ext=='mp4'}">
+			<a class="btn btn-default"
 				href="${pageContext.request.contextPath}/img/${file.fileName}">Play
 				video </a>
 
-</c:if>
+		</c:if>
 
 	</div>
 </body>
