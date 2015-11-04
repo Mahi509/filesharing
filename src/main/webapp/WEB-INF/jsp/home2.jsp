@@ -40,7 +40,11 @@
 <style type="text/css">
 .main {
 	float: left;
+
+	width: 80%;
+
 	width: 70%;
+
 }
 
 #a {

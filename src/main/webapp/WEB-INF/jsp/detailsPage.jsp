@@ -9,7 +9,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/detailPageCss.css" />
-
+<%-- <script
+	src="${pageContext.request.contextPath}/resources/js/vlc.js"></script>
+	<script
+	src="${pageContext.request.contextPath}/resources/js/signup.min.js"></script> --%>
 </head>
 <body>
 
@@ -35,7 +38,11 @@
 
 		</c:if>
 
+
 		<c:if test="${ext=='mp4'}">
+
+
+
 			<a class="btn btn-default"
 				href="${pageContext.request.contextPath}/img/${file.fileName}">Play
 				video </a>

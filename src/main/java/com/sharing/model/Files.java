@@ -1,7 +1,5 @@
 package com.sharing.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,13 +26,8 @@ public class Files {
 
 	private double filesize;
 
-	public double getFilesize() {
-		return filesize;
-	}
 
-	public void setFilesize(double filesize) {
-		this.filesize = filesize;
-	}
+
 
 	@ManyToOne
 	@JoinTable(name = "UserFiles", joinColumns = @JoinColumn(name = "fileId"), inverseJoinColumns = @JoinColumn(name = "userId"))
@@ -47,6 +40,7 @@ public class Files {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 
 	public Integer getFileId() {
 		return fileId;
@@ -79,5 +73,16 @@ public class Files {
 	public void setFiledate(String filedate) {
 		this.filedate = filedate;
 	}
+
+
+	public double getFilesize() {
+		return filesize;
+	}
+
+	public void setFilesize(double filesize) {
+		this.filesize = filesize;
+	}
+
+	
 
 }

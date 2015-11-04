@@ -34,7 +34,7 @@
 }
 
 #grid {
-	width: 180px;
+	width: 200px;
 	height: 150px;
 	margin: 10px;
 }
@@ -42,8 +42,9 @@
 </head>
 
 <body>
-	<h5>
-		view: <a href="${pageContext.request.contextPath}/main/homeList?id=1"><span
+
+<h5>
+		view: <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span>
 			id="glymp" class="glyphicon glyphicon-th-list"></span></a> <a
 			href="${pageContext.request.contextPath}/main/homeGrid?id=1"><span
 			id="Grid" class="glyphicon glyphicon-th"></span></a>
@@ -88,10 +89,6 @@
 
 
 	</c:forEach>
-
-
-
-
 
 </body>
 </body>
