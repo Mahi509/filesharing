@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sharing.model.Files;
+import com.sharing.model.User;
 import com.sharing.service.MainService;
 
 @Controller("mainController")
@@ -22,22 +23,30 @@ public class MainController {
 	@Autowired
 	private MainService mainService;
 
-	@RequestMapping(value={"/","/main/login"})
-	public String home()
+	/*@RequestMapping(value={"/","/main/login"})
+	public String home(HttpSession session)
 	{
-		System.out.println("fgdf");
+		System.out.println("in controller");
+		session.invalidate();
 		return "home";
 	}
 	
 	@RequestMapping(value="/authenticate",method=RequestMethod.POST)
-	public String authenticate(@RequestParam("username")String username,@RequestParam("password")String password)
+	public String authenticate(@RequestParam("username")String username,@RequestParam("password")String password
+			,HttpSession session)
 	{
 		boolean flag=mainService.authenticate(username, password);
 		
 		if(flag)
 		{
-			System.out.println("TRUE");
-			return "home2";
+		
+			User user=mainService.getUserName(username);
+			String userName=user.getUserName();
+			Integer userId=user.getUserId();
+			session.setAttribute("userName",userName);
+			session.setAttribute("userId", userId);
+			
+			return "userhome";
 			 
 		}else
 		{
@@ -137,24 +146,28 @@ public class MainController {
         
 		return "detailsPage";
 	}
-@RequestMapping(value="/forgotpassword",method=RequestMethod.GET)
-public String forgotpassword(){
-		
-	return "forgotPassword";
-}
-	
-	
-@RequestMapping(value = "main/checksession", method = RequestMethod.POST)
-public @ResponseBody String checkSession(HttpSession session) {
-	System.out.println("SESSION INVALID");
 
-	String user = (String) session.getAttribute("users");
-	//System.out.println("In session is " + user);
-	if (session.getAttribute("users") != null) {
-		return "yes";
+	
+	
+	@RequestMapping(value="/forgotpassword",method=RequestMethod.GET)
+	public String forgotpassword()
+	{
+
+		return "forgotPassword";
 	}
-	return "no";
-}
 	
 	
+	@RequestMapping(value="/main/userfiledetails",method=RequestMethod.GET)
+	public String userFileDetails(HttpSession session,Model model)
+	{
+		//System.out.println(" i m inside userdetails page ");
+		Integer userId=(Integer) session.getAttribute("userId");
+		List<Files> file=mainService.getUserFiles(userId);
+		
+		model.addAttribute("files", file);
+		return "userdetails";
+		
+	}
+	
+	*/
 }

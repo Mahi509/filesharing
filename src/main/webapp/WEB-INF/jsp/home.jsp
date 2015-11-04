@@ -11,9 +11,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="jquery-1.2.6.min.js"></script>  	
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="jquery-1.2.6.min.js"></script>  	
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 		<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
@@ -28,22 +28,6 @@
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 		
-		<!-- <script type="text/javascript">
-		
-		$(document).ready(function(){
-		      
-       	 $("#upl").click(function(){
-       		 
-       	 	 alert('Please login to upload');
-       	 	window.location.href='http://localhost:8080/Sharing/main/login';
-     
-		})
-		});
-       	  -->
-		
-		
-		
-	
 	</head>
 	<body>
 	
@@ -144,8 +128,6 @@
         		<div class="clearfix"></div>
         		
         		<div class="form-group modal-register-btn">
-
-        			<%-- <button class="btn btn-default" onclick="document.forms[0].action = '${pageContext.request.contextPath}/WEB-INF/jsp/signup.jsp'; return true;">New User Please Register</button> --%>
 
         			<a class="btn btn-default" href="${pageContext.request.contextPath}/main/signup">New User Please Register</a>
 
