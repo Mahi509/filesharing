@@ -4,18 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sharing.model.Files;
+import com.sharing.model.User;
 import com.sharing.service.MainService;
 
 @Controller("mainController")
@@ -121,9 +122,9 @@ public class MainController {
 		return "homeList";
 
 	}
-
+//added user object by Mahi
 	@RequestMapping(value = "/main/signup", method = RequestMethod.GET)
-	public String signup() {
+	public String signup(@ModelAttribute("userData")User user1) {
 		return "signup";
 	}
 

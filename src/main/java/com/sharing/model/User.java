@@ -23,7 +23,7 @@ public class User {
 	@Column(name="userId")
 	private Integer userId;
 @Column(name="firstName")
-	private String firstName1;
+	private String firstName;
 @Column(name="lastName")
 	private String lastName;
 @Column(name="userName")
@@ -92,11 +92,11 @@ public void setFiles(List<Files> files) {
 	}
 
 	public String getFirstName() {
-		return firstName1;
+		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName1 = firstName;
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {

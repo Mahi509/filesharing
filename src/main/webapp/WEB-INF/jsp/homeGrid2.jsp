@@ -44,7 +44,7 @@
 <body>
 
 <h5>
-		view: <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span>
+		view: <a href="${pageContext.request.contextPath}/main/homeList?id=1"><span
 			id="glymp" class="glyphicon glyphicon-th-list"></span></a> <a
 			href="${pageContext.request.contextPath}/main/homeGrid?id=1"><span
 			id="Grid" class="glyphicon glyphicon-th"></span></a>

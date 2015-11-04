@@ -64,8 +64,8 @@
 						</form:label>
 						<form:input path="firstName" id="firstName" name="firstName"
 							spellcheck="false" placeholder="firstname"
-							title="FirstName goes here" />
-						<form:errors path="firstName" cssStyle="color: red;"></form:errors>
+							title="FirstName goes here" ></form:input>
+						<form:errors path="firstName" ></form:errors>
 
 					</div>
 					<div id="left">

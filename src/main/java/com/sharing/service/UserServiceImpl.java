@@ -13,7 +13,6 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 
-	@Override
 	public void save(User user1) {
 		
 		userDao.save(user1);
