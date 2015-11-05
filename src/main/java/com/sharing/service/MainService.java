@@ -26,18 +26,19 @@ public class MainService {
 	}
 
 	
+
 	public void setFilesUpload(String fileName,double fileSize,String currentDate,Integer userId){
 		
 		mainDao.setFilesUpload(fileName, fileSize, currentDate,userId);
-		
+
 	}
-	
 	
 
 	public Files getFileName(Integer name) {
 		Files fileObject=mainDao.getFileName(name);
 		return fileObject;
 	}
+
 
 	public User getUserName(String name)
 	{
@@ -47,6 +48,7 @@ public class MainService {
 	public List<Files> getUserFiles(Integer userId)
 	{
 		return mainDao.getUserFiles(userId);
+		
 	}
 	
 }

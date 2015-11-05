@@ -34,7 +34,7 @@
 }
 
 #grid {
-	width: 200px;
+	width: 180px;
 	height: 150px;
 	margin: 10px;
 }
@@ -42,11 +42,10 @@
 </head>
 
 <body>
-
-<h5>
-		view: <a href="${pageContext.request.contextPath}/main/homeList?id=1"><span
-			id="glymp" class="glyphicon glyphicon-th-list"></span></a> <a
-			href="${pageContext.request.contextPath}/main/homeGrid?id=1"><span
+	<h5>
+		view: <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span
+				id="glymp" class="glyphicon glyphicon-th-list"></span></a> <a
+			href="${pageContext.request.contextPath}/main/homeGridOne?id=1"><span
 			id="Grid" class="glyphicon glyphicon-th"></span></a>
 	</h5>
 
@@ -59,36 +58,33 @@
 				<a
 					href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
 					<b style="color: blue;">${file.fileName}</b>
-				</a>
-				
-				<span id="a"> <c:set var="filename" value="${file.fileName}"></c:set>
-						<c:if test="${fn:contains(filename, '.mp3')}">
-							<img src="${pageContext.request.contextPath}/img/mp3image.jpeg"
-								height="100px" width="100px">
-						</c:if> <c:if test="${fn:contains(filename, '.jpeg')}">
-							<img
-								src="${pageContext.request.contextPath}/img/${file.fileName}"
-								height="100px" width="100px">
-						</c:if> <c:if test="${fn:contains(filename, '.pdf')}">
-							<img src="${pageContext.request.contextPath}/img/images.jpeg"
-								height="100px" width="100px">
-						</c:if> <c:if test="${fn:contains(filename, '.mp4')}">
-							<img src="${pageContext.request.contextPath}/img/imagesmp4.png"
-								height="100px" width="100px">
-						</c:if>
+				</a> <span id="a"> <c:set var="filename" value="${file.fileName}"></c:set>
+					<c:if test="${fn:contains(filename, '.mp3')}">
+						<img src="${pageContext.request.contextPath}/img/mp3image.jpeg"
+							height="100px" width="100px">
+					</c:if> <c:if test="${fn:contains(filename, '.jpeg')}">
+						<img src="${pageContext.request.contextPath}/img/${file.fileName}"
+							height="100px" width="100px">
+					</c:if> <c:if test="${fn:contains(filename, '.pdf')}">
+						<img src="${pageContext.request.contextPath}/img/images.jpeg"
+							height="100px" width="100px">
+					</c:if> <c:if test="${fn:contains(filename, '.mp4')}">
+						<img src="${pageContext.request.contextPath}/img/imagesmp4.png"
+							height="100px" width="100px">
+					</c:if>
 
-					</span><br>
-				
-				<br>
-				<br>
-				<br>
-				<br> <a href="#">Add to account</a><br>
-				
+				</span><br> <br> <br> <br> <br> <a href="#">Add
+					to account</a><br>
+
 			</form>
 		</div>
 
 
 	</c:forEach>
+
+
+
+
 
 </body>
 </body>

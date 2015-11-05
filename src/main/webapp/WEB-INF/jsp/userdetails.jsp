@@ -48,7 +48,8 @@ padding-left: 5px;
 	alert("ready");
 		$("#drop").click(function(){
 			
-			$(".root").show();
+				$(".root").show();
+				
 		})
 		
 		
@@ -127,7 +128,7 @@ padding-left: 5px;
 
 
 </body>
-<ul class="root">
+<ul class="root" style="display:none;" >
 					<li ><a href="#Dashboard" >Dashboard</a></li>
 					<li ><a href="#Profile" >Profile</a></li>
 					<li ><a href="#settings">Settings</a></li>

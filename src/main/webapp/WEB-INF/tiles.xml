@@ -21,5 +21,15 @@
         <put-attribute name="title" value="Grid View" />  
         <put-attribute name="body" value="/WEB-INF/jsp/homeGrid2.jsp" />  
     </definition>  
+    
+     <definition name="homeList" extends="base.definition">  
+        <put-attribute name="title" value="List View" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/homeList.jsp" />  
+    </definition>  
+    
+    <definition name="homeGrid" extends="base.definition">  
+        <put-attribute name="title" value="Grid View" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/homeGrid.jsp" />  
+    </definition>  
   
 </tiles-definitions>  
