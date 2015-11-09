@@ -1,15 +1,9 @@
 package com.sharing.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +34,7 @@ public class MainController {
 		List<Files> file=mainService.getUserFiles(2);
 		
 		model.addAttribute("files", file);
-		return "userdetails";
+		return "home";
 	}
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)

@@ -18,18 +18,6 @@
   <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/userdetails.css" />
 
-<script type="text/javascript">
-
-$(document).ready(function() {
-
-	  $("a#dialog").click(function(e) {
-	      e.preventDefault();
-	      $("#dialog").dialog();
-	  });
-});
-	
-</script>
-
 </head>
 <body>
  

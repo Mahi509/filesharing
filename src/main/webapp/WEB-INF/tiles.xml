@@ -23,10 +23,7 @@
         <put-attribute name="footer" value="" />  
     </definition>  
  
-  
-  
-   
-  
+ 
     <definition name="home2" extends="base.definition">  
         <put-attribute name="title" value="Files Page" />  
         <put-attribute name="body" value="/WEB-INF/jsp/home2.jsp" /> 
@@ -49,8 +46,8 @@
   
    <definition name="" extends="user.definition">  
         <put-attribute name="title" value="Files Page" />  
-        <put-attribute name="body" value="" /> 
-    </definition> 
+        <put-attribute name="body" value="/WEB-INF/jsp/userdetails.jsp" /> 
+   </definition> 
   
   
 </tiles-definitions>  

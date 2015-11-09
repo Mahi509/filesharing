@@ -93,40 +93,11 @@ padding-top:2px;
 				<input id="search" type="text" placeholder="Type here">
 				<input id="submit" type="submit" value="Search">
 			</form:form></span>
-			<a id="msg" href="#"><span class="glyphicon glyphicon-user"></span>  Prakash  </a>
-			
-			 <!--  <div class="dropdown">
-    <a id="img" class="  btn-default dropdown-toggle" id="menu1" data-toggle="dropdown">Prakash
-    <span class="caret"></span></a>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">MyProfile</a></li>
-      <li role="presentation" class="divider"></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sing Out</a></li>
-    </ul>
-  </div>
-	 -->
+			<a id="msg" href="#"><span class="glyphicon glyphicon-user"></span>  Haider  </a>
 			
 		 <a href="#"> <span id="glyph" class="glyphicon glyphicon-comment"></span>
 		</a> <a href="#"> <span id="glyph" class="glyphicon glyphicon-cog"></span>
 		</a>
-
-
-<!-- <div class="dropdown">
-    <a class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
-    Prakash
-    <span class="caret"></span></a>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Profile</a></li>
-      <li role="presentation" class="divider"></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sing Out</a></li>
-    </ul>
-  </div> -->
-
-
-
-
-
-
 	</div>
 
 </body>
