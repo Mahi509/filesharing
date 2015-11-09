@@ -8,13 +8,13 @@
 </head>
 <body>
 
-	<center>
+	<%-- <center>
 
 		<h2></h2>
 		<h3>
 			File name : "<strong> ${message}</strong>" uploaded successfully !
 		</h3>
-	</center>
-
+	</center> 
+ --%>
 </body>
 </html>

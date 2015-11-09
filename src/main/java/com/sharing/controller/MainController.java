@@ -168,6 +168,15 @@ public class MainController {
 
 		return "forgotPassword";
 	}
+	
+	
+	@RequestMapping(value = "/main/userContent", method = RequestMethod.GET)
+	public String userContent() {
+
+		return "userContent";
+	}
+	
+	
 
 	@RequestMapping(value = "main/checksession", method = RequestMethod.POST)
 	public @ResponseBody String checkSession(HttpSession session) {
