@@ -1,0 +1,61 @@
+#up{
+margin-left:20px;
+padding-bottom: 50px;
+
+
+}
+.dropdown-menu .divider {
+    height: 1px;
+    margin: 2px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+.main{
+margin-left:20px;
+background-color: #D4F1F8;
+border-radius:15px;
+width: 60%;
+}
+
+td, th {
+    padding: 10px;
+}
+.btn-default {
+    color: #333;
+    background-color: #C1E6F5;
+}
+
+.btn-default:hover {
+    color: #333;
+    background-color: #C1E6F5;
+    border-color: #C1E6F5;
+}
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    color: #333;
+    background-color: #C1E6F5;
+    border-color: #C1E6F5;
+}
+.btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default {
+    color: #333;
+    background-color: #C1E6F5;
+    border-color: #C1E6F5;
+}
+
+#file
+{
+height: 10px;
+width: 30px;
+}
+
+#button{
+float: left;
+padding-left: 5px;
+}
+.ui-button-text-only .ui-button-text {
+    padding: 0;
+}
+.ui-menu 
+{
+ position: absolute;
+  width: 100px; 
+}

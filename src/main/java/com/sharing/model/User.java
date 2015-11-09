@@ -5,7 +5,6 @@ import javax.persistence.Column;
 
 import java.util.List;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "User")
@@ -36,6 +38,7 @@ public class User {
 	private String emailId;
 
 @OneToMany
+@Cascade({CascadeType.ALL})
 @JoinTable
 		(
 		name="UserFiles",

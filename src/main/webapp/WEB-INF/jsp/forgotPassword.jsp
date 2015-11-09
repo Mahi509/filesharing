@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/signUpCss.css" />
+	href="${pageContext.request.contextPath}/resources/css/signup.css" />
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script type="text/javascript"

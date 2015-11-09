@@ -1,9 +1,15 @@
 package com.sharing.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.sharing.model.Files;
 import com.sharing.model.User;
 import com.sharing.service.MainService;
@@ -25,12 +32,15 @@ public class MainController {
 
 	List<Files> grid = new ArrayList<Files>();
 
-	@RequestMapping(value={"/","/main/login"})
-	public String home(HttpSession session)
+	@RequestMapping(value="/")
+	public String home(HttpSession session,Model model)
 	{
 		System.out.println("in controller");
 		session.invalidate();
-		return "home";
+		List<Files> file=mainService.getUserFiles(2);
+		
+		model.addAttribute("files", file);
+		return "userdetails";
 	}
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
@@ -186,5 +196,7 @@ public class MainController {
 		return "forgotPassword";
 	}
 
-
+	
+	
+	
 }
