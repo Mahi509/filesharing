@@ -35,7 +35,9 @@
 <a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp4"><span id="glymp" class="glyphicon glyphicon-film"> Video</span></a>   
  <a href="${pageContext.request.contextPath}/main/getByExtn?id=.jpeg"><span id="glymp" class="glyphicon glyphicon-camera"> Photo</span></a><br/>  
 <a href="${pageContext.request.contextPath}/main/getByExtn?id=.mp4"><span id="glymp" class="glyphicon glyphicon-facetime-video"> Videos</span></a>
- <a href="${pageContext.request.contextPath}/main/getByExtn?id=.pdf"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a>
+ <a href="${pageContext.request.contextPath}/main/getByExtn?id=.pdf"><span id="glymp" class="glyphicon glyphicon-book"> Books</span></a><br/>
+ <a href="${pageContext.request.contextPath}/main/userContent?id=.pdf"><span id="glymp" class="glyphicon glyphicon-bullhorn"> UserContent</span></a>
+ 
  </p>
 </div>
 </body>

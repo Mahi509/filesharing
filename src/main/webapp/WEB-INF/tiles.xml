@@ -12,6 +12,21 @@
         <put-attribute name="footer" value="/WEB-INF/jsp/tilespages/footer.jsp" />  
     </definition>  
   
+ <!-- Tiles used for user specific -->
+ 
+ 	 <definition name="user.definition"  
+        template="/WEB-INF/jsp/tilespages/layout2.jsp">  
+        <put-attribute name="title" value="" />  
+        <put-attribute name="header" value="/WEB-INF/jsp/userHeader.jsp" />  
+        <put-attribute name="menu" value="/WEB-INF/jsp/userMenu.jsp" />  
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="" />  
+    </definition>  
+ 
+  
+  
+   
+  
     <definition name="home2" extends="base.definition">  
         <put-attribute name="title" value="Files Page" />  
         <put-attribute name="body" value="/WEB-INF/jsp/home2.jsp" /> 
@@ -31,5 +46,11 @@
         <put-attribute name="title" value="Grid View" />  
         <put-attribute name="body" value="/WEB-INF/jsp/homeGrid.jsp" />  
     </definition>  
+  
+   <definition name="" extends="user.definition">  
+        <put-attribute name="title" value="Files Page" />  
+        <put-attribute name="body" value="" /> 
+    </definition> 
+  
   
 </tiles-definitions>  

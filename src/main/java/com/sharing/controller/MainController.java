@@ -195,6 +195,15 @@ public class MainController {
 
 		return "forgotPassword";
 	}
+	
+	
+	@RequestMapping(value = "/main/userContent", method = RequestMethod.GET)
+	public String userContent() {
+
+		return "userContent";
+	}
+	
+	
 
 	
 	

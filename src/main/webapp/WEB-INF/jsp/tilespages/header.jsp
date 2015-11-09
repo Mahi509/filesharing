@@ -48,7 +48,7 @@
     overflow: hidden; /* Clear floats */
 }
 	
-	#submit
+#submit
 {       
     background-color: #6cbb6b;
     background-image: linear-gradient(#95d788, #6cbb6b);
