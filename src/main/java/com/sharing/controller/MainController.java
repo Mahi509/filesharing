@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.sharing.model.Files;
 import com.sharing.model.User;
 import com.sharing.service.MainService;
@@ -27,9 +25,11 @@ public class MainController {
 
 	List<Files> grid = new ArrayList<Files>();
 
-	@RequestMapping(value = { "/", "/main/login" })
-	public String home() {
-		System.out.println("fgdf");
+	@RequestMapping(value={"/","/main/login"})
+	public String home(HttpSession session)
+	{
+		System.out.println("in controller");
+		session.invalidate();
 		return "home";
 	}
 
@@ -40,12 +40,14 @@ public class MainController {
 		boolean flag = mainService.authenticate(username, password);
 
 		if (flag) {
-			System.out.println("TRUE");
-			session.setAttribute("user", username);
-			// session.removeAttribute("user");
-			return "home2";
+			User user=mainService.getUserName(username);
+			System.out.println(" USER NAME "+user.getUserName());
+			session.setAttribute("userName", user.getUserName());
+			session.setAttribute("userId",user.getUserId());
+			return "userhome";
 
 		} else {
+
 			return "error";
 		}
 
@@ -122,6 +124,7 @@ public class MainController {
 		return "homeList";
 
 	}
+	
 //added user object by Mahi
 	@RequestMapping(value = "/main/signup", method = RequestMethod.GET)
 	public String signup(@ModelAttribute("userData")User user1) {
@@ -163,6 +166,20 @@ public class MainController {
 		return "detailsPage";
 	}
 
+
+	@RequestMapping(value="/main/userfiledetails",method=RequestMethod.GET)
+	public String userFileDetails(HttpSession session,Model model)
+	{
+		System.out.println(" i m inside userdetails page ");
+		Integer userId=(Integer) session.getAttribute("userId");
+		List<Files> file=mainService.getUserFiles(userId);
+		
+		model.addAttribute("files", file);
+		return "userdetails";
+		
+	}
+	
+
 	@RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
 	public String forgotpassword() {
 
@@ -178,16 +195,5 @@ public class MainController {
 	
 	
 
-	@RequestMapping(value = "main/checksession", method = RequestMethod.POST)
-	public @ResponseBody String checkSession(HttpSession session) {
-		System.out.println("SESSION INVALID");
-
-		String user = (String) session.getAttribute("users");
-
-		if (session.getAttribute("users") != null) {
-			return "yes";
-		}
-		return "no";
-	}
 
 }

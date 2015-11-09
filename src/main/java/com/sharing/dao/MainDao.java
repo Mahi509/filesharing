@@ -1,9 +1,10 @@
 package com.sharing.dao;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -48,16 +49,19 @@ public class MainDao {
 		return files;
 	}
 
-	public void setFilesUpload(String fileName, double size,
-			String currentDate, String username) {
+	
+	
+	public void setFilesUpload(String fileName,double size,String currentDate,Integer userId){
 
 		Session session = sessionFactory.getCurrentSession();
+		User user=(User) session.get(User.class,userId);
+		
 		Files file = new Files();
 		file.setFileName(fileName);
 		file.setFilesize(size);
 		file.setFiledate(currentDate);
-		file.setFileby(username);
-
+		file.setFileby(user.getUserName());
+		user.getFiles().add(file);
 		session.save(file);
 
 	}
@@ -67,6 +71,25 @@ public class MainDao {
 		Files file = (Files) session.get(Files.class, fileId);
 
 		return file;
+	}
+	
+	public User getUserName(String name)
+	{
+		Session session=sessionFactory.getCurrentSession();
+		Criteria criteria=session.createCriteria(User.class).
+				add(Restrictions.like("userName",name));
+		Object user=criteria.uniqueResult();
+		
+		return (User) user; 
+	}
+	
+	public List<Files> getUserFiles(Integer userId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from User as u where u.userId="
+				+ userId);
+		User user = (User) query.uniqueResult();
+		return new ArrayList<Files>(user.getFiles());
 	}
 
 }

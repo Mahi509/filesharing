@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sharing.dao.MainDao;
 import com.sharing.model.Files;
+import com.sharing.model.User;
 
 @Service("mainService")
 public class MainService {
@@ -25,12 +26,12 @@ public class MainService {
 	}
 
 	
-	public void setFilesUpload(String fileName,double fileSize,String currentDate, String username){
+
+	public void setFilesUpload(String fileName,double fileSize,String currentDate,Integer userId){
 		
-		mainDao.setFilesUpload(fileName, fileSize, currentDate,username);
-		
+		mainDao.setFilesUpload(fileName, fileSize, currentDate,userId);
+
 	}
-	
 	
 
 	public Files getFileName(Integer name) {
@@ -38,19 +39,15 @@ public class MainService {
 		return fileObject;
 	}
 
+
+	public User getUserName(String name)
+	{
+		return mainDao.getUserName(name);
+	}
 	
-	public String checkSession(String username){
-		
-		if(username == null){
-		
-			System.out.println("user name is null");
-			
-			return "/detailsPage";
-		
-		}else
-		
-		return username;
-		
+	public List<Files> getUserFiles(Integer userId)
+	{
+		return mainDao.getUserFiles(userId);
 		
 	}
 	
