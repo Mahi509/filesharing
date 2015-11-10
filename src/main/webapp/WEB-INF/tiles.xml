@@ -44,7 +44,7 @@
         <put-attribute name="body" value="/WEB-INF/jsp/homeGrid.jsp" />  
     </definition>  
   
-   <definition name="" extends="user.definition">  
+   <definition name="userdetails" extends="user.definition">  
         <put-attribute name="title" value="Files Page" />  
         <put-attribute name="body" value="/WEB-INF/jsp/userdetails.jsp" /> 
    </definition> 
