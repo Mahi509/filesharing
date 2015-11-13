@@ -79,14 +79,16 @@
 						<c:if test="${fn:contains(filename, '.mp3')}">
 							<img src="${pageContext.request.contextPath}/img/mp3image.jpeg"
 								height="200px" width="200px">
-						</c:if> <c:if test="${fn:contains(filename, '.jpeg')}">
+						</c:if> <c:if test="${fn:contains(filename, '.jpeg')||fn:contains(filename, '.jpg')||
+						fn:contains(filename, '.gif')||fn:contains(filename, '.png')}">
 							<img
 								src="${pageContext.request.contextPath}/img/${file.fileName}"
 								height="200px" width="200px">
 						</c:if> <c:if test="${fn:contains(filename, '.pdf')}">
 							<img src="${pageContext.request.contextPath}/img/images.jpeg"
 								height="200px" width="200px">
-						</c:if> <c:if test="${fn:contains(filename, '.mp4')}">
+						</c:if> <c:if test="${fn:contains(filename, '.mp4')||fn:contains(filename, '.avi')||
+						fn:contains(filename, '.flv')||fn:contains(filename, '.3gp')}">
 							<img src="${pageContext.request.contextPath}/img/imagesmp4.png"
 								height="200px" width="200px">
 						</c:if>
