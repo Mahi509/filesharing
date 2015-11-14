@@ -90,7 +90,7 @@ padding-top:2px;
 				<input id="search" type="text" placeholder="Type here">
 				<input id="submit" type="submit" value="Search">
 			</form:form></span>
-			<a id="msg" href="#"><span class="glyphicon glyphicon-user"></span>  Haider  </a>
+			<a id="msg" href="#"><span class="glyphicon glyphicon-user"></span>  ${userName}  </a>
 			
 		 <a href="#"> <span id="glyph" class="glyphicon glyphicon-comment"></span>
 		</a> <a href="#"> <span id="glyph" class="glyphicon glyphicon-cog"></span>

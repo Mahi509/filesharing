@@ -33,11 +33,8 @@
 			    
 			     $(this).dialog("close"); // closing on Ok click
 			    },
-			   
 			   },
-
-			  });
-			
+			  });			
 		})
 		 
 	})
@@ -114,7 +111,7 @@
       <li role="presentation" class="divider"></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span style="color:#6EB7FF;" class="glyphicon glyphicon-edit"></span>&nbsp &nbsp Rename</a></li>
       <li role="presentation" class="divider"></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span style="color:#6EB7FF;" class="glyphicon glyphicon-pencil"></span>&nbsp &nbsp Edit</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/editFile?name=${file.fileName }"><span style="color:#6EB7FF;" class="glyphicon glyphicon-pencil"></span>&nbsp &nbsp Edit</a></li>
     </ul>
   </span></div></td>
                 <td>${file.filesize }</td>

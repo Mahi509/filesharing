@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.sharing.model.UploadedFile;
 import com.sharing.validator.FileValidator;
 import com.sharing.service.MainService;
@@ -60,10 +62,10 @@ public class UploadController {
 		fileValidator.validate(uploadedFile, result);
 
 		String fileName = file.getOriginalFilename();
-
+		String user=(String) session.getAttribute("userName");
 	
 		
-		if(session.getAttribute("userName")!=null)
+		if(user!=null)
 			 {
 				 System.out.println(" USER NAME "+session.getAttribute("userName"));
 				Integer userId=(Integer) session.getAttribute("userId");
@@ -74,18 +76,21 @@ public class UploadController {
 			return "uploadForm";
 
 		}
-
+		
 		try {
 			inputStream = file.getInputStream();
-
+			File f=new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/",fileName);
 			File newFile = new File(
-					"/home/webwerks/apache-tomcat-7.0.39/webapps/files/"
-							+ fileName);
-
+					"/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+user+"/");
+			File myFile=new File(newFile,fileName);
 			if (!newFile.exists()) {
-				newFile.createNewFile();
+				
+					newFile.mkdir();
+					myFile.createNewFile();
+					f.createNewFile();
 			}
-			outputStream = new FileOutputStream(newFile);
+			outputStream = new FileOutputStream(myFile);
+			outputStream = new FileOutputStream(f);
 			int read = 0;
 			byte[] bytes = new byte[1024];
 			
