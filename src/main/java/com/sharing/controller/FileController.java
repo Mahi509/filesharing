@@ -28,7 +28,7 @@ public class FileController {
 	public void download(@RequestParam("name")String fileName,HttpServletResponse response) throws IOException {
 		
 		
-		File file = new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+fileName);
+		File file = new File("/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"+fileName);
 		InputStream is = new FileInputStream(file);
 
 		// MIME type of the file

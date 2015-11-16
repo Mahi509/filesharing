@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -86,10 +87,25 @@ public class MainDao {
 	public List<Files> getUserFiles(Integer userId)
 	{
 		Session session = sessionFactory.getCurrentSession();
+			
 		Query query = session.createQuery("from User as u where u.userId="
 				+ userId);
+		
 		User user = (User) query.uniqueResult();
+		
 		return new ArrayList<Files>(user.getFiles());
+		
+	}
+	
+	public List<Files> getHomeSearchFiles(String search){
+		
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria=session.createCriteria(Files.class).
+				add(Restrictions.like("fileName",search+"%", MatchMode.ANYWHERE));
+	
+		System.out.println("Entering search Dao");
+		
+		return criteria.list();
 	}
 
 }

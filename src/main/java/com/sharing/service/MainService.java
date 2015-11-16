@@ -51,4 +51,8 @@ public class MainService {
 		
 	}
 	
+	public List<Files> getHomeSearchFiles(String search){
+		return mainDao.getHomeSearchFiles(search);
+	}
+	
 }

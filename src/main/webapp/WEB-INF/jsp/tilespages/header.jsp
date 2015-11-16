@@ -93,8 +93,8 @@
 			</div>
 		</div>
 	</div>
-	  <form:form id="searchbox" action="">
-    <input id="search" type="text" placeholder="Type here">
+	<form:form id="searchbox" action="${pageContext.request.contextPath}/main/userSearch">
+    <input id="search" type="text" name="search" placeholder="Type here">
     <input id="submit" type="submit" value="Search">     
 </form:form>
 

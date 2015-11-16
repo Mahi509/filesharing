@@ -18,6 +18,8 @@ import com.sharing.model.Files;
 import com.sharing.model.User;
 import com.sharing.service.MainService;
 
+
+
 @Controller("mainController")
 public class MainController {
 
@@ -35,6 +37,8 @@ public class MainController {
 		
 		model.addAttribute("files", file);
 		return "home";
+		
+		
 	}
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
@@ -198,8 +202,51 @@ public class MainController {
 	}
 	
 	
+	//Search option mapping from userheader tiles
+	@RequestMapping(value="/main/userSearch", method = RequestMethod.POST)
+	public String userSearch(Model model, HttpServletRequest request,HttpSession session){
+		
+		String search = request.getParameter("search");
+		
+		Integer userId=(Integer) session.getAttribute("userId");
+		
+		
+		List<Files> files = mainService.getHomeSearchFiles(search);
+		
+		model.addAttribute("allFiles", files);
+		
+		model.addAttribute("files", files);
+		
+		if( userId!=null){
+						
+			return "userdetails";
+						
+		}else {
+				
+			return "home2";
+		}
 
+	}
 	
 	
+	//Search option mapping from Homepage tiles
+	@RequestMapping(value="/main/homeSearch", method = RequestMethod.POST)
+	public String homeSearch(Model model, HttpServletRequest request){
+		
+		String search = request.getParameter("search");
+		
+		System.out.println("Inside Home Search");
+		
+		List<Files> files = mainService.getHomeSearchFiles(search);
+
+		model.addAttribute("allFiles", files);
+
+		System.out.println("Outside Home Search");
+		
+		return "home2";
+
+		
+	}
+
 	
 }

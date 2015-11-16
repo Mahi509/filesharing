@@ -13,7 +13,9 @@
 	href="${pageContext.request.contextPath}/resources/css/pagination.css"
 	type="text/css" />
 
-<script src="js/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<!-- <script src="js/jquery.min.js"></script>  -->
+
 
 <script
 	src="${pageContext.request.contextPath}/resources/js/pagination.js"></script>
@@ -36,8 +38,28 @@
 	});
 </script>
 
+<!-- used for page loading -->
+<script type="text/javascript">
+$(window).load(function() {
+	alert("hi");
+	$(".loader").fadeOut("slow");
+})
+</script>
+
 
 <style type="text/css">
+
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('${pageContext.request.contextPath}/resources/images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+
+
 .main {
 	float: left;
 	width: 70%;
@@ -55,12 +77,13 @@
 #c {
 	padding-left: 500px;
 }
-}
+
 </style>
 </head>
 
 <body>
 
+<div class="loader"></div> <!-- used for page loading -->
 
 	<div class="main">
 

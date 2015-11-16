@@ -89,8 +89,8 @@ padding-top:2px;
 
 <body>
 	<div id="main">
-		<span id="mybox"><form:form id="searchbox" action="">
-				<input id="search" type="text" placeholder="Type here">
+		<span id="mybox"><form:form id="searchbox" action="${pageContext.request.contextPath}/main/userSearch">
+				<input id="search" name="search" type="text" placeholder="Type here">
 				<input id="submit" type="submit" value="Search">
 			</form:form></span>
 			<a id="msg" href="#"><span class="glyphicon glyphicon-user"></span>  Haider  </a>

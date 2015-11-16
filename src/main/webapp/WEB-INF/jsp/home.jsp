@@ -11,6 +11,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="jquery-1.2.6.min.js"></script>  	
@@ -28,9 +31,34 @@
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 		
+		<script type="text/javascript">
+$(window).load(function() {
+	$(".loader").fadeOut("slow");
+})
+</script>
+		
+		
+		
+<style>
+
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('${pageContext.request.contextPath}/resources/images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+
+</style>
+	
+	
+		
 </head>
 <body>
 
+<div class="loader"></div>
 
 	<div class="my">
 
@@ -49,10 +77,11 @@
 
 
 
-	<form:form id="searchbox" action="">
-		<input id="search" type="text" placeholder="Type here">
+	<form:form id="searchbox" action="${pageContext.request.contextPath}/main/homeSearch">
+		<input id="search" type="text" name="search" placeholder="Type here">
 		<input id="submit" type="submit" value="Search">
 	</form:form>
+	
 	<p id="list">
 		<a href="${pageContext.request.contextPath}/main/glymph?id=all"><span
 			id="glymp" class="glyphicon glyphicon-file">All Files</span></a> <a

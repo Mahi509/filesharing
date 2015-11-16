@@ -23,7 +23,7 @@ public class FileDao {
 		Session session=sessionFactory.getCurrentSession();
 		Files file=(Files)session.get(Files.class,fileId);
 		//session.delete(file);*/
-		User user=(User) session.get(User.class,2);
+		User user=(User) session.get(User.class,1);
 		user.getFiles().remove(file);
 		System.out.println("Successfull ");
 	}
