@@ -5,23 +5,30 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sharing.model.Files;
 import com.sharing.service.FileService;
+import com.sharing.service.MainService;
 
 @Controller("fileController")
 public class FileController {
 
 	@Autowired
 	private FileService fileService;
+	
+	@Autowired 
+	private MainService mainService;
 	
 	//Downloading a file 
 	@RequestMapping(value = "/downloadfile", method = RequestMethod.GET)
@@ -49,9 +56,42 @@ public class FileController {
 	}
 	
 	@RequestMapping(value="/deletefile",method=RequestMethod.GET)
-	public void deleteFile(@RequestParam("id")Integer fileId,HttpSession session)
+	public String deleteFile(@RequestParam("id")Integer fileId,HttpSession session,Model model)
 	{
 		System.out.println("i m inside delete");
-		fileService.deleteFile(fileId,(Integer) session.getAttribute("userId"));
+		Integer userId=(Integer) session.getAttribute("userId");
+		fileService.deleteFile(fileId,userId);
+		
+		List<Files> file=mainService.getUserFiles(userId);
+		
+		model.addAttribute("files", file);
+		
+		return "userdetails";
 	}
+	
+	@SuppressWarnings("unused")
+	@RequestMapping(value="/editFile",method=RequestMethod.GET)
+	public String edit(@RequestParam("name")String fileName,HttpSession session,Model model) throws IOException, InterruptedException
+	{
+		
+		try
+		{
+		Runtime runtime = Runtime.getRuntime();
+		Process process = runtime.exec("gedit /home/webwerks/apache-tomcat-7.0.39/webapps/files/"+fileName);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		Integer userId=(Integer) session.getAttribute("userId");
+		List<Files> file=mainService.getUserFiles(userId);
+		
+		model.addAttribute("files", file);
+		
+		return "userdetails";
+	
+	}
+	
+	
+	
 }

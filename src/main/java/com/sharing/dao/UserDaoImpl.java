@@ -13,8 +13,8 @@ public class UserDaoImpl implements UserDao{
 	
 	
 
-	public void save(User user1) {
-		  sessionFactory.getCurrentSession().save(user1);
+	public void save(User user) {
+		  sessionFactory.getCurrentSession().save(user);
 		
 		
 	}

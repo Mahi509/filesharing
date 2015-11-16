@@ -201,6 +201,7 @@ public class MainController {
 		return "userContent";
 	}
 	
+
 	
 	//Search option mapping from userheader tiles
 	@RequestMapping(value="/main/userSearch", method = RequestMethod.POST)
@@ -227,8 +228,15 @@ public class MainController {
 		}
 
 	}
-	
-	
+	@RequestMapping(value="/main/signout",method=RequestMethod.GET)
+	public String signOut(HttpSession session)
+	{
+		System.out.println("in controller");
+		session.invalidate();
+		
+		return "home";
+	}
+
 	//Search option mapping from Homepage tiles
 	@RequestMapping(value="/main/homeSearch", method = RequestMethod.POST)
 	public String homeSearch(Model model, HttpServletRequest request){

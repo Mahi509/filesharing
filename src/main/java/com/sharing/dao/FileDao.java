@@ -13,17 +13,16 @@ import com.sharing.model.User;
 @Repository("fileDao")
 public class FileDao {
 
-	
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	
-	public void deleteFile(Integer fileId,Integer userId)
-	{
-		Session session=sessionFactory.getCurrentSession();
-		Files file=(Files)session.get(Files.class,fileId);
-		//session.delete(file);*/
-		User user=(User) session.get(User.class,1);
+	public void deleteFile(Integer fileId, Integer userId) {
+		Session session = sessionFactory.getCurrentSession();
+		Files file = (Files) session.get(Files.class, fileId);
+		// session.delete(file);*/
+
+		User user = (User) session.get(User.class, userId);
+
 		user.getFiles().remove(file);
 		System.out.println("Successfull ");
 	}
