@@ -54,6 +54,7 @@ public class UploadController {
 
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
+		OutputStream op=null;
 
 		MultipartFile file = uploadedFile.getFile();
 
@@ -79,9 +80,9 @@ public class UploadController {
 		
 		try {
 			inputStream = file.getInputStream();
-			File f=new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/",fileName);
+			File f=new File("/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/",fileName);
 			File newFile = new File(
-					"/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+user+"/");
+					"/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"+user+"/");
 			File myFile=new File(newFile,fileName);
 			if (!newFile.exists()) {
 				
@@ -90,7 +91,7 @@ public class UploadController {
 					f.createNewFile();
 			}
 			outputStream = new FileOutputStream(myFile);
-			outputStream = new FileOutputStream(f);
+			op= new FileOutputStream(f);
 			int read = 0;
 			byte[] bytes = new byte[1024];
 			

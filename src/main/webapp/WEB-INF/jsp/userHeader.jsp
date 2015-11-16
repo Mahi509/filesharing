@@ -55,7 +55,7 @@
 	margin-top: 5px;
 	padding-bottom: 50px;
 	overflow: hidden;
-	margin-left: 15%;
+	margin-left: 0%;
 	float: left;
 }
 
@@ -65,7 +65,7 @@
 }
 
 #mybox {
-	margin-left: 300px
+	margin-left: 250px
 }
 
 #glyph {
@@ -81,6 +81,14 @@ padding-top:2px;
 	font-size: 23px;
 	text-decoration: none;
 }
+#home_img{
+	height:57px;
+	width:180px;
+	margin-top: 5px;
+	float:left;
+	margin-left: 20px;
+  	margin-right: 20px;
+}
 </style>
 
 
@@ -90,7 +98,12 @@ padding-top:2px;
 
 
 <body>
+	<span><a href="${pageContext.request.contextPath}/main/userfiledetails">
+	<%-- <img id="home_img" alt="Home" src="${pageContext.request.contextPath}/resources/images/home_img.jpeg"> --%>
+	<img id="home_img" alt="Home" src="${pageContext.request.contextPath}/resources/images/logo.png">
+	</a></span>
 	<div id="main">
+		
 		<span id="mybox"><form:form id="searchbox" action="${pageContext.request.contextPath}/main/userSearch">
 				<input id="search" name="search" type="text" placeholder="Type here">
 				<input id="submit" type="submit" value="Search">

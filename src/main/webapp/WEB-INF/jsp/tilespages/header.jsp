@@ -78,20 +78,48 @@
     border-radius: 50px 3px 3px 50px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);            
 }
+
+#home_img{
+	height:57px;
+	width:180px;
+	margin-top: 2px;
+	float:left;
+	margin-left: 20px;
+  	margin-right: 20px;
+  	margin-bottom: 2px;
+}
+
+.row {
+	margin-right: -15px;
+  	margin-left: 150px;
+  
+}
+.container-fluid{
+	width: 100%;
+	height: 67px;
+}
 		</style>
 	</head>
 	<body>
 	
 		<div class="my">
+		<span><a href="${pageContext.request.contextPath}/">
+	<%-- <img id="home_img" alt="Home" src="${pageContext.request.contextPath}/resources/images/home_img.jpeg"> --%>
+	<img id="home_img" alt="Home" src="${pageContext.request.contextPath}/resources/images/logo.png">
+	</a></span>
+		<span>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
-					<button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
+				<!-- <div> -->
+					<!-- <button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal"> -->
+					<button style="align:left;margin:0 0 0 120%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal"> 
 					  Sign In
 					</button>
 				</div>	
 			</div>
 		</div>
+		</span>
 	</div>
 	<form:form id="searchbox" action="${pageContext.request.contextPath}/main/userSearch">
     <input id="search" type="text" name="search" placeholder="Type here">

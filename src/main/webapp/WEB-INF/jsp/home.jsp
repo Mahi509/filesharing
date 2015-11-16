@@ -51,6 +51,21 @@ $(window).load(function() {
 	background: url('${pageContext.request.contextPath}/resources/images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
 }
 
+#home_img{
+	height:57px;
+	width:180px;
+	margin-top: 2px;
+	float:left;
+	margin-left: 20px;
+  	margin-right: 20px;
+  	margin-bottom: 2px;
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: 100px;
+}
+
 </style>
 	
 	
@@ -60,19 +75,22 @@ $(window).load(function() {
 
 <div class="loader"></div>
 
-	<div class="my">
-
+		<div class="my">
+		<span><a href="${pageContext.request.contextPath}/">
+	<%-- <img id="home_img" alt="Home" src="${pageContext.request.contextPath}/resources/images/home_img.jpeg"> --%>
+	<img id="home_img" alt="Home" src="${pageContext.request.contextPath}/resources/images/logo.png">
+	</a></span>
+		<span>
 		<div class="container-fluid">
-
 			<div class="row">
-
 				<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
-					<button style="align: left; margin: 0 0 0 150%" id='modal-launcher'
-						class="btn btn-primary btn-lg" data-toggle="modal"
-						data-target="#login-modal">Sign In</button>
-				</div>
+					<button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
+					  Sign In
+					</button>
+				</div>	
 			</div>
 		</div>
+		</span>
 	</div>
 
 

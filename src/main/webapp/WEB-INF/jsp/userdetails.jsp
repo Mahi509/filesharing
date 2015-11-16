@@ -59,10 +59,11 @@
         </button>
 </span>
 <span id="button">
-<button type="button" class="btn btn-default btn-sm">
+<button type="button"  class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-cloud-upload"></span> Upload 
         </button>
-</span>
+</span> 
+
 <span id="button">
 	<button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-trash"></span> Trash 
