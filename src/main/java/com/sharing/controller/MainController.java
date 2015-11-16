@@ -197,7 +197,14 @@ public class MainController {
 		return "userContent";
 	}
 	
-	
+	@RequestMapping(value="/main/signout",method=RequestMethod.GET)
+	public String signOut(HttpSession session)
+	{
+		System.out.println("in controller");
+		session.invalidate();
+		
+		return "home";
+	}
 
 	
 	

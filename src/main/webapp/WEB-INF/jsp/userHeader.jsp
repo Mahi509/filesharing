@@ -6,10 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+	.bs-example{
+    	margin: 20px;
+    }
+</style>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="jquery-1.2.6.min.js"></script>
@@ -90,9 +95,17 @@ padding-top:2px;
 				<input id="search" type="text" placeholder="Type here">
 				<input id="submit" type="submit" value="Search">
 			</form:form></span>
-			<a id="msg" href="#"><span class="glyphicon glyphicon-user"></span>  ${userName}  </a>
 			
-		 <a href="#"> <span id="glyph" class="glyphicon glyphicon-comment"></span>
+			 <a id="msg" href="${pageContext.request.contextPath}/main/userfiledetails"> Haider <span class="glyphicon glyphicon-user"></span></a>  
+		<span class="bs-example">
+   		<span class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
+   		 <b class="caret"></b></a><ul class="dropdown-menu">
+            <li><a href="${pageContext.request.contextPath}/main/signout">Sign Out</a></li>
+            <li><a href="${pageContext.request.contextPath}/main/userfiledetails">My Account</a></li>
+        </ul></span>
+        </span> 
+			
+		  <a href="#"> <span id="glyph" class="glyphicon glyphicon-comment"></span>
 		</a> <a href="#"> <span id="glyph" class="glyphicon glyphicon-cog"></span>
 		</a>
 	</div>
