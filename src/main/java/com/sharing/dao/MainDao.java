@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sharing.model.DeleteFiles;
 import com.sharing.model.Files;
 import com.sharing.model.User;
 import com.sharing.model.UserFiles;
@@ -103,6 +104,22 @@ public class MainDao {
 		return new ArrayList<UserFiles>(user.getFiles());
 		
 	}
+	
+	
+	//data from Trash table
+	public List<DeleteFiles> getDeletedFiles(Integer userId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+			
+		Query query = session.createQuery("from User as u where u.userId="
+				+ userId);
+		
+		User user = (User) query.uniqueResult();
+		return new ArrayList<DeleteFiles>(user.getDeleteFiles());
+		
+	}
+	
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Files> getHomeSearchFiles(String search){

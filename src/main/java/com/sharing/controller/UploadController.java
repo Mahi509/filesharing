@@ -81,9 +81,9 @@ public class UploadController {
 		
 		try {
 			inputStream = file.getInputStream();
-			File f=new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/",fileName);
+			File f=new File("/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/",fileName);
 			File newFile = new File(
-					"/home/webwerks/apache-tomcat-7.0.39/webapps/files"+user+"/");
+					"/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files"+user+"/");
 			File myFile=new File(newFile,fileName);
 			if (!newFile.exists()) 
 			{

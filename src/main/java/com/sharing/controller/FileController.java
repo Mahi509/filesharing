@@ -37,7 +37,7 @@ public class FileController {
 			HttpSession session) throws IOException {
 		
 		String userName=(String) session.getAttribute("userName");
-		File file = new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+userName+"/"+fileName);
+		File file = new File("/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"+userName+"/"+fileName);
 		InputStream is = new FileInputStream(file);
 
 		// MIME type of the file
@@ -80,7 +80,7 @@ public class FileController {
 		try
 		{
 		Runtime runtime = Runtime.getRuntime();
-		Process process = runtime.exec("gedit /home/webwerks/apache-tomcat-7.0.39/webapps/files/"+userName+"/"+fileName);
+		Process process = runtime.exec("gedit /home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"+userName+"/"+fileName);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -95,6 +95,50 @@ public class FileController {
 	
 	}
 	
+	//Restore deleted files by user
+	@RequestMapping(value="/restorefile",method=RequestMethod.GET)
+	public String restoreFile(@RequestParam("id")Integer fileId,HttpSession session,Model model)
+	{
+		System.out.println("i m inside restorefiles");
+		Integer userId=(Integer) session.getAttribute("userId");
+		fileService.restoreFile(fileId,userId);
+		
+		List<UserFiles> file=mainService.getUserFiles(userId);
+		
+		model.addAttribute("files", file);
+		
+		return "userdetails";
+	}
+	
+	//Delete for forever from Restore tables 
+	@RequestMapping(value="/deleteforever",method=RequestMethod.GET)
+	public String deleteForever(@RequestParam("id")Integer fileId,HttpSession session,Model model)
+	{
+		System.out.println("i m inside deleteforever");
+		Integer userId=(Integer) session.getAttribute("userId");
+		fileService.deleteforever(fileId,userId);
+		
+		List<UserFiles> file=mainService.getUserFiles(userId);
+		
+		model.addAttribute("files", file);
+		
+		return "trash";
+	}
+	
+	//Delete from Restore tables 
+		@RequestMapping(value="/deletetrash",method=RequestMethod.GET)
+		public String deletetrash(@RequestParam("id")Integer fileId,HttpSession session,Model model)
+		{
+			System.out.println("i m inside deleteforever");
+			Integer userId=(Integer) session.getAttribute("userId");
+			fileService.deletetrash(fileId,userId);
+			
+			List<UserFiles> file=mainService.getUserFiles(userId);
+			
+			model.addAttribute("files", file);
+			
+			return "trash";
+		}
 	
 	
 }

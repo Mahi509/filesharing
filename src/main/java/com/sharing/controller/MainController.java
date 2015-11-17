@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sharing.model.DeleteFiles;
 import com.sharing.model.Files;
 import com.sharing.model.User;
 import com.sharing.model.UserFiles;
@@ -187,6 +188,21 @@ public class MainController {
 		return "userdetails";
 		
 	}
+	
+	
+	//Mapping for Trash items for users
+	@RequestMapping(value="/main/userDeletedFileDetails",method=RequestMethod.GET)
+	public String userDeletedFileDetails(HttpSession session,Model model)
+	{
+		System.out.println(" i m inside trash page ");
+		Integer userId=(Integer) session.getAttribute("userId");
+		List<DeleteFiles> file=mainService.getUserDeletedFiles(userId);
+		
+		model.addAttribute("files", file);
+		return "trash";
+		
+	}
+	
 	
 
 	@RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)

@@ -19,7 +19,7 @@ padding-left: 40px;
 <body> 
 
 <span ><a id="menu" href="${pageContext.request.contextPath}/main/userfiledetails">My FileShare</a></span><br>
-<span ><a id="menu" href="#">Recycle Bin</a></span><br>
+<span ><a id="menu" href="${pageContext.request.contextPath}/main/userDeletedFileDetails">Recycle Bin</a></span><br>
 <span ><a id="menu" href="#">Shared with me</a></span><br>
 <span ><a id="menu" href="#">FileShare Tools</a></span><br>
 

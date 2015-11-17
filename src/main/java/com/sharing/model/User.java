@@ -47,6 +47,20 @@ public class User {
 	@JoinTable(name = "FilesOfUser", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "fileId"))
 	private List<UserFiles> files;
 
+	@OneToMany
+	@Cascade({ CascadeType.ALL })
+	@JoinTable(name = "DeletedFiles", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "fileId"))
+	private List<DeleteFiles> deleteFiles;
+	
+	
+	public List<DeleteFiles> getDeleteFiles() {
+		return deleteFiles;
+	}
+
+	public void setDeleteFiles(List<DeleteFiles> deleteFiles) {
+		this.deleteFiles = deleteFiles;
+	}
+
 	public List<UserFiles> getFiles() {
 		return files;
 	}
