@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sharing.dao.MainDao;
 import com.sharing.model.Files;
 import com.sharing.model.User;
+import com.sharing.model.UserFiles;
 
 @Service("mainService")
 public class MainService {
@@ -45,7 +46,7 @@ public class MainService {
 		return mainDao.getUserName(name);
 	}
 	
-	public List<Files> getUserFiles(Integer userId)
+	public List<UserFiles> getUserFiles(Integer userId)
 	{
 		return mainDao.getUserFiles(userId);
 		

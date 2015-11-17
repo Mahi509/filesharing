@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sharing.model.Files;
 import com.sharing.model.User;
+import com.sharing.model.UserFiles;
 import com.sharing.service.MainService;
 
 @Controller("mainController")
@@ -31,9 +32,9 @@ public class MainController {
 	{
 		System.out.println("in controller");
 		session.invalidate();
-		List<Files> file=mainService.getUserFiles(2);
+		/*List<UserFiles> file=mainService.getUserFiles(2);*/
 		
-		model.addAttribute("files", file);
+		//model.addAttribute("files", file);
 		return "home";
 	}
 
@@ -176,7 +177,7 @@ public class MainController {
 	{
 		System.out.println(" i m inside userdetails page ");
 		Integer userId=(Integer) session.getAttribute("userId");
-		List<Files> file=mainService.getUserFiles(userId);
+		List<UserFiles> file=mainService.getUserFiles(userId);
 		
 		model.addAttribute("files", file);
 		return "userdetails";

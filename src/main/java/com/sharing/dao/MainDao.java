@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sharing.model.Files;
 import com.sharing.model.User;
+import com.sharing.model.UserFiles;
 
 @Repository("mainDao")
 @Transactional
@@ -56,7 +57,14 @@ public class MainDao {
 		Session session = sessionFactory.getCurrentSession();
 		User user=(User) session.get(User.class,userId);
 		
-		Files file = new Files();
+		Files files=new Files();
+		files.setFileName(fileName);
+		files.setFilesize(size);
+		files.setFiledate(currentDate);
+		files.setFileby(user.getUserName());
+		session.save(files);
+		
+		UserFiles file = new UserFiles();
 		file.setFileName(fileName);
 		file.setFilesize(size);
 		file.setFiledate(currentDate);
@@ -83,13 +91,13 @@ public class MainDao {
 		return (User) user; 
 	}
 	
-	public List<Files> getUserFiles(Integer userId)
+	public List<UserFiles> getUserFiles(Integer userId)
 	{
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from User as u where u.userId="
 				+ userId);
 		User user = (User) query.uniqueResult();
-		return new ArrayList<Files>(user.getFiles());
+		return new ArrayList<UserFiles>(user.getFiles());
 	}
 
 }

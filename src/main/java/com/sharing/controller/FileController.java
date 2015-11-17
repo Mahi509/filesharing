@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sharing.model.Files;
+import com.sharing.model.UserFiles;
 import com.sharing.service.FileService;
 import com.sharing.service.MainService;
 
@@ -62,7 +63,7 @@ public class FileController {
 		Integer userId=(Integer) session.getAttribute("userId");
 		fileService.deleteFile(fileId,userId);
 		
-		List<Files> file=mainService.getUserFiles(userId);
+		List<UserFiles> file=mainService.getUserFiles(userId);
 		
 		model.addAttribute("files", file);
 		
@@ -73,18 +74,19 @@ public class FileController {
 	@RequestMapping(value="/editFile",method=RequestMethod.GET)
 	public String edit(@RequestParam("name")String fileName,HttpSession session,Model model) throws IOException, InterruptedException
 	{
-		
+		Integer userId=(Integer) session.getAttribute("userId");
+		String userName=(String) session.getAttribute("userName");
 		try
 		{
 		Runtime runtime = Runtime.getRuntime();
-		Process process = runtime.exec("gedit /home/webwerks/apache-tomcat-7.0.39/webapps/files/"+fileName);
+		Process process = runtime.exec("gedit /home/webwerks/apache-tomcat-7.0.39/webapps/files/"+userName+"/"+fileName);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 		
-		Integer userId=(Integer) session.getAttribute("userId");
-		List<Files> file=mainService.getUserFiles(userId);
+		
+		List<UserFiles> file=mainService.getUserFiles(userId);
 		
 		model.addAttribute("files", file);
 		

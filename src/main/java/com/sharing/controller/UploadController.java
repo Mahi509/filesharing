@@ -54,7 +54,8 @@ public class UploadController {
 
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
-
+		OutputStream op = null;
+		
 		MultipartFile file = uploadedFile.getFile();
 
 		double fileSize = ((file.getSize()) / 1048576);
@@ -83,14 +84,15 @@ public class UploadController {
 			File newFile = new File(
 					"/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+user+"/");
 			File myFile=new File(newFile,fileName);
-			if (!newFile.exists()) {
+			if (!newFile.exists()) 
+			{
 				
 					newFile.mkdir();
 					myFile.createNewFile();
 					f.createNewFile();
 			}
 			outputStream = new FileOutputStream(myFile);
-			outputStream = new FileOutputStream(f);
+			op = new FileOutputStream(f);
 			int read = 0;
 			byte[] bytes = new byte[1024];
 			
@@ -98,6 +100,7 @@ public class UploadController {
 
 			while ((read = inputStream.read(bytes)) != -1) {
 				outputStream.write(bytes, 0, read);
+				op.write(bytes,0,read);
 
 			}
 			model.addAttribute("message", fileName);

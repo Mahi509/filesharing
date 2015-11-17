@@ -1,6 +1,5 @@
 package com.sharing.model;
 
-
 import javax.persistence.Column;
 
 import java.util.List;
@@ -22,37 +21,39 @@ public class User {
 
 	@Id
 	@GeneratedValue
-	@Column(name="userId")
+	@Column(name = "userId")
 	private Integer userId;
-@Column(name="firstName")
+	
+	@Column(name = "firstName")
 	private String firstName;
-@Column(name="lastName")
+	
+	@Column(name = "lastName")
 	private String lastName;
-@Column(name="userName")
+	
+	@Column(name = "userName")
 	private String userName;
-@Column(name="password")
+	
+	@Column(name = "password")
 	private String password;
-@Column(name="confirmPassword")
+	
+	@Column(name = "confirmPassword")
 	private String confirmPassword;
-@Column(name="emailId")
+	
+	@Column(name = "emailId")
 	private String emailId;
 
-@OneToMany
-@Cascade({CascadeType.ALL})
-@JoinTable
-		(
-		name="UserFiles",
-		joinColumns=@JoinColumn(name="userId"),
-		inverseJoinColumns=@JoinColumn(name="fileId")
-		)
-private List<Files> files;
+	@OneToMany
+	@Cascade({ CascadeType.ALL })
+	@JoinTable(name = "FilesOfUser", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "fileId"))
+	private List<UserFiles> files;
 
-public List<Files> getFiles() {
-	return files;
-}
+	public List<UserFiles> getFiles() {
+		return files;
+	}
 
-public void setFiles(List<Files> files) {
-	this.files = files;}
+	public void setFiles(List<UserFiles> files) {
+		this.files = files;
+	}
 
 	public String getConfirmPassword() {
 		return confirmPassword;

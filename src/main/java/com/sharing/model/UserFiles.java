@@ -4,11 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 
-@Entity
-@Table(name = "Files")
-public class Files {
+@Entity(name="Userfiles")
+public class UserFiles {
+
 
 	@Id
 	@Column(name = "fileId")
@@ -23,7 +25,20 @@ public class Files {
 
 	private double filesize;
 
-	
+
+	@ManyToOne
+	@JoinTable(name = "FilesOfUser", joinColumns = @JoinColumn(name = "fileId"), 
+	inverseJoinColumns = @JoinColumn(name = "userId"))
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 
 	public Integer getFileId() {
 		return fileId;
@@ -68,4 +83,5 @@ public class Files {
 
 	
 
+	
 }
