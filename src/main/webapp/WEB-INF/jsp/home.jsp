@@ -11,6 +11,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="jquery-1.2.6.min.js"></script>  	
@@ -28,31 +31,75 @@
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 		
+		<script type="text/javascript">
+$(window).load(function() {
+	$(".loader").fadeOut("slow");
+})
+</script>
+		
+		
+		
+<style>
+
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('${pageContext.request.contextPath}/resources/images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+
+#home_img{
+	height:57px;
+	width:180px;
+	margin-top: 2px;
+	float:left;
+	margin-left: 20px;
+  	margin-right: 20px;
+  	margin-bottom: 2px;
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: 100px;
+}
+
+</style>
+	
+	
+		
 </head>
 <body>
 
+<div class="loader"></div>
 
-	<div class="my">
-
+		<div class="my">
+		<span><a href="${pageContext.request.contextPath}/">
+	<%-- <img id="home_img" alt="Home" src="${pageContext.request.contextPath}/resources/images/home_img.jpeg"> --%>
+	<img id="home_img" alt="Home" src="${pageContext.request.contextPath}/resources/images/logo.png">
+	</a></span>
+		<span>
 		<div class="container-fluid">
-
 			<div class="row">
-
 				<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
-					<button style="align: left; margin: 0 0 0 150%" id='modal-launcher'
-						class="btn btn-primary btn-lg" data-toggle="modal"
-						data-target="#login-modal">Sign In</button>
-				</div>
+					<button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
+					  Sign In
+					</button>
+				</div>	
 			</div>
 		</div>
+		</span>
 	</div>
 
 
 
-	<form:form id="searchbox" action="">
-		<input id="search" type="text" placeholder="Type here">
+	<form:form id="searchbox" action="${pageContext.request.contextPath}/main/homeSearch">
+		<input id="search" type="text" name="search" placeholder="Type here">
 		<input id="submit" type="submit" value="Search">
 	</form:form>
+	
 	<p id="list">
 		<a href="${pageContext.request.contextPath}/main/glymph?id=all"><span
 			id="glymp" class="glyphicon glyphicon-file">All Files</span></a> <a

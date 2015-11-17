@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sharing.model.Files;
 import com.sharing.model.User;
 import com.sharing.model.UserFiles;
 
@@ -14,7 +13,6 @@ import com.sharing.model.UserFiles;
 @Repository("fileDao")
 public class FileDao {
 
-	
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -24,7 +22,7 @@ public class FileDao {
 		Session session=sessionFactory.getCurrentSession();
 		UserFiles file=(UserFiles)session.get(UserFiles.class,fileId);
 		session.delete(file);
-		User user=(User) session.get(User.class,userId);
+		User user = (User) session.get(User.class, userId);
 		user.getFiles().remove(file);
 		System.out.println("Successfully Deleted ");
 	}

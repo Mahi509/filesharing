@@ -33,10 +33,11 @@ public class FileController {
 	
 	//Downloading a file 
 	@RequestMapping(value = "/downloadfile", method = RequestMethod.GET)
-	public void download(@RequestParam("name")String fileName,HttpServletResponse response) throws IOException {
+	public void download(@RequestParam("name")String fileName,HttpServletResponse response,
+			HttpSession session) throws IOException {
 		
-		
-		File file = new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+fileName);
+		String userName=(String) session.getAttribute("userName");
+		File file = new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+userName+"/"+fileName);
 		InputStream is = new FileInputStream(file);
 
 		// MIME type of the file

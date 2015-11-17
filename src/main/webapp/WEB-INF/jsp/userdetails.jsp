@@ -5,11 +5,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>User Files detail</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/userdetails.css" />
+	
+
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
  	 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -47,10 +59,11 @@
         </button>
 </span>
 <span id="button">
-<button type="button" class="btn btn-default btn-sm">
+<button type="button"  class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-cloud-upload"></span> Upload 
         </button>
-</span>
+</span> 
+
 <span id="button">
 	<button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-trash"></span> Trash 
