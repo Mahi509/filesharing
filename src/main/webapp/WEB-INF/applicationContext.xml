@@ -13,7 +13,7 @@
  <mvc:annotation-driven/>
  <import resource="classpath:dataSource.xml"/>
 
- <mvc:resources mapping="/img/**" location="file:/home/webwerks/apache-tomcat-7.0.39/webapps/files/"/>
+ <mvc:resources mapping="/img/**" location="file:/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"/>
 
  <context:component-scan base-package="com.sharing"/>
 
