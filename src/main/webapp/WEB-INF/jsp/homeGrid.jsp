@@ -34,9 +34,10 @@
 }
 
 #grid {
-	width: 180px;
-	height: 150px;
-	margin: 10px;
+	width: 250px;
+    height: 150px;
+    margin: 10px;
+    padding-bottom: 200px;
 }
 </style>
 </head>
@@ -55,10 +56,9 @@
 
 		<div class="main">
 			<form method="get" action="#" id="grid">
-				<a
-					href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
-					<b style="color: blue;">${file.fileName}</b>
-				</a> <span id="a"> <c:set var="filename" value="${file.fileName}"></c:set>
+				<a href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
+					<b style="color:blue">${file.fileName}</b></a></br>
+				 <span id="a"><c:set var="filename" value="${file.fileName}"></c:set>
 					<c:if test="${fn:contains(filename, '.mp3')}">
 						<img src="${pageContext.request.contextPath}/img/mp3image.jpeg"
 							height="100px" width="100px">
@@ -73,8 +73,7 @@
 							height="100px" width="100px">
 					</c:if>
 
-				</span><br> <br> <br> <br> <br> <a href="#">Add
-					to account</a><br>
+				</span> <br> <br> <br> <br> <br> <a href="#">Add to account</a>
 
 			</form>
 		</div>
@@ -87,6 +86,6 @@
 
 
 </body>
-</body>
+
 
 </html>

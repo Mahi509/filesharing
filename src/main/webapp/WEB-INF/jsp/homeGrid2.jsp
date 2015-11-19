@@ -34,9 +34,10 @@
 }
 
 #grid {
-	width: 200px;
-	height: 150px;
-	margin: 10px;
+	width: 250px;
+    height: 150px;
+    margin: 10px;
+    padding-bottom: 200px;
 }
 </style>
 </head>
@@ -56,29 +57,26 @@
 
 		<div class="main">
 			<form method="get" action="#" id="grid">
-				<a
-					href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
-					<b style="color: blue;">${file.fileName}</b>
-				</a>
-				
+				<a href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
+					<b style="color:blue">${file.fileName}</b></a><br>
 				<span id="a"> <c:set var="filename" value="${file.fileName}"></c:set>
-						<c:if test="${fn:contains(filename, '.mp3')}">
+						<c:if test="${fn:contains(filename,'.mp3')}">
 							<img src="${pageContext.request.contextPath}/img/mp3image.jpeg"
 								height="100px" width="100px">
-						</c:if> <c:if test="${fn:contains(filename, '.jpeg')}">
-							<img
-								src="${pageContext.request.contextPath}/img/${file.fileName}"
+						</c:if> <c:if test="${fn:contains(filename,'.jpeg')}">
+							<img src="${pageContext.request.contextPath}/img/${file.fileName}"
 								height="100px" width="100px">
-						</c:if> <c:if test="${fn:contains(filename, '.pdf')}">
+						</c:if> <c:if test="${fn:contains(filename,'.pdf')}">
 							<img src="${pageContext.request.contextPath}/img/images.jpeg"
 								height="100px" width="100px">
-						</c:if> <c:if test="${fn:contains(filename, '.mp4')}">
+						</c:if> <c:if test="${fn:contains(filename,'.mp4')}">
 							<img src="${pageContext.request.contextPath}/img/imagesmp4.png"
 								height="100px" width="100px">
 						</c:if>
 
 					</span><br>
 				
+				<br>
 				<br>
 				<br>
 				<br>

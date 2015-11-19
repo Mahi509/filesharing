@@ -49,5 +49,9 @@
         <put-attribute name="body" value="/WEB-INF/jsp/userdetails.jsp" /> 
    </definition> 
   
+  <definition name="trash" extends="user.definition">  
+        <put-attribute name="title" value="Files Page" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/trash.jsp" /> 
+   </definition> 
   
 </tiles-definitions>  

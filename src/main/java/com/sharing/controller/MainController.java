@@ -9,14 +9,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sharing.model.DeleteFiles;
 import com.sharing.model.Files;
-import com.sharing.model.UploadedFile;
 import com.sharing.model.User;
 import com.sharing.model.UserFiles;
 import com.sharing.service.MainService;
@@ -47,7 +47,7 @@ public class MainController {
 		
 	}
 
-	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+	@RequestMapping(value = "authenticate", method = RequestMethod.POST)
 	public String authenticate(@RequestParam("username") String username,
 			@RequestParam("password") String password, HttpSession session,
 			HttpServletRequest request, Model model) {
@@ -58,7 +58,16 @@ public class MainController {
 			System.out.println(" USER NAME "+user.getUserName());
 			session.setAttribute("userName", user.getUserName());
 			session.setAttribute("userId",user.getUserId());
-			return "userhome";
+			if((String)session.getAttribute("userName")!=null)
+			{
+				upload.temp(model, session);
+				List<UserFiles> file=mainService.getUserFiles((Integer)session.getAttribute("userId"));
+				model.addAttribute("files", file);
+				
+				return "userdetails";
+			}
+			
+			return "home";
 
 		} else {
 
@@ -194,6 +203,21 @@ public class MainController {
 		
 	}
 	
+	
+	//Mapping for Trash items for users
+	@RequestMapping(value="/main/userDeletedFileDetails",method=RequestMethod.GET)
+	public String userDeletedFileDetails(HttpSession session,Model model)
+	{
+		System.out.println(" i m inside trash page ");
+		Integer userId=(Integer) session.getAttribute("userId");
+		List<DeleteFiles> file=mainService.getUserDeletedFiles(userId);
+		
+		model.addAttribute("files", file);
+		return "trash";
+		
+	}
+	
+	
 
 	@RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
 	public String forgotpassword() {
@@ -235,7 +259,7 @@ public class MainController {
 		}
 
 	}
-	@RequestMapping(value="/main/signout",method=RequestMethod.GET)
+	@RequestMapping(value="main/signout",method=RequestMethod.GET)
 	public String signOut(HttpSession session)
 	{
 		System.out.println("in controller");
@@ -263,5 +287,21 @@ public class MainController {
 		
 	}
 
+	@RequestMapping(value = "main/checksession", method = RequestMethod.POST)
+	public @ResponseBody String checkSession(HttpSession session) {
+		System.out.println("SESSION INVALID");
+
+		String user = (String) session.getAttribute("userName");
+		System.out.println("In session is " + user);
+		if (user!= null) {
+			return "yes";
+		}
+		return "no";
+	}
 	
+	@RequestMapping(value="main/showLogin", method=RequestMethod.GET)
+	public String showLogin()
+	{
+		return "showFile";
+	}
 }

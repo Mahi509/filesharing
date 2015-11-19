@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sharing.model.DeleteFiles;
 import com.sharing.model.Files;
 import com.sharing.model.UserFiles;
 import com.sharing.service.FileService;
@@ -95,6 +96,49 @@ public class FileController {
 	
 	}
 	
+	//Restore deleted files by user
+	@RequestMapping(value="/restorefile",method=RequestMethod.GET)
+	public String restoreFile(@RequestParam("id")Integer fileId,HttpSession session,Model model)
+	{
+		System.out.println("i m inside restorefiles");
+		Integer userId=(Integer) session.getAttribute("userId");
+		fileService.restoreFile(fileId,userId);
+		
+		List<UserFiles> file=mainService.getUserFiles(userId);
+		
+		model.addAttribute("files", file);
+		
+		return "userdetails";
+	}
+	
+	//Delete for forever from Restore tables 
+	@RequestMapping(value="/deleteforever",method=RequestMethod.GET)
+	public String deleteForever(@RequestParam("id")Integer fileId,HttpSession session,Model model)
+	{
+		System.out.println("i m inside deleteforever");
+		Integer userId=(Integer) session.getAttribute("userId");
+		fileService.deleteforever(fileId,userId);
+		
+		List<UserFiles> file=mainService.getUserFiles(userId);
+		
+		model.addAttribute("files", file);
+		
+		return "trash";
+	}
+	
+	//Delete from Restore tables 
+		@RequestMapping(value="/deletetrash",method=RequestMethod.GET)
+		public String deletetrash(@RequestParam("id")Integer fileId,HttpSession session,Model model)
+		{
+			System.out.println("i m inside deletetrash");
+			Integer userId=(Integer) session.getAttribute("userId");
+			fileService.deletetrash(fileId,userId);
+			
+			List<DeleteFiles> file=mainService.getUserDeletedFiles(userId);
+			
+			model.addAttribute("files", file);
+			return "trash";
+		}
 	
 	
 }

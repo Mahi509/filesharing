@@ -16,4 +16,22 @@ public class FileService {
 		fileDao.deleteFile(fileId,userId);
 	}
 	
+	public void deleteforever(Integer fileId,Integer userId)
+	{
+		fileDao.deleteforever(fileId,userId);
+	}
+	
+	
+	public void restoreFile(Integer fileId,Integer userId)
+	{
+		fileDao.restoreFile(fileId,userId);
+	}
+	
+	public void deletetrash(Integer fileId,Integer userId)
+	{
+		fileDao.deletetrash(fileId,userId);
+	}
+	
+	
+	
 }

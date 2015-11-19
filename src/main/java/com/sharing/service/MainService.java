@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sharing.dao.MainDao;
+import com.sharing.model.DeleteFiles;
 import com.sharing.model.Files;
 import com.sharing.model.User;
 import com.sharing.model.UserFiles;
@@ -49,6 +50,12 @@ public class MainService {
 	public List<UserFiles> getUserFiles(Integer userId)
 	{
 		return mainDao.getUserFiles(userId);
+		
+	}
+	
+	public List<DeleteFiles> getUserDeletedFiles(Integer userId)
+	{
+		return mainDao.getDeletedFiles(userId);
 		
 	}
 	

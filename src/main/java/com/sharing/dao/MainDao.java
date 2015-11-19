@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sharing.model.DeleteFiles;
 import com.sharing.model.Files;
 import com.sharing.model.User;
 import com.sharing.model.UserFiles;
@@ -96,20 +97,37 @@ public class MainDao {
 	{
 		Session session = sessionFactory.getCurrentSession();
 			
+		/*Query query = session.createQuery("from User as u where u.userId="
+				+ userId);*/
+		
+		User userfile = (User) session.get(User.class,userId);
+		
+		return new ArrayList<UserFiles>(userfile.getFiles());
+		
+	}
+	
+	
+	//data from Trash table
+	public List<DeleteFiles> getDeletedFiles(Integer userId)
+	{
+		Session session = sessionFactory.getCurrentSession();
+			
 		Query query = session.createQuery("from User as u where u.userId="
 				+ userId);
 		
 		User user = (User) query.uniqueResult();
-		return new ArrayList<UserFiles>(user.getFiles());
+		return new ArrayList<DeleteFiles>(user.getDeleteFiles());
 		
 	}
+	
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Files> getHomeSearchFiles(String search){
 		
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria=session.createCriteria(Files.class).
-				add(Restrictions.like("fileName",search+"%", MatchMode.ANYWHERE));
+				add(Restrictions.like("fileName","%"+search+"%", MatchMode.ANYWHERE));
 	
 		System.out.println("Entering search Dao");
 		

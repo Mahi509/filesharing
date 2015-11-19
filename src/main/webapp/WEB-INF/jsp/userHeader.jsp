@@ -109,7 +109,7 @@ padding-top:2px;
 				<input id="submit" type="submit" value="Search">
 			</form:form></span>
 			
-			 <a id="msg" href="${pageContext.request.contextPath}/main/userfiledetails"> Haider <span class="glyphicon glyphicon-user"></span></a>  
+			 <a id="msg" href="${pageContext.request.contextPath}/main/userfiledetails"> ${userName} <span class="glyphicon glyphicon-user"></span></a>  
 		<span class="bs-example">
    		<span class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
    		 <b class="caret"></b></a><ul class="dropdown-menu">

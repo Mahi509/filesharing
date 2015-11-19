@@ -32,6 +32,21 @@ public class UploadController {
 	@Autowired
 	MainService mainService;
 
+	static MultipartFile file;
+	InputStream inputStream = null;
+	 OutputStream outputStream = null;
+
+	OutputStream op=null;
+	
+	
+	public UploadController() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public UploadController(MultipartFile file) {
+		UploadController.file=file;
+	}
+	
 	@RequestMapping("/fileUploadForm")
 	public String getUploadForm(
 			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
@@ -40,47 +55,57 @@ public class UploadController {
 		return "uploadForm";
 	}
 
-	@SuppressWarnings("resource")
-	@RequestMapping("/fileUpload")
+	
+	
+	
+	@RequestMapping(value={"/fileUpload","/main/fileUpload"})
 	public String fileUploaded(
 			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
 
-			BindingResult result,HttpSession session,Model model) {
+			BindingResult result,HttpSession session,Model model) throws IOException {
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		Date date = new Date();
-
-		String currentDate = dateFormat.format(date);
-
-		InputStream inputStream = null;
-		OutputStream outputStream = null; 
- 
-		OutputStream op=null;
-
+		
 		MultipartFile file = uploadedFile.getFile();
-
-		double fileSize = ((file.getSize()) / 1048576);
-
+		inputStream = file.getInputStream();
+		UploadController up=new UploadController(file);
 		fileValidator.validate(uploadedFile, result);
+		String userName=(String) session.getAttribute("userName");
+		
+		if(userName!=null)
+		{
+		up.temp(model,session);
+		}
+		
+		return "showFile";
+	}
 
+	
+	public void temp(Model model,HttpSession session)
+	{
 		String fileName = file.getOriginalFilename();
 		String user=(String) session.getAttribute("userName");
 	
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date = new Date();
+		
+		double fileSize = ((file.getSize()) / 1048576);
+		
+		String currentDate = dateFormat.format(date);
 		
 		if(user!=null)
 			 {
-				 System.out.println(" USER NAME "+session.getAttribute("userName"));
+				System.out.println(" USER NAME "+session.getAttribute("userName"));
 				Integer userId=(Integer) session.getAttribute("userId");
 				mainService.setFilesUpload(fileName, fileSize, currentDate,userId);
 
-		if (result.hasErrors()) {
+		/*if (result.hasErrors()) {
 
 			return "uploadForm";
 
-		}
+		}*/
 		
 		try {
-			inputStream = file.getInputStream();
+			
 			File f=new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/",fileName);
 			File newFile = new File(
 					"/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+user+"/");
@@ -106,7 +131,6 @@ public class UploadController {
 
 			}
 			model.addAttribute("message", fileName);
-			return "redirect:/main/userfiledetails";
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -117,10 +141,6 @@ public class UploadController {
 			model.addAttribute("message", " Sorry you need to Login First ");
 		}
 		
-		
-		return "showFile";
 	}
-
-	
 	
 }

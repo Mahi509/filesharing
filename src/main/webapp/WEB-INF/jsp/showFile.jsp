@@ -43,11 +43,11 @@
 <center>  
   
   <h2></h2>  
-  <h3>  
+  <%-- <h3>  
    File name : "<strong> ${message}</strong>" uploaded successfully ! <br>
    <br>
    You need to login first to see file in your account 
-  </h3>  
+  </h3>   --%>
   
   <div class="upload" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="">
