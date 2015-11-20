@@ -83,6 +83,8 @@ public class MainDao {
 		return file;
 	}
 	
+	
+	
 	public User getUserName(String name)
 	{
 		Session session=sessionFactory.getCurrentSession();
@@ -97,11 +99,12 @@ public class MainDao {
 	{
 		Session session = sessionFactory.getCurrentSession();
 			
-		Query query = session.createQuery("from User as u where u.userId="
-				+ userId);
+		/*Query query = session.createQuery("from User as u where u.userId="
+				+ userId);*/
 		
-		User user = (User) query.uniqueResult();
-		return new ArrayList<UserFiles>(user.getFiles());
+		User userfile = (User) session.get(User.class,userId);
+		
+		return new ArrayList<UserFiles>(userfile.getFiles());
 		
 	}
 	
@@ -126,11 +129,13 @@ public class MainDao {
 		
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria=session.createCriteria(Files.class).
-				add(Restrictions.like("fileName",search+"%", MatchMode.ANYWHERE));
+				add(Restrictions.like("fileName","%"+search+"%", MatchMode.ANYWHERE));
 	
 		System.out.println("Entering search Dao");
 		
 		return criteria.list();
 	}
+
+	
 
 }

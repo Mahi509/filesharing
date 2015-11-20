@@ -31,14 +31,13 @@
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 		
-		<script type="text/javascript">
+<script type="text/javascript">
 $(window).load(function() {
 	$(".loader").fadeOut("slow");
 })
 </script>
 		
-		
-		
+
 <style>
 
 .loader {
@@ -120,8 +119,7 @@ $(window).load(function() {
 		modelAttribute="uploadedFile" action="fileUpload.htm">
 		<table>
 			<tr>
-				<!-- <td><input type="button"  value="UPLOAD YOUR DATA"> </td>  -->
-				<td><input type="file" id="upload" name="file"></td>
+				<td><input type="file" class="loadfile" id="upload" name="file"></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -149,7 +147,7 @@ $(window).load(function() {
       			<div class="clearfix"></div>
       			<div id='social-icons-conatainer'>
 	        		<div class='modal-body-left'>
-	        		<form:form action="${pageContext.request.contextPath}/authenticate" method="POST">
+	        		<form:form action="${pageContext.request.contextPath}/authenticateuser" method="POST">
 	        			<div class="form-group">
 		              		<input type="text" id="username" placeholder="Enter your name" name="username" class="form-control login-field">
 		              		<i class="fa fa-user login-field-icon"></i>
