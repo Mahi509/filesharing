@@ -58,6 +58,7 @@ $(window).load(function() {
 	margin-left: 20px;
   	margin-right: 20px;
   	margin-bottom: 2px;
+  	border-radius: 10px;
 }
 
 .row {
@@ -147,7 +148,7 @@ $(window).load(function() {
       			<div class="clearfix"></div>
       			<div id='social-icons-conatainer'>
 	        		<div class='modal-body-left'>
-	        		<form:form action="${pageContext.request.contextPath}/authenticate" method="POST">
+	        		<form:form action="${pageContext.request.contextPath}/authenticateuser" method="POST">
 	        			<div class="form-group">
 		              		<input type="text" id="username" placeholder="Enter your name" name="username" class="form-control login-field">
 		              		<i class="fa fa-user login-field-icon"></i>

@@ -91,4 +91,21 @@ public class FileDao {
 	}
 
 	
+	//Renaming file in Database
+	public void renameFile(Integer fileId,Integer userId,String fileName)
+	{
+		Session session=sessionFactory.getCurrentSession();
+		UserFiles file=(UserFiles) session.get(UserFiles.class, fileId);
+		file.setFileName(fileName);
+		session.update(file);
+	}
+	
+	
+	public UserFiles getFile(Integer fileId)
+	{
+		Session session=sessionFactory.getCurrentSession();
+		UserFiles file=(UserFiles) session.get(UserFiles.class, fileId);
+		return file;
+	}
+	
 }

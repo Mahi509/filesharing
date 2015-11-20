@@ -87,6 +87,7 @@
 	margin-left: 20px;
   	margin-right: 20px;
   	margin-bottom: 2px;
+  	border-radius: 10px;
 }
 
 .row {

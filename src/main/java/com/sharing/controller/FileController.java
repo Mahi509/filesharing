@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -140,5 +141,33 @@ public class FileController {
 			return "trash";
 		}
 	
-	
+		
+	//Renaming File from User Specific Account
+		@RequestMapping(value="/renameFile",method=RequestMethod.POST)
+		public String renameFile(@RequestParam("fileId")Integer fileId,@RequestParam("filename")String filename,
+				Model model,HttpSession session)
+		{
+			String userName=(String) session.getAttribute("userName");
+			UserFiles file=fileService.getFile(fileId);
+			System.out.println(" OLD FILE NAME "+file.getFileName());
+			fileService.renameFile(fileId,(Integer)session.getAttribute("userId") ,filename);
+			File oldName = new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+userName+"/"+file.getFileName());
+			File newName= new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+userName+"/"+filename);
+					
+					
+		      if(oldName.exists()) {
+		         oldName.renameTo(newName);
+		    	  System.out.println("renamed");
+		         
+		      } else {
+		         System.out.println("Error");
+		      }
+		      
+		      List<UserFiles> file1=mainService.getUserFiles((Integer)session.getAttribute("userId"));
+				
+				model.addAttribute("files", file1);
+				
+				return "userdetails";
+			
+		}
 }

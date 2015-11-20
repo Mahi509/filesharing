@@ -47,9 +47,35 @@
 			   },
 			  });			
 		})
+		
+		$(".edit").click(function(){
+			
+			$(this).closest('tr').find('.td').hide();
+			$(this).closest('tr').find('.td1').show();
+			
+		})
+	
 		 
 	})
 </script>
+
+<style type="text/css">
+
+.td1{
+display: none;
+}
+
+#box{
+border-radius: 5px;
+}
+
+#save{
+border-radius: 5px;
+background: #C1E6F5;
+border-color:#C1E6F5;
+}
+</style>
+
 	
 </head>
 <body>
@@ -103,7 +129,16 @@
 <c:forEach items="${files}" var="file">
         <tbody>
             <tr style="padding-bottom: 10px;">
-                <td><span class="glyphicon glyphicon-file" id="file"></span>${file.fileName }</td>
+                <td class="td"><span class="glyphicon glyphicon-file" id="file" ></span>${file.fileName }</td>
+                <td class="td1" >
+                <form:form modelAttribute="renameDetails" action="${pageContext.request.contextPath}/renameFile" method="POST"><span class="glyphicon glyphicon-file"></span>
+                <input type="hidden" name="fileId" value="${file.fileId}">
+                <input id="box" type="text" name="filename"  value="${file.fileName}" size="25">
+                <input id="save" type="submit" value="save">
+                </form:form></td>
+                
+                
+                
                 <td><div align="left"><a href="#/home/webwerks/apache-tomcat-7.0.39/webapps/files/${file.fileName}" class="getlinks"><span class="glyphicon glyphicon-share">Share</span></a> 
                 &nbsp&nbsp<span class="dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
@@ -121,7 +156,7 @@
       <li role="presentation" class="divider"></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/deletefile?id=${file.fileId}"><span style="color:#6EB7FF;" class="glyphicon glyphicon-home"></span>&nbsp &nbsp Delete</a></li>
       <li role="presentation" class="divider"></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span style="color:#6EB7FF;" class="glyphicon glyphicon-edit"></span>&nbsp &nbsp Rename</a></li>
+      <li role="presentation"><a class="edit" role="menuitem" tabindex="-1" href="#"><span style="color:#6EB7FF;" class="glyphicon glyphicon-edit"></span>&nbsp &nbsp Rename</a></li>
       <li role="presentation" class="divider"></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/editFile?name=${file.fileName }"><span style="color:#6EB7FF;" class="glyphicon glyphicon-pencil"></span>&nbsp &nbsp Edit</a></li>
     </ul>

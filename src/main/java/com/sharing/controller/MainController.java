@@ -39,9 +39,6 @@ public class MainController {
 	{
 		System.out.println("in controller");
 		session.invalidate();
-		/*List<UserFiles> file=mainService.getUserFiles(2);*/
-		
-		//model.addAttribute("files", file);
 		return "home";
 		
 		
@@ -76,6 +73,27 @@ public class MainController {
 
 	}
 	
+	@RequestMapping(value="/authenticateuser",method=RequestMethod.POST)
+	public String authenticate2(@RequestParam("username") String username,
+			@RequestParam("password") String password, HttpSession session,
+			HttpServletRequest request, Model model)
+	{
+		boolean flag = mainService.authenticate(username, password);
+
+		if (flag) {
+			User user=mainService.getUserName(username);
+			System.out.println(" USER NAME "+user.getUserName());
+			session.setAttribute("userName", user.getUserName());
+			session.setAttribute("userId",user.getUserId());
+			List<UserFiles> file=mainService.getUserFiles((Integer)session.getAttribute("userId"));
+			model.addAttribute("files", file);
+			
+			return "userdetails";
+		}
+			
+		return "error";
+		
+	}
 
 	// Getting all files details
 	@RequestMapping(value = "/main/glymph", method = RequestMethod.GET)
@@ -259,6 +277,8 @@ public class MainController {
 		}
 
 	}
+	
+	
 	@RequestMapping(value="main/signout",method=RequestMethod.GET)
 	public String signOut(HttpSession session)
 	{
@@ -287,17 +307,6 @@ public class MainController {
 		
 	}
 
-	@RequestMapping(value = "main/checksession", method = RequestMethod.POST)
-	public @ResponseBody String checkSession(HttpSession session) {
-		System.out.println("SESSION INVALID");
-
-		String user = (String) session.getAttribute("userName");
-		System.out.println("In session is " + user);
-		if (user!= null) {
-			return "yes";
-		}
-		return "no";
-	}
 	
 	@RequestMapping(value="main/showLogin", method=RequestMethod.GET)
 	public String showLogin()

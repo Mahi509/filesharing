@@ -44,6 +44,7 @@ public class UploadController {
 	}
 	
 	public UploadController(MultipartFile file) {
+		
 		UploadController.file=file;
 	}
 	
