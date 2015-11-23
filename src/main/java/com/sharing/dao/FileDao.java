@@ -90,6 +90,21 @@ public class FileDao {
 		System.out.println("Successfully Deleted from trash");
 	}
 
+	public void addToMyAccount(Integer fileId, Integer userId) {
+		Session session = sessionFactory.getCurrentSession();
+		Files file = (Files) session.get(Files.class, fileId);
+		User user=(User) session.get(User.class,userId);
+		
+		UserFiles files = new UserFiles();
+		files.setFileName(file.getFileName());
+		files.setFilesize(file.getFilesize());
+		files.setFiledate(file.getFiledate());
+		files.setFileby(user.getUserName());
+		user.getFiles().add(files);
+		session.save(file);
+		
+	}
+
 	
 	//Renaming file in Database
 	public void renameFile(Integer fileId,Integer userId,String fileName)

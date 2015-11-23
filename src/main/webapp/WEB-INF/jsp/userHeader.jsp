@@ -99,7 +99,7 @@ padding-top:2px;
 
 
 <body>
-	<span><a href="${pageContext.request.contextPath}/main/userfiledetails">
+	<span><a href="${pageContext.request.contextPath}/redirectToHome"> <!-- /main/userfiledetails -->
 	<%-- <img id="home_img" alt="Home" src="${pageContext.request.contextPath}/resources/images/home_img.jpeg"> --%>
 	<img id="home_img" alt="Home" src="${pageContext.request.contextPath}/resources/images/logo.png">
 	</a></span>

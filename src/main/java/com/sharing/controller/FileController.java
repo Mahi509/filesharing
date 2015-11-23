@@ -13,13 +13,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sharing.model.DeleteFiles;
-import com.sharing.model.Files;
 import com.sharing.model.UserFiles;
 import com.sharing.service.FileService;
 import com.sharing.service.MainService;
@@ -140,6 +138,48 @@ public class FileController {
 			model.addAttribute("files", file);
 			return "trash";
 		}
+		
+		
+		// Add to My Account
+		@RequestMapping(value = "/addToMyAccount", method = RequestMethod.GET)
+		public String addToMyAccount(@RequestParam("name") Integer fileId,
+				HttpSession session, Model model) {
+
+			String user = (String) session.getAttribute("userName");
+			// Files file = mainService.getFileName(fileId);
+
+			if (user != null) {
+				fileService.addToMyAccount(fileId,
+						(Integer) session.getAttribute("userId"), user);
+				System.out.println(" i m inside userdetails page ");
+				Integer userId = (Integer) session.getAttribute("userId");
+				List<UserFiles> files1 = mainService.getUserFiles(userId);
+				model.addAttribute("files", files1);
+				return "userdetails";
+			} else {
+
+				session.setAttribute("fileId", fileId);
+				return "home";
+			}
+		}
+
+		public String addToMyAccountOne(Integer fileId, HttpSession session,
+				Model model) {
+
+			fileService.addToMyAccount(fileId,
+					(Integer) session.getAttribute("userId"),
+					(String) session.getAttribute("userName"));
+			System.out.println(" i m inside userdetails page ");
+			Integer userId = (Integer) session.getAttribute("userId");
+			List<UserFiles> files1 = mainService.getUserFiles(userId);
+			model.addAttribute("files", files1);
+			session.removeAttribute("fileId");
+			System.out.println("session closed for fileId"
+					+ (Integer) session.getAttribute("fileId"));
+			return "userdetails";
+
+		}
+
 	
 		
 	//Renaming File from User Specific Account

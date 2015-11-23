@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -73,7 +74,7 @@
 							height="100px" width="100px">
 					</c:if>
 
-				</span> <br> <br> <br> <br> <br> <a href="#">Add to account</a>
+				</span> <br> <br> <br> <br> <br> <a href="${pageContext.request.contextPath}/addToMyAccount?name=${file.fileId}">Add to account</a>
 
 			</form>
 		</div>
@@ -89,3 +90,4 @@
 
 
 </html>
+

@@ -83,6 +83,8 @@ public class MainDao {
 		return file;
 	}
 	
+	
+	
 	public User getUserName(String name)
 	{
 		Session session=sessionFactory.getCurrentSession();
@@ -133,5 +135,7 @@ public class MainDao {
 		
 		return criteria.list();
 	}
+
+	
 
 }

@@ -99,7 +99,7 @@
 					<span> By :<c:out value="${file.fileby}" /></span><br> <span>Last
 						Modified :<c:out value="${file.filedate}" />
 					</span><br> <span>Size :<c:out value="${file.filesize} MB" /></span><br>
-					<a href="#"><span id="c">Add to my account</span></a><br>
+					<a href="${pageContext.request.contextPath}/addToMyAccount?name=${file.fileId}"><span id="c">Add to my account</span></a><br>
 					<div id="d">
 						<span>...................................................................................................................................................................</span>
 					</div>

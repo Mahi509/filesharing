@@ -13,15 +13,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.sharing.model.DeleteFiles;
 import com.sharing.model.Files;
 import com.sharing.model.User;
 import com.sharing.model.UserFiles;
+import com.sharing.service.FileService;
 import com.sharing.service.MainService;
-
-
 
 @Controller("mainController")
 public class MainController {
@@ -30,18 +27,22 @@ public class MainController {
 	private MainService mainService;
 
 	@Autowired
-	private UploadController upload;
+	private FileService fileService;
 	
+	@Autowired
+	private FileController fileController;
+	
+	@Autowired
+	private UploadController upload;
+
 	List<Files> grid = new ArrayList<Files>();
 
-	@RequestMapping(value="/")
-	public String home(HttpSession session,Model model)
-	{
+	@RequestMapping(value = "/")
+	public String home(HttpSession session, Model model) {
 		System.out.println("in controller");
 		session.invalidate();
 		return "home";
-		
-		
+
 	}
 
 	@RequestMapping(value = "authenticate", method = RequestMethod.POST)
@@ -51,19 +52,20 @@ public class MainController {
 		boolean flag = mainService.authenticate(username, password);
 
 		if (flag) {
-			User user=mainService.getUserName(username);
-			System.out.println(" USER NAME "+user.getUserName());
+			User user = mainService.getUserName(username);
+			System.out.println(" USER NAME " + user.getUserName());
 			session.setAttribute("userName", user.getUserName());
-			session.setAttribute("userId",user.getUserId());
-			if((String)session.getAttribute("userName")!=null)
-			{
+			session.setAttribute("userId", user.getUserId());
+
+			if ((String) session.getAttribute("userName") != null) {
 				upload.temp(model, session);
-				List<UserFiles> file=mainService.getUserFiles((Integer)session.getAttribute("userId"));
+				List<UserFiles> file = mainService
+						.getUserFiles((Integer) session.getAttribute("userId"));
 				model.addAttribute("files", file);
-				
+
 				return "userdetails";
 			}
-			
+
 			return "home";
 
 		} else {
@@ -72,28 +74,37 @@ public class MainController {
 		}
 
 	}
+
 	
-	@RequestMapping(value="/authenticateuser",method=RequestMethod.POST)
+	@RequestMapping(value = "/authenticateuser", method = RequestMethod.POST)
 	public String authenticate2(@RequestParam("username") String username,
 			@RequestParam("password") String password, HttpSession session,
-			HttpServletRequest request, Model model)
-	{
+			HttpServletRequest request, Model model) {
 		boolean flag = mainService.authenticate(username, password);
 
 		if (flag) {
-			User user=mainService.getUserName(username);
-			System.out.println(" USER NAME "+user.getUserName());
+			User user = mainService.getUserName(username);
+			System.out.println(" USER NAME " + user.getUserName());
 			session.setAttribute("userName", user.getUserName());
-			session.setAttribute("userId",user.getUserId());
-			List<UserFiles> file=mainService.getUserFiles((Integer)session.getAttribute("userId"));
+			session.setAttribute("userId", user.getUserId());
+			Integer fileId = (Integer) session.getAttribute("fileId");
+			if (fileId != null) {
+
+				fileController.addToMyAccountOne(fileId, session, model);
+				
+				}
+
+			List<UserFiles> file = mainService.getUserFiles((Integer) session
+					.getAttribute("userId"));
 			model.addAttribute("files", file);
-			
+
 			return "userdetails";
 		}
-			
+
 		return "error";
-		
+
 	}
+
 
 	// Getting all files details
 	@RequestMapping(value = "/main/glymph", method = RequestMethod.GET)
@@ -166,10 +177,10 @@ public class MainController {
 		return "homeList";
 
 	}
-	
-//added user object by Mahi
+
+	// added user object by Mahi
 	@RequestMapping(value = "/main/signup", method = RequestMethod.GET)
-	public String signup(@ModelAttribute("userData")User user1) {
+	public String signup(@ModelAttribute("userData") User user1) {
 		return "signup";
 	}
 
@@ -208,109 +219,96 @@ public class MainController {
 		return "detailsPage";
 	}
 
-
-	@RequestMapping(value="/main/userfiledetails",method=RequestMethod.GET)
-	public String userFileDetails(HttpSession session,Model model)
-	{
+	@RequestMapping(value = "/main/userfiledetails", method = RequestMethod.GET)
+	public String userFileDetails(HttpSession session, Model model) {
 		System.out.println(" i m inside userdetails page ");
-		Integer userId=(Integer) session.getAttribute("userId");
-		List<UserFiles> file=mainService.getUserFiles(userId);
-		
+		Integer userId = (Integer) session.getAttribute("userId");
+		List<UserFiles> file = mainService.getUserFiles(userId);
+
 		model.addAttribute("files", file);
 		return "userdetails";
-		
+
 	}
-	
-	
-	//Mapping for Trash items for users
-	@RequestMapping(value="/main/userDeletedFileDetails",method=RequestMethod.GET)
-	public String userDeletedFileDetails(HttpSession session,Model model)
-	{
+
+	// Mapping for Trash items for users
+	@RequestMapping(value = "/main/userDeletedFileDetails", method = RequestMethod.GET)
+	public String userDeletedFileDetails(HttpSession session, Model model) {
 		System.out.println(" i m inside trash page ");
-		Integer userId=(Integer) session.getAttribute("userId");
-		List<DeleteFiles> file=mainService.getUserDeletedFiles(userId);
-		
+		Integer userId = (Integer) session.getAttribute("userId");
+		List<DeleteFiles> file = mainService.getUserDeletedFiles(userId);
+
 		model.addAttribute("files", file);
 		return "trash";
-		
+
 	}
-	
-	
 
 	@RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
 	public String forgotpassword() {
 
 		return "forgotPassword";
 	}
-	
-	
+
+	@RequestMapping(value = "/redirectToHome", method = RequestMethod.GET)
+	public String redirectToHome() {
+
+		return "home";
+	}
+
 	@RequestMapping(value = "/main/userContent", method = RequestMethod.GET)
 	public String userContent() {
 
 		return "userContent";
 	}
-	
 
-	
-	//Search option mapping from userheader tiles
-	@RequestMapping(value="/main/userSearch", method = RequestMethod.POST)
-	public String userSearch(Model model, HttpServletRequest request,HttpSession session){
-		
+	// Search option mapping from userheader tiles
+	@RequestMapping(value = "/main/userSearch", method = RequestMethod.POST)
+	public String userSearch(Model model, HttpServletRequest request,
+			HttpSession session) {
 		String search = request.getParameter("search");
-		
-		Integer userId=(Integer) session.getAttribute("userId");
-		
-		
+		Integer userId = (Integer) session.getAttribute("userId");
 		List<Files> files = mainService.getHomeSearchFiles(search);
-		
 		model.addAttribute("allFiles", files);
-		
 		model.addAttribute("files", files);
-		
-		if( userId!=null){
-						
+		if (userId != null) {
 			return "userdetails";
-						
-		}else {
-				
+		} else {
 			return "home2";
 		}
-
 	}
+
 	
 	
-	@RequestMapping(value="main/signout",method=RequestMethod.GET)
-	public String signOut(HttpSession session)
-	{
+	
+	@RequestMapping(value = "main/signout", method = RequestMethod.GET)
+	public String signOut(HttpSession session) {
 		System.out.println("in controller");
 		session.invalidate();
-		
+
 		return "home";
 	}
 
-	//Search option mapping from Homepage tiles
-	@RequestMapping(value="/main/homeSearch", method = RequestMethod.POST)
-	public String homeSearch(Model model, HttpServletRequest request){
-		
+	// Search option mapping from Homepage tiles
+	@RequestMapping(value = "/main/homeSearch", method = RequestMethod.POST)
+	public String homeSearch(Model model, HttpServletRequest request) {
 		String search = request.getParameter("search");
-		
 		System.out.println("Inside Home Search");
-		
 		List<Files> files = mainService.getHomeSearchFiles(search);
-
 		model.addAttribute("allFiles", files);
-
 		System.out.println("Outside Home Search");
-		
+
 		return "home2";
 
-		
+	}
+
+
+	
+	@RequestMapping(value = "main/showLogin", method = RequestMethod.GET)
+	public String showLogin() {
+
+		return "showFile";
 	}
 
 	
-	@RequestMapping(value="main/showLogin", method=RequestMethod.GET)
-	public String showLogin()
-	{
-		return "showFile";
-	}
+
+	
 }
