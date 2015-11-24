@@ -1,164 +1,183 @@
+package com.sharing.controller;
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/pagination.css"
-	type="text/css" />
+import javax.servlet.http.HttpSession;
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<!-- <script src="js/jquery.min.js"></script>  -->
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.sharing.model.UploadedFile;
+import com.sharing.validator.FileValidator;
+import com.sharing.service.MainService;
 
-<script
-	src="${pageContext.request.contextPath}/resources/js/pagination.js"></script>
+@Controller
+public class UploadController {
 
+	@Autowired
+	FileValidator fileValidator;
 
+	@Autowired
+	MainService mainService;
 
-<script type="text/javascript">
-	var pager = new Imtech.Pager();
+	static MultipartFile file;
+	InputStream inputStream = null;
+	OutputStream outputStream = null;
+	OutputStream op = null;
 
-	$(document).ready(function() {
+	public UploadController() {
+		// TODO Auto-generated constructor stub
+	}
 
-		pager.paragraphsPerPage = 5; // set amount elements per page
+	public UploadController(MultipartFile file) {
 
-		pager.pagingContainer = $('#content'); // set of main container
+		UploadController.file = file;
+	}
 
-		pager.paragraphs = $('div.z', pager.pagingContainer); // set of required containers
+	@RequestMapping("/fileUploadForm")
+	public String getUploadForm(
+			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
+			BindingResult result) {
 
-		pager.showPage(1);
+		return "uploadForm";
+	}
 
-	});
-</script>
+	@RequestMapping(value = { "/fileUpload", "/main/fileUpload" })
+	public String fileUploaded(
+			@ModelAttribute("uploadedFile") UploadedFile uploadedFile,
 
-<!-- used for page loading -->
-<script type="text/javascript">
-$(window).load(function() {
-	
-	$(".loader").fadeOut("slow");
-})
-</script>
+			BindingResult result, HttpSession session, Model model)
+			throws IOException {
 
+		MultipartFile file = uploadedFile.getFile();
+		inputStream = file.getInputStream();
+		UploadController up = new UploadController(file);
+		fileValidator.validate(uploadedFile, result);
+		String userName = (String) session.getAttribute("userName");
 
-<style type="text/css">
+		if (userName != null) {
+			String fileName = file.getOriginalFilename();
+			String user = (String) session.getAttribute("userName");
 
-.loader {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url('${pageContext.request.contextPath}/resources/images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+			Date date = new Date();
+
+			double fileSize = ((file.getSize()) / 1048576);
+
+			String currentDate = dateFormat.format(date);
+
+			if (user != null) {
+				System.out.println(" USER NAME "
+						+ session.getAttribute("userName"));
+				Integer userId = (Integer) session.getAttribute("userId");
+				mainService.setFilesUpload(fileName, fileSize, currentDate,
+						userId);
+
+				try {
+
+					File f = new File(
+							"/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/",
+							fileName);
+					File newFile = new File(
+							"/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"
+									+ user + "/");
+					File myFile = new File(newFile, fileName);
+					if (!newFile.exists()) {
+
+						newFile.mkdir();
+						myFile.createNewFile();
+						f.createNewFile();
+					}
+					outputStream = new FileOutputStream(myFile);
+					op = new FileOutputStream(f);
+
+					int read = 0;
+					byte[] bytes = new byte[1024];
+
+					while ((read = inputStream.read(bytes)) != -1) {
+						outputStream.write(bytes, 0, read);
+						op.write(bytes, 0, read);
+
+					}
+					model.addAttribute("message", fileName);
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+
+			return "redirect:/main/userfiledetails";
+		}
+		return "showFile";
+	}
+
+	public void temp(Model model, HttpSession session) {
+		String fileName = file.getOriginalFilename();
+		String user = (String) session.getAttribute("userName");
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date = new Date();
+
+		double fileSize = ((file.getSize()) / 1048576);
+
+		String currentDate = dateFormat.format(date);
+
+		if (user != null) {
+			System.out
+					.println(" USER NAME " + session.getAttribute("userName"));
+			Integer userId = (Integer) session.getAttribute("userId");
+			mainService.setFilesUpload(fileName, fileSize, currentDate, userId);
+
+			try {
+
+				File f = new File(
+						"/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/",
+						fileName);
+				File newFile = new File(
+						"/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"
+								+ user + "/");
+				File myFile = new File(newFile, fileName);
+				if (!newFile.exists()) {
+
+					newFile.mkdir();
+					myFile.createNewFile();
+					f.createNewFile();
+				}
+				outputStream = new FileOutputStream(myFile);
+				op = new FileOutputStream(f);
+
+				int read = 0;
+				byte[] bytes = new byte[1024];
+
+				while ((read = inputStream.read(bytes)) != -1) {
+					outputStream.write(bytes, 0, read);
+					op.write(bytes, 0, read);
+
+				}
+				model.addAttribute("message", fileName);
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			model.addAttribute("message", " Sorry you need to Login First ");
+		}
+
+	}
+
 }
-
-
-.main {
-	float: left;
-	width: 70%;
-}
-
-#a {
-	float: left;
-}
-
-#b {
-	float: left;
-	margin-right: 550px;
-}
-
-#c {
-	padding-left: 500px;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="loader"></div> <!-- used for page loading -->
-
-	<div class="main">
-
-		<h5>
-			view: <a href="${pageContext.request.contextPath}/main/glymph?id=1"><span
-				id="glymp" class="glyphicon glyphicon-th-list"></span></a> <a
-				href="${pageContext.request.contextPath}/main/homeGridOne?id=1"><span
-				id="Grid" class="glyphicon glyphicon-th"></span></a>
-		</h5>
-
-		<div id="content">
-			<c:forEach items="${allFiles}" var="file">
-				<div class=z>
-
-					<span id="a"> <c:set var="filename" value="${file.fileName}"></c:set>
-						<c:if test="${fn:contains(filename, '.mp3')}">
-							<img src="${pageContext.request.contextPath}/img/mp3image.jpeg"
-								height="200px" width="200px">
-						</c:if> <c:if test="${fn:contains(filename, '.jpeg')||fn:contains(filename, '.jpg')||
-						fn:contains(filename, '.gif')||fn:contains(filename, '.png')}">
-							<img
-								src="${pageContext.request.contextPath}/img/${file.fileName}"
-								height="200px" width="200px">
-						</c:if> <c:if test="${fn:contains(filename, '.pdf')}">
-							<img src="${pageContext.request.contextPath}/img/images.jpeg"
-								height="200px" width="200px">
-						</c:if> <c:if test="${fn:contains(filename, '.mp4')||fn:contains(filename, '.avi')||
-						fn:contains(filename, '.flv')||fn:contains(filename, '.3gp')}">
-							<img src="${pageContext.request.contextPath}/img/imagesmp4.png"
-								height="200px" width="200px">
-						</c:if>
-
-					</span><a
-						href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
-
-						<b style="color: blue;">${file.fileName}</b>
-					</a><br> <b><span>File :<c:out value="${file.fileName}" /></span></b><br>
-					<span> By :<c:out value="${file.fileby}" /></span><br> <span>Last
-						Modified :<c:out value="${file.filedate}" />
-					</span><br> <span>Size :<c:out value="${file.filesize} MB" /></span><br>
-					
-					<%
-				String username = (String)session.getAttribute("userName");
-					if(username ==null){
-					%>
-				
-					<a href="${pageContext.request.contextPath}/addToMyAccount?name=${file.fileId}"><span id="c">Add to my account</span></a><br>
-					
-					<%}else{ %>
-					
-						
-					<a href="${pageContext.request.contextPath}/addToMyAccount?name=${file.fileId}"><span id="c">Add to my account</span></a><br>
-					
-					
-						<% } %>
-					
-					
-					
-				
-					
-					
-					
-					
-					<div id="d">
-						<span>...................................................................................................................................................................</span>
-					</div>
-
-				</div>
-
-			</c:forEach>
-
-		</div>
-	</div>
-	<div id="pagingControls"></div>
-
-</body>
-
-</html>
