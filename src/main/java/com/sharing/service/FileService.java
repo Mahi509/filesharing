@@ -11,8 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sharing.dao.FileDao;
+
+import com.sharing.model.UserFiles;
+
 import com.sharing.dao.MainDao;
 import com.sharing.model.Files;
+
 
 @Service
 public class FileService {
@@ -44,7 +48,18 @@ public class FileService {
 		fileDao.deletetrash(fileId,userId);
 	}
 	
+	public void renameFile(Integer fileId,Integer userId,String fileName)
+	{
+		fileDao.renameFile(fileId, userId, fileName);
+	}
 	
+
+	public UserFiles getFile(Integer fileId)
+	{
+		return fileDao.getFile(fileId);
+		
+	}	
+		
 	public void addToMyAccount(Integer file, Integer userId, String userName) {
 
 		fileDao.addToMyAccount(file, userId);
@@ -56,10 +71,10 @@ public class FileService {
 		try {
 
 			File afile = new File(
-					"/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"
+					"/home/webwerks/apache-tomcat-7.0.39/webapps/files/"
 							+ files.getFileName());
 			File bfile = new File(
-					"/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"
+					"/home/webwerks/apache-tomcat-7.0.39/webapps/files/"
 							+ userName + "/" + files.getFileName());
 
 			inStream = new FileInputStream(afile);
@@ -83,6 +98,7 @@ public class FileService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 
 	}
 	

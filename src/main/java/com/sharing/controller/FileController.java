@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sharing.model.DeleteFiles;
-import com.sharing.model.Files;
 import com.sharing.model.UserFiles;
 import com.sharing.service.FileService;
 import com.sharing.service.MainService;
@@ -182,5 +181,33 @@ public class FileController {
 		}
 
 	
-	
+		
+	//Renaming File from User Specific Account
+		@RequestMapping(value="/renameFile",method=RequestMethod.POST)
+		public String renameFile(@RequestParam("fileId")Integer fileId,@RequestParam("filename")String filename,
+				Model model,HttpSession session)
+		{
+			String userName=(String) session.getAttribute("userName");
+			UserFiles file=fileService.getFile(fileId);
+			System.out.println(" OLD FILE NAME "+file.getFileName());
+			fileService.renameFile(fileId,(Integer)session.getAttribute("userId") ,filename);
+			File oldName = new File("/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"+userName+"/"+file.getFileName());
+			File newName= new File("/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"+userName+"/"+filename);
+					
+					
+		      if(oldName.exists()) {
+		         oldName.renameTo(newName);
+		    	  System.out.println("renamed");
+		         
+		      } else {
+		         System.out.println("Error");
+		      }
+		      
+		      List<UserFiles> file1=mainService.getUserFiles((Integer)session.getAttribute("userId"));
+				
+				model.addAttribute("files", file1);
+				
+				return "userdetails";
+			
+		}
 }

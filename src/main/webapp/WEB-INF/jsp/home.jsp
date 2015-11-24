@@ -58,6 +58,7 @@ $(window).load(function() {
 	margin-left: 20px;
   	margin-right: 20px;
   	margin-bottom: 2px;
+  	border-radius: 10px;
 }
 
 .row {
@@ -94,9 +95,9 @@ $(window).load(function() {
 					</button>
 					<%}else{ %>
 					
-					<button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
+					<a href="${pageContext.request.contextPath}/main/signout" style="align:left;margin:0 0 0 120%" class="btn btn-primary" > 
 					  Logout
-					</button>
+					</a>
 					
 						<% } %>
 					

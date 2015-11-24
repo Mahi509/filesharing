@@ -45,6 +45,7 @@ public class UploadController {
 	}
 	
 	public UploadController(MultipartFile file) {
+		
 		UploadController.file=file;
 	}
 	
@@ -74,9 +75,75 @@ public class UploadController {
 		
 		if(userName!=null)
 		{
-		up.temp(model,session);
+			String fileName = file.getOriginalFilename();
+			String user=(String) session.getAttribute("userName");
+		
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+			Date date = new Date();
+			
+			double fileSize = ((file.getSize()) / 1048576);
+			//double fileSize = file.getSize();
+			
+			String currentDate = dateFormat.format(date);
+			
+			//Integer userId=(Integer) session.getAttribute("userId");
+			
+			/*System.out.println(fileName);
+			System.out.println(fileSize);
+			System.out.println(currentDate);
+			System.out.println(userId);*/
+			
+			
+			
+			if(user!=null)
+				 {
+					System.out.println(" USER NAME "+session.getAttribute("userName"));
+					Integer userId=(Integer) session.getAttribute("userId");
+					mainService.setFilesUpload(fileName, fileSize, currentDate,userId);
+
+			/*if (result.hasErrors()) {
+
+				return "uploadForm";
+
+			}*/
+			
+			try {
+				
+				File f=new File("/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/",fileName);
+				File newFile = new File(
+						"/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"+user+"/");
+				File myFile=new File(newFile,fileName);
+				if (!newFile.exists()) 
+				{
+					
+						newFile.mkdir();
+						myFile.createNewFile();
+						f.createNewFile();
+				}
+				outputStream = new FileOutputStream(myFile);
+				op= new FileOutputStream(f);
+
+				int read = 0;
+				byte[] bytes = new byte[1024];
+				
+				
+
+				while ((read = inputStream.read(bytes)) != -1) {
+					outputStream.write(bytes, 0, read);
+					op.write(bytes,0,read);
+
+				}
+				model.addAttribute("message", fileName);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
+			return	"redirect:/main/userfiledetails";
+	}
 		return "showFile";
 	}
 
@@ -90,8 +157,18 @@ public class UploadController {
 		Date date = new Date();
 		
 		double fileSize = ((file.getSize()) / 1048576);
+		//double fileSize = file.getSize();
 		
 		String currentDate = dateFormat.format(date);
+		
+		/*Integer userId=(Integer) session.getAttribute("userId");*/
+		/*
+		System.out.println(fileName);
+		System.out.println(fileSize);
+		System.out.println(currentDate);
+		System.out.println(userId);*/
+		
+		
 		
 		if(user!=null)
 			 {
@@ -109,7 +186,7 @@ public class UploadController {
 			
 			File f=new File("/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/",fileName);
 			File newFile = new File(
-					"//home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"+user+"/");
+					"/home/webwerks/Prakash/apache-tomcat-7.0.62/webapps/files/"+user+"/");
 			File myFile=new File(newFile,fileName);
 			if (!newFile.exists()) 
 			{

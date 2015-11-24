@@ -87,6 +87,7 @@
 	margin-left: 20px;
   	margin-right: 20px;
   	margin-bottom: 2px;
+  	border-radius: 10px;
 }
 
 .row {
@@ -122,9 +123,13 @@
 					  Sign In
 					</button>
 					<%}else{ %>
-					<button style="align:left;margin:0 0 0 120%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal"> 
+					<!-- <button style="align:left;margin:0 0 0 120%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal"> 
 					  Logout
-					</button>	
+					</button>	 -->
+					<a href="${pageContext.request.contextPath}/main/signout" style="align:left;margin:0 0 0 120%" class="btn btn-primary" > 
+					  Logout
+					</a>	
+					
 					<% } %>
 					
 				</div>	

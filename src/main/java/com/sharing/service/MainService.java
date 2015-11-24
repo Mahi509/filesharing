@@ -29,6 +29,7 @@ public class MainService {
 	public void setFilesUpload(String fileName, double fileSize,
 			String currentDate, Integer userId) {
 
+		System.out.println("inside mainservice fileupload");
 		mainDao.setFilesUpload(fileName, fileSize, currentDate, userId);
 
 	}
