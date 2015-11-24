@@ -114,9 +114,24 @@
 				<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
 				<!-- <div> -->
 					<!-- <button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal"> -->
+					
+					<%
+					String username = (String)session.getAttribute("userName");
+					if(username ==null){
+					%>
 					<button style="align:left;margin:0 0 0 120%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal"> 
 					  Sign In
 					</button>
+					<%}else{ %>
+					<!-- <button style="align:left;margin:0 0 0 120%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal"> 
+					  Logout
+					</button>	 -->
+					<a href="${pageContext.request.contextPath}/main/signout" style="align:left;margin:0 0 0 120%" class="btn btn-primary" > 
+					  Logout
+					</a>	
+					
+					<% } %>
+					
 				</div>	
 			</div>
 		</div>
@@ -142,7 +157,7 @@
       			<div class="clearfix"></div>
       			<div id='social-icons-conatainer'>
 	        		<div class='modal-body-left'>
-	        		<form:form action="${pageContext.request.contextPath}/authenticate" method="POST">
+	        		<form:form action="${pageContext.request.contextPath}/authenticateuser" method="POST">
 	        			<div class="form-group">
 		              		<input type="text" id="username" placeholder="Enter your name" name="username" class="form-control login-field">
 		              		<i class="fa fa-user login-field-icon"></i>

@@ -69,27 +69,28 @@ public class UploadController {
 			BindingResult result,HttpSession session,Model model) throws IOException {
 
 		
-		 file = uploadedFile.getFile();
-		
+		MultipartFile file = uploadedFile.getFile();
 		inputStream = file.getInputStream();
+		
 		UploadController up=new UploadController(file);
+		
 		fileValidator.validate(uploadedFile, result);
 		String userName=(String) session.getAttribute("userName");
 		
 		if(userName!=null)
 		{
-			//up.temp(model,session);
 			String fileName = file.getOriginalFilename();
 		
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 			Date date = new Date();
 			
 			double fileSize = ((file.getSize()) / 1048576);
+	
 			
 			String currentDate = dateFormat.format(date);
-			
-					Integer userId=(Integer) session.getAttribute("userId");
-					mainService.setFilesUpload(fileName, fileSize, currentDate,userId);
+			Integer userId=(Integer) session.getAttribute("userId");
+			mainService.setFilesUpload(fileName, fileSize, currentDate,userId);
+
 			
 			try {
 				
@@ -123,18 +124,16 @@ public class UploadController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-				 
-			return "redirect:/main/userfiledetails";
-		}
 		
+			return	"redirect:/main/userfiledetails";
+	}
 		return "showFile";
 	}
 
 	
 	public void temp(Model model,HttpSession session) throws IOException
 	{
-		//inputStream = file.getInputStream();
+		
 		String fileName = file.getOriginalFilename();
 		String user=(String) session.getAttribute("userName");
 	
@@ -144,6 +143,8 @@ public class UploadController {
 		double fileSize = ((file.getSize()) / 1048576);
 		
 		String currentDate = dateFormat.format(date);
+		
+		
 		
 		if(user!=null)
 			 {
@@ -159,9 +160,9 @@ public class UploadController {
 		
 		try {
 			
-			File f=new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/",fileName);
+			File f=new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files",fileName);
 			File newFile = new File(
-					"/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+user+"/");
+					"/home/webwerks/apache-tomcat-7.0.39/webapps/files"+user+"/");
 			File myFile=new File(newFile,fileName);
 			if (!newFile.exists()) 
 			{

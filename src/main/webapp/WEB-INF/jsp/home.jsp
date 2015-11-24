@@ -84,9 +84,23 @@ $(window).load(function() {
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
+				
+				<%
+				String username = (String)session.getAttribute("userName");
+					if(username ==null){
+					%>
+				
 					<button style="align:left;margin:0 0 0 150%" id='modal-launcher' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
 					  Sign In
 					</button>
+					<%}else{ %>
+					
+					<a href="${pageContext.request.contextPath}/main/signout" style="align:left;margin:0 0 0 120%" class="btn btn-primary" > 
+					  Logout
+					</a>
+					
+						<% } %>
+					
 				</div>	
 			</div>
 		</div>

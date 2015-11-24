@@ -56,6 +56,7 @@ public class MainDao {
 	
 	public void setFilesUpload(String fileName,double size,String currentDate,Integer userId){
 
+		System.out.println("inside main Dao for fileupload");
 		Session session = sessionFactory.getCurrentSession();
 		User user=(User) session.get(User.class,userId);
 		
