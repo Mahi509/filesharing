@@ -105,7 +105,7 @@ border-color:#C1E6F5;
           <span class="glyphicon glyphicon-edit"></span> Edit
         </button>
 </span>
-<span id="button">
+<!-- <span id="button">
 	 <button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-copy"></span> Copy 
         </button>
@@ -114,7 +114,7 @@ border-color:#C1E6F5;
 	 <button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-scissors"></span> Cut 
         </button>
-</span>
+</span> -->
 </div>
 
 <div class="main">
@@ -149,10 +149,10 @@ border-color:#C1E6F5;
       <li role="presentation"><a role="menuitem" tabindex="-1" href="#/home/webwerks/apache-tomcat-7.0.39/webapps/files/${file.fileName}"  class="getlinks"><span style="color:#6EB7FF;" class="glyphicon glyphicon-share"></span>&nbsp &nbsp Share</a></li>
       <li role="presentation" class="divider"></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="#/home/webwerks/apache-tomcat-7.0.39/webapps/files/${file.fileName}"  class="getlinks"><span style="color:#6EB7FF;" class="glyphicon glyphicon-link"></span>&nbsp &nbsp Get Links</a></li>
+     <!--  <li role="presentation" class="divider"></li> -->
+<!--       <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><span style="color:#6EB7FF;" class="glyphicon glyphicon-scissors"></span>&nbsp &nbsp Cut</a></li>
       <li role="presentation" class="divider"></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><span style="color:#6EB7FF;" class="glyphicon glyphicon-scissors"></span>&nbsp &nbsp Cut</a></li>
-      <li role="presentation" class="divider"></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span style="color:#6EB7FF;" class="glyphicon glyphicon-copy"></span>&nbsp &nbsp Copy</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span style="color:#6EB7FF;" class="glyphicon glyphicon-copy"></span>&nbsp &nbsp Copy</a></li> -->
       <li role="presentation" class="divider"></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/deletefile?id=${file.fileId}"><span style="color:#6EB7FF;" class="glyphicon glyphicon-home"></span>&nbsp &nbsp Delete</a></li>
       <li role="presentation" class="divider"></li>

@@ -34,10 +34,11 @@ public class UploadController {
 	MainService mainService;
 
 	static MultipartFile file;
+	
 	InputStream inputStream = null;
 	 OutputStream outputStream = null;
 
-	OutputStream op=null;
+	 OutputStream op=null;
 	
 	
 	public UploadController() {
@@ -47,6 +48,7 @@ public class UploadController {
 	public UploadController(MultipartFile file) {
 		
 		UploadController.file=file;
+		
 	}
 	
 	@RequestMapping("/fileUploadForm")
@@ -67,7 +69,8 @@ public class UploadController {
 			BindingResult result,HttpSession session,Model model) throws IOException {
 
 		
-		MultipartFile file = uploadedFile.getFile();
+		 file = uploadedFile.getFile();
+		
 		inputStream = file.getInputStream();
 		UploadController up=new UploadController(file);
 		fileValidator.validate(uploadedFile, result);
@@ -75,15 +78,63 @@ public class UploadController {
 		
 		if(userName!=null)
 		{
-		up.temp(model,session);
+			//up.temp(model,session);
+			String fileName = file.getOriginalFilename();
+		
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+			Date date = new Date();
+			
+			double fileSize = ((file.getSize()) / 1048576);
+			
+			String currentDate = dateFormat.format(date);
+			
+					Integer userId=(Integer) session.getAttribute("userId");
+					mainService.setFilesUpload(fileName, fileSize, currentDate,userId);
+			
+			try {
+				
+				File f=new File("/home/webwerks/apache-tomcat-7.0.39/webapps/files/",fileName);
+				File newFile = new File(
+						"/home/webwerks/apache-tomcat-7.0.39/webapps/files/"+userName+"/");
+				File myFile=new File(newFile,fileName);
+				if (!newFile.exists()) 
+				{
+					
+						newFile.mkdir();
+						myFile.createNewFile();
+						f.createNewFile();
+				}
+				outputStream = new FileOutputStream(myFile);
+				op= new FileOutputStream(f);
+
+				int read = 0;
+				byte[] bytes = new byte[1024];
+				
+				
+
+				while ((read = inputStream.read(bytes)) != -1) {
+					outputStream.write(bytes, 0, read);
+					op.write(bytes,0,read);
+
+				}
+				model.addAttribute("message", fileName);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+				 
+			return "redirect:/main/userfiledetails";
 		}
 		
 		return "showFile";
 	}
 
 	
-	public void temp(Model model,HttpSession session)
+	public void temp(Model model,HttpSession session) throws IOException
 	{
+		//inputStream = file.getInputStream();
 		String fileName = file.getOriginalFilename();
 		String user=(String) session.getAttribute("userName");
 	

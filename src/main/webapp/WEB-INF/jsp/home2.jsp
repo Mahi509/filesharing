@@ -102,7 +102,8 @@ $(window).load(function() {
 						<c:if test="${fn:contains(filename, '.mp3')}">
 							<img src="${pageContext.request.contextPath}/img/mp3image.jpeg"
 								height="200px" width="200px">
-						</c:if> <c:if test="${fn:contains(filename, '.jpeg')||fn:contains(filename, '.jpg')||
+						</c:if> 
+						<c:if test="${fn:contains(filename, '.jpeg')||fn:contains(filename, '.jpg')||
 						fn:contains(filename, '.gif')||fn:contains(filename, '.png')}">
 							<img
 								src="${pageContext.request.contextPath}/img/${file.fileName}"
@@ -110,12 +111,25 @@ $(window).load(function() {
 						</c:if> <c:if test="${fn:contains(filename, '.pdf')}">
 							<img src="${pageContext.request.contextPath}/img/images.jpeg"
 								height="200px" width="200px">
-						</c:if> <c:if test="${fn:contains(filename, '.mp4')||fn:contains(filename, '.avi')||
+						</c:if> 
+						<c:if test="${fn:contains(filename, '.mp4')||fn:contains(filename, '.avi')||
 						fn:contains(filename, '.flv')||fn:contains(filename, '.3gp')}">
 							<img src="${pageContext.request.contextPath}/img/imagesmp4.png"
 								height="200px" width="200px">
 						</c:if>
-
+						<c:if test="${fn:contains(filename, '.doc')||fn:contains(filename, '.odt')||
+						fn:contains(filename, '.txt')||fn:contains(filename, '.html')||fn:contains(filename, '.xls')}">
+							<img src="${pageContext.request.contextPath}/img/doc.png"
+								height="200px" width="200px">
+						</c:if>
+						<c:if test="${fn:contains(filename, '.ppt')}">
+							<img src="${pageContext.request.contextPath}/img/ppt.jpg"
+								height="200px" width="200px">
+						</c:if>
+						<c:if test="${fn:contains(filename, '.zip')}">
+							<img src="${pageContext.request.contextPath}/img/zip.jpg"
+								height="200px" width="200px">
+						</c:if>
 					</span><a
 						href="${pageContext.request.contextPath}/detailsPage?name=${file.fileId}">
 

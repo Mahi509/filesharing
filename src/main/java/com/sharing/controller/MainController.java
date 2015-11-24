@@ -1,5 +1,6 @@
 package com.sharing.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.sharing.model.DeleteFiles;
 import com.sharing.model.Files;
 import com.sharing.model.User;
@@ -48,7 +50,7 @@ public class MainController {
 	@RequestMapping(value = "authenticate", method = RequestMethod.POST)
 	public String authenticate(@RequestParam("username") String username,
 			@RequestParam("password") String password, HttpSession session,
-			HttpServletRequest request, Model model) {
+			HttpServletRequest request, Model model) throws IOException {
 		boolean flag = mainService.authenticate(username, password);
 
 		if (flag) {
@@ -248,7 +250,7 @@ public class MainController {
 		return "forgotPassword";
 	}
 
-	@RequestMapping(value = "/redirectToHome", method = RequestMethod.GET)
+	@RequestMapping(value = "/main/redirectToHome", method = RequestMethod.GET)
 	public String redirectToHome() {
 
 		return "home";
